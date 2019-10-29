@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "909240623620",
+    "firebase_url": "https://note-uni.firebaseio.com",
+    "project_id": "note-uni",
+    "storage_bucket": "note-uni.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909240623620:android:bedec3e96f2092e1",
+        "android_client_info": {
+          "package_name": "com.brutal.ninjas.hackaton19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909240623620-p7gcqi6tsda1b5f297bk7ofr70c9eaa8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_WIwb4qyc6JnwhdsahH3J8WdB0DoRsUw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

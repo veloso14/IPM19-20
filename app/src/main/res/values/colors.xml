@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#007aff</color>
+    <color name="colorPrimaryDark">#007aff</color>
+    <color name="colorAccent">#007aff</color>
+    <color name="bg_screen1">#85BA2E</color>
+    <color name="tagstogglebutton">#60BDFF</color>
+    <color name="themecolor">#4684ef</color>
+</resources>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/topcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/perfil_top_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="141dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/perfil_joao" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:columnCount="3"
+            android:columnOrderPreserved="true"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+
+            android:rowCount="2"
+            android:rowOrderPreserved="true"
+            app:layout_constraintTop_toBottomOf="@id/imageView3">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:contentDescription="Notificações do utilizador"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_perfil_notifications" />
+
+            <TextView
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:padding="10dp"
+                android:text="2"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:contentDescription="Notificações do utilizador"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_perfil_friends" />
+
+            <TextView
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:padding="10dp"
+                android:text="10"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:contentDescription="Notificações do utilizador"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_perfil_aulas" />
+
+            <TextView
+                android:layout_row="1"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:padding="10dp"
+                android:text="5"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF" />
+
+
+        </GridLayout>
+
+
+        <Switch
+            android:id="@+id/ads_switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="  "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fadingEdgeLength="@dimen/fab_size_normal"
+            android:text="Desativar Ads"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/ads_switch"
+            app:layout_constraintEnd_toStartOf="@id/ads_switch"
+            app:layout_constraintTop_toTopOf="@+id/ads_switch" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:padding="10dp"
+        android:text="Ver mais >"
+        android:textColor="@color/themecolor"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="@id/topcontainer"
+        app:layout_constraintTop_toBottomOf="@id/topcontainer" />
+
+    <TextView
+        android:id="@+id/perfil_sobre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:paddingStart="15dp"
+        android:text="Sobre"
+        android:textColor="#BBBDBF"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topcontainer" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="Em 2015, ingressei no primeiro ano do curso de Engenharia Eletrotécnica e de Computadores na Universidade Nova de Lisboa, Faço parte do NEEC, do qual sou o atual presidente."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_sobre" />
+
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/perfil_histories_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="horizontal"            >
+
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/pessoa1" />
+
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/pessoa2" />
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/pessoa3" />
+
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pessoa4" />
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/pessoa5" />
+
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pessoa6" />
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/pessoa7" />
+
+            <ImageView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pessoa8" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+</android.support.constraint.ConstraintLayout>
