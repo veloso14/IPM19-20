@@ -14,11 +14,11 @@ import com.fct.miei.ipm.GoogleDocsContainer;
 import com.brutal.ninjas.hackaton19.R;
 
 
-public class CriarAula extends Fragment {
+public class Eventos extends Fragment {
 
     private RadioGroup classTypeSelect;
 
-    public CriarAula() {
+    public Eventos() {
         // Required empty public constructor
     }
 

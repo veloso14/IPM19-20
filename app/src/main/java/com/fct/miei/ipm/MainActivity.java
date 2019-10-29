@@ -15,10 +15,11 @@ import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 
-import com.fct.miei.ipm.fragments.CriarAula;
+import com.fct.miei.ipm.fragments.Eventos;
+import com.fct.miei.ipm.fragments.Adicionar;
 import com.fct.miei.ipm.fragments.Perfil;
 import com.fct.miei.ipm.fragments.Ranking;
-import com.fct.miei.ipm.fragments.VerAulas;
+import com.fct.miei.ipm.fragments.Home;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,25 +33,29 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.profile:
-                    changeFragment(new Perfil());
+                case R.id.addicionar:
+                    changeFragment(new Adicionar());
                     return true;
-                case R.id.findcourse:
-                    changeFragment(new VerAulas());
+                case R.id.home:
+                    changeFragment(new Home());
                     return true;
-                case R.id.newcourse:
-                    changeFragment(new CriarAula());
+                case R.id.eventos:
+                    changeFragment(new Eventos());
                     return true;
                 case R.id.ranking:
                     changeFragment(new Ranking());
                     return true;
-                case R.id.logoutButton:
+                case R.id.perfil:
+                    changeFragment(new Perfil());
+                    return true;
+                    //codigo do logout
+                    /*
                     loginState.logout();
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-//                    finish();
-                    return true;
+                    */
+
             }
             return false;
         }
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.findcourse);
+        navigation.setSelectedItemId(R.id.home);
 
 //        changeFragment(new ProcurarAulas());
         navigation.getMenu().getItem(2).setChecked(true);

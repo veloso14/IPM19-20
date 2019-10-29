@@ -10,12 +10,12 @@ import android.widget.GridView;
 import com.fct.miei.ipm.ImageAdapter;
 import com.brutal.ninjas.hackaton19.R;
 
-public class VerAulas extends Fragment {
+public class Home extends Fragment {
 
     // TODO: Rename and change types of parameters
 
 
-    public VerAulas() {
+    public Home() {
         // Required empty public constructor
     }
 
