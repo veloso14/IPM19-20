@@ -1,39 +1,37 @@
 {
   "project_info": {
-    "project_number": "909240623620",
-    "firebase_url": "https://note-uni.firebaseio.com",
-    "project_id": "note-uni",
-    "storage_bucket": "note-uni.appspot.com"
+    "project_number": "547748266626",
+    "firebase_url": "https://ipm-2019-2020.firebaseio.com",
+    "project_id": "ipm-2019-2020",
+    "storage_bucket": "ipm-2019-2020.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:909240623620:android:bedec3e96f2092e1",
+        "mobilesdk_app_id": "1:547748266626:android:f26dbda76cea3433f22a9b",
         "android_client_info": {
-          "package_name": "com.brutal.ninjas.hackaton19"
+          "package_name": "com.fct.miei.ipm"
         }
       },
       "oauth_client": [
         {
-          "client_id": "909240623620-p7gcqi6tsda1b5f297bk7ofr70c9eaa8.apps.googleusercontent.com",
+          "client_id": "547748266626-pa87pbsgmndrk2ec1ap3ukc38q40v1hb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_WIwb4qyc6JnwhdsahH3J8WdB0DoRsUw"
+          "current_key": "AIzaSyDGX4eAHHyQGrO2lTtLvrG_pqy70_GYAL4"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547748266626-pa87pbsgmndrk2ec1ap3ukc38q40v1hb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

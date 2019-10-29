@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/profile"
-        android:title="Perfil" />
+        android:icon="@drawable/newdocument"
+        android:title="Adicionar" />
 
     <item
         android:id="@+id/newcourse"
-        android:icon="@drawable/addnew"
-        android:title="Criar nova aula" />
+        android:icon="@drawable/timetable"
+        android:title="Eventos" />
 
     <item
         android:id="@+id/findcourse"
-        android:icon="@drawable/search"
-        android:title="Encontrar aulas" />
+        android:icon="@drawable/home"
+        android:title="As minhas cadeiras" />
 
     <item
         android:id="@+id/ranking"
@@ -23,6 +23,6 @@
 
     <item
         android:id="@+id/logoutButton"
-        android:icon="@drawable/logout"
-        android:title="Logout" />
+        android:icon="@drawable/profile"
+        android:title="Perfil" />
 </menu>

@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.brutal.ninjas.hackaton19"
+        applicationId "com.fct.miei.ipm"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 3
-        versionName "2.1"
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
