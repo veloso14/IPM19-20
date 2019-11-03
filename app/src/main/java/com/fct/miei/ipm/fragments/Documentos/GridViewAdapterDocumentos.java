@@ -35,6 +35,7 @@ public class GridViewAdapterDocumentos extends RecyclerView.Adapter<GridViewAdap
     public void onBindViewHolder(GridViewAdapterDocumentos.ViewHolder viewHolder, int position) {
         viewHolder.imageView.setImageResource(items.get(position).getDrawableId());
         viewHolder.textView.setText(items.get(position).getName());
+        viewHolder.estrelas.setText( String.valueOf(items.get(position).getEstrelas()));
     }
 
     @Override
@@ -48,11 +49,13 @@ public class GridViewAdapterDocumentos extends RecyclerView.Adapter<GridViewAdap
     protected class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView textView;
+        private TextView estrelas;
 
         public ViewHolder(View view) {
             super(view);
             textView = (TextView)view.findViewById(R.id.text);
             imageView = (ImageView) view.findViewById(R.id.image);
+            estrelas = (TextView)view.findViewById(R.id.stares);
         }
     }
 }
