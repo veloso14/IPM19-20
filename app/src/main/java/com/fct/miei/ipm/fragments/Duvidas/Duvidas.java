@@ -1,18 +1,23 @@
 package com.fct.miei.ipm.fragments.Duvidas;
 
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +33,8 @@ public class Duvidas extends Fragment {
 
 
     private NonScrollListView nonScrollListView;
+    private    Dialog myDialog;
+    private  View vista;
 
 
     public Duvidas() {
@@ -35,7 +42,19 @@ public class Duvidas extends Fragment {
     }
 
 
-
+    public void ShowPopup(View v) {
+        TextView txtclose;
+        myDialog.setContentView(R.layout.popup_add_duvida);
+        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +63,21 @@ public class Duvidas extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_duvidas, container, false);
+        this.vista = view;
+        myDialog = new Dialog(getContext());
         nonScrollListView = view.findViewById(R.id.listView);
+
+        //Add duvida
+        ImageView add = view.findViewById(R.id.add);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               //Mostrar Popup
+                Log.d("POPUP" , "Mostra POPUP");
+                ShowPopup( vista.findViewById(android.R.id.content) );
+            }
+        });
 
         //Duvidas go to
         ImageView goBack = view.findViewById(R.id.back2);
