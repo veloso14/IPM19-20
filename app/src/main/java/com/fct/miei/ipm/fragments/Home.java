@@ -1,16 +1,19 @@
 package com.fct.miei.ipm.fragments;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.EditText;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.fct.miei.ipm.ImageAdapter;
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.fragments.Documentos.Documentos;
 
 public class Home extends Fragment {
 
@@ -20,6 +23,7 @@ public class Home extends Fragment {
     public Home() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,8 @@ public class Home extends Fragment {
 
         GridView gridView = (GridView)  view.findViewById(R.id.course_container) ;
         gridView.setAdapter(new ImageAdapter(getActivity()));
-        EditText pesquisa = view.findViewById(R.id.fitb);
+
+
 
 
         return view;

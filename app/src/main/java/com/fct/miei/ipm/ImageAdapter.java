@@ -1,14 +1,19 @@
 package com.fct.miei.ipm;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.fragments.Documentos.Documentos;
+import com.fct.miei.ipm.fragments.Home;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
@@ -46,9 +51,12 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView = new ImageView(mContext);
         imageView.setImageResource(thumbnails[position]);
         imageView.setOnClickListener((event) ->{
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("https://docs.google.com/document/d/1Ns71SNE2gnDIJwpTlHc6UbnaVdbyUypkyMR_MrCOpb0/edit"));
-            mContext.startActivity(intent);
+            FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.content, new Documentos());
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
         });
         imageView.setAdjustViewBounds(true);
         int padding = 8 * 4;
