@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.GridView;
 
 import com.fct.miei.ipm.ImageAdapter;
@@ -36,6 +37,8 @@ public class Home extends Fragment {
 
         GridView gridView = (GridView)  view.findViewById(R.id.course_container) ;
         gridView.setAdapter(new ImageAdapter(getActivity()));
+        EditText pesquisa = view.findViewById(R.id.fitb);
+
 
         return view;
     }

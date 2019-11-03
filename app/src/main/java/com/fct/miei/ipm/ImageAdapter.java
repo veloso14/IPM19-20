@@ -51,7 +51,7 @@ public class ImageAdapter extends BaseAdapter {
             mContext.startActivity(intent);
         });
         imageView.setAdjustViewBounds(true);
-        int padding = 8 * 5;
+        int padding = 8 * 4;
        imageView.setPadding(padding, padding , padding, padding); // why not be explicit about the padding while we're at it
 
         return imageView;
