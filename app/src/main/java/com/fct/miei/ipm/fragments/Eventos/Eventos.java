@@ -1,7 +1,9 @@
 package com.fct.miei.ipm.fragments.Eventos;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,13 +11,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.brutal.ninjas.hackaton19.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -39,6 +45,8 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     private LinearLayout linearContainer;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    private View view;
+    private Dialog myDialog;
     private ArrayList<Event> itemsData = new ArrayList<>();
     private boolean sc = false;
     private SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
@@ -83,7 +91,9 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
 
 
-        View view = inflater.inflate(R.layout.fragment_calendario, container, false);
+        view = inflater.inflate(R.layout.fragment_calendario, container, false);
+
+        // create the popup window
 
 
         //Calendario
@@ -150,6 +160,9 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
                 long clickTime = System.currentTimeMillis();
                 if (clickTime - lastClickTimeCalendar < DOUBLE_CLICK_TIME_DELTA_CALENDAR){
                     Log.d("CLICK" ,"Double click");
+                    myDialog = new Dialog(getContext());
+                    ShowPopup( view.findViewById(android.R.id.content) );
+
                 } else {
                     sc = true;
                     scrollToDate(dateClicked);
@@ -174,6 +187,7 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         return view;
 
     }
+
 
 
 
@@ -262,6 +276,28 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
 
 
+    }
+
+    public void ShowPopup(View v) {
+        TextView txtclose;
+        Button btnFollow;
+        myDialog.setContentView(R.layout.popup_window_criar_evento);
+        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        btnFollow = (Button) myDialog.findViewById(R.id.btnfollow);
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 
     private void refreshAdapter() {
@@ -355,6 +391,9 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         long clickTime = System.currentTimeMillis();
         if (clickTime - lastClickTime < DOUBLE_CLICK_TIME_DELTA){
             Log.d("CLICK" ,"Double click");
+            myDialog = new Dialog(getContext());
+            ShowPopup( view.findViewById(android.R.id.content) );
+
         } else {
             long time = itemsData.get(pos).getTimeInMillis();
             if (time > 0) {

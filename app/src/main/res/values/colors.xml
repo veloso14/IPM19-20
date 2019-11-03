@@ -6,4 +6,12 @@
     <color name="bg_screen1">#85BA2E</color>
     <color name="tagstogglebutton">#60BDFF</color>
     <color name="themecolor">#4684ef</color>
+
+    <color name="color_tab_1">#455C65</color>
+    <color name="color_tab_2">#7BBD00</color>
+    <color name="color_tab_3">#426BBD</color>
+    <color name="color_tab_4">#5ABDCE</color>
+    <color name="color_tab_5">#00886A</color>
+    <color name="white">#ffffff</color>
+
 </resources>
