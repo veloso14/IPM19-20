@@ -43,6 +43,12 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     private boolean sc = false;
     private SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
 
+    private static final long DOUBLE_CLICK_TIME_DELTA = 300;//milliseconds
+    long lastClickTime = 0;
+
+    private static final long DOUBLE_CLICK_TIME_DELTA_CALENDAR = 400;//milliseconds
+    long lastClickTimeCalendar = 0;
+
     public Eventos() {
         // Required empty public constructor
     }
@@ -140,8 +146,17 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
             @Override
             public void onDayClick(Date dateClicked) {
-                sc = true;
-                scrollToDate(dateClicked);
+
+                long clickTime = System.currentTimeMillis();
+                if (clickTime - lastClickTimeCalendar < DOUBLE_CLICK_TIME_DELTA_CALENDAR){
+                    Log.d("CLICK" ,"Double click");
+                } else {
+                    sc = true;
+                    scrollToDate(dateClicked);
+                }
+                lastClickTimeCalendar = clickTime;
+
+
             }
 
             @Override
@@ -167,6 +182,21 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     private void getEvents() {
         Log.d("Eventos", "Start");
         String json = "[\n" +
+                "  {\n" +
+                "    \"time\": \"21/11/2019\",\n" +
+                "    \"color\": \"#08A5CB\",\n" +
+                "    \"name\": \"Evento Sessão de estudo\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"time\": \"20/11/2019\",\n" +
+                "    \"color\": \"#08A5CB\",\n" +
+                "    \"name\": \"Evento Sessão de estudo\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"time\": \"19/11/2019\",\n" +
+                "    \"color\": \"#08A5CB\",\n" +
+                "    \"name\": \"Evento Sessão de estudo\"\n" +
+                "  },\n" +
                 "  {\n" +
                 "    \"time\": \"19/08/2019\",\n" +
                 "    \"color\": \"#08A5CB\",\n" +
@@ -322,10 +352,17 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
     @Override
     public void onEventoClick(int pos) {
-        long time = itemsData.get(pos).getTimeInMillis();
-        if (time > 0) {
-            calendar.setCurrentDate(new Date(time));
-            setMonthText();
+        long clickTime = System.currentTimeMillis();
+        if (clickTime - lastClickTime < DOUBLE_CLICK_TIME_DELTA){
+            Log.d("CLICK" ,"Double click");
+        } else {
+            long time = itemsData.get(pos).getTimeInMillis();
+            if (time > 0) {
+                calendar.setCurrentDate(new Date(time));
+                setMonthText();
+            }
         }
+        lastClickTime = clickTime;
+
     }
 }
