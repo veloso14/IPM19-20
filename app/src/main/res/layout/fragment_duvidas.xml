@@ -27,4 +27,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back2"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.fct.miei.ipm.fragments.Duvidas.NonScrollListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cadeira2">
+
+    </com.fct.miei.ipm.fragments.Duvidas.NonScrollListView>
+
 </android.support.constraint.ConstraintLayout>
