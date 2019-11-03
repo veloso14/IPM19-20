@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.fragments.Duvidas;
 import com.fct.miei.ipm.fragments.Home;
 
 import java.util.ArrayList;
@@ -61,6 +62,20 @@ public class Documentos extends Fragment {
                ft.commit();
            }
        });
+
+       //Duvidas go to
+        ImageView duvidas = view.findViewById(R.id.duvidas);
+
+        duvidas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new Duvidas());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
 
         gridView = (RecyclerView) view.findViewById(R.id.grid);
 

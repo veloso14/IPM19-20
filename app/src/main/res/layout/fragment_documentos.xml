@@ -60,7 +60,7 @@
         app:srcCompat="@drawable/plus" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/duvidas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
