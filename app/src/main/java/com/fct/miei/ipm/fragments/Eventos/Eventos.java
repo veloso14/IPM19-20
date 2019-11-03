@@ -72,7 +72,6 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
      */
 
 
-
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -171,17 +170,17 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
                 "  {\n" +
                 "    \"time\": \"19/08/2019\",\n" +
                 "    \"color\": \"#08A5CB\",\n" +
-                "    \"name\": \"Início das inscrições do 2ºano e seguintes\"\n" +
+                "    \"name\": \"Evento Sessão de estudo\"\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"time\": \"19/08/2019\",\n" +
                 "    \"color\": \"#095280\",\n" +
-                "    \"name\": \"Início do período para envio de requerimentos sobre as inscrições aos Coordenadores de Curso\"\n" +
+                "    \"name\": \"Evento Sessão de estudo\"\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"time\": \"26/08/2019\",\n" +
                 "    \"color\": \"#095280\",\n" +
-                "    \"name\": \"Início do período para entrega de pedido de inscrição dos estudantes externos em unidades curriculares isoladas do 1ºsemestre\"\n" +
+                "    \"name\": \"Evento Sessão de estudo\"\n" +
                 "  }\n" +
                 "]";
 
