@@ -50,9 +50,11 @@ public class ImageAdapter extends BaseAdapter {
             intent.setData(Uri.parse("https://docs.google.com/document/d/1Ns71SNE2gnDIJwpTlHc6UbnaVdbyUypkyMR_MrCOpb0/edit"));
             mContext.startActivity(intent);
         });
-//        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-//        imageView.setLayoutParams(new GridView.LayoutParams(70, 70));
+        imageView.setAdjustViewBounds(true);
+        int padding = 8 * 5;
+       imageView.setPadding(padding, padding , padding, padding); // why not be explicit about the padding while we're at it
+
         return imageView;
     }
- 
+
 }
