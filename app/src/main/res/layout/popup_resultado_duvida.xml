@@ -62,6 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:textColor="#fff"
+            android:padding="5dp"
+            android:background="@color/colorPrimary"
             android:text="Criar dúvida >"
             android:textStyle="bold"
             android:layout_gravity="end"

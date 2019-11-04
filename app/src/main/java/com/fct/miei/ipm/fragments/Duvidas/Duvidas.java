@@ -42,13 +42,24 @@ public class Duvidas extends Fragment {
     }
 
     public void ShowPopupResultados(View v) {
-        TextView txtclose;
         myDialog.setContentView(R.layout.popup_resultado_duvida);
-        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        TextView txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
+            }
+        });
+        Button pesquisar =(Button) myDialog.findViewById(R.id.pesquisar);
+        pesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new CriarDuvidas());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
