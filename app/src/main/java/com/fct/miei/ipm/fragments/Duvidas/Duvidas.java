@@ -33,12 +33,27 @@ public class Duvidas extends Fragment {
 
 
     private NonScrollListView nonScrollListView;
-    private    Dialog myDialog;
-    private  View vista;
+    private Dialog myDialog;
+    private View vista;
 
 
     public Duvidas() {
         // Required empty public constructor
+    }
+
+    public void ShowPopupResultados(View v) {
+        TextView txtclose;
+        myDialog.setContentView(R.layout.popup_resultado_duvida);
+        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+
     }
 
 
@@ -50,6 +65,15 @@ public class Duvidas extends Fragment {
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
+            }
+        });
+        //buscar
+        TextView pesquisar =(TextView) myDialog.findViewById(R.id.pesquisar);
+        pesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+                ShowPopupResultados(v);
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
