@@ -1,4 +1,4 @@
-package com.fct.miei.ipm.fragments.Duvidas;
+package com.fct.miei.ipm.fragments.Documentos;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +23,7 @@ public class CriarApontamento extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,9 +31,7 @@ public class CriarApontamento extends Fragment {
 
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ranking, container, false);
-
-
+        View view = inflater.inflate(R.layout.fragment_criar_apontamento, container, false);
 
 
         return view;

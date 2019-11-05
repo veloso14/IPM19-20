@@ -1,6 +1,9 @@
 package com.fct.miei.ipm.fragments.Documentos;
 
+import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,7 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
@@ -21,6 +27,8 @@ public class Documentos extends Fragment {
     private RecyclerView gridView;
     private GridViewAdapterDocumentos gridViewAdapter;
     private ArrayList<RecyclerViewItem> operatingSystems;
+    private Dialog myDialog;
+    private View vista;
 
     public Documentos() {
         // Required empty public constructor
@@ -40,6 +48,39 @@ public class Documentos extends Fragment {
 
     }
 
+    public void ShowPopup(View v) {
+
+        myDialog.setContentView(R.layout.popup_adicionar_documento);
+        //Adicionar um apontamento
+        Button apontamentos =(Button) myDialog.findViewById(R.id.apontamentos);
+        apontamentos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                myDialog.dismiss();
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new CriarApontamento());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
+
+        //Adicionar um exercicios
+        Button exercicios =(Button) myDialog.findViewById(R.id.exercicios);
+        exercicios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Logo faço" , Toast.LENGTH_LONG).show();
+                myDialog.dismiss();
+            }
+        });
+
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +88,18 @@ public class Documentos extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_documentos, container, false);
+
+        ImageView adicionar = view.findViewById(R.id.adicionar);
+
+        this.vista = view;
+        myDialog = new Dialog(getContext());
+
+        adicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowPopup(vista.findViewById(android.R.id.content));
+            }
+        });
 
 
        ImageView back = view.findViewById(R.id.back);
