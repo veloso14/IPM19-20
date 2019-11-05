@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
-import com.fct.miei.ipm.GoogleDocsContainer;
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.GoogleDocsContainer;
 
 
 public class Eventos extends Fragment {
@@ -33,14 +33,14 @@ public class Eventos extends Fragment {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_criar_aula, container, false);
         Context context = inflate.getContext();
-        inflate.findViewById(R.id.criar_aula_button).setOnClickListener((event)->{
+        inflate.findViewById(R.id.criar_aula_button).setOnClickListener((event) -> {
             int checkedRadioButtonId = classTypeSelect.getCheckedRadioButtonId();
             if (checkedRadioButtonId == R.id.criar_aula_publica) {
                 //aula privada, ir para pagina de partilhar documento
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://docs.google.com/document/d/1Ns71SNE2gnDIJwpTlHc6UbnaVdbyUypkyMR_MrCOpb0/edit"));
                 context.startActivity(intent);
-            }else if (checkedRadioButtonId == R.id.criar_aula_privada){
+            } else if (checkedRadioButtonId == R.id.criar_aula_privada) {
                 //aula publice, ir diretamente para o doc
                 Intent intent = new Intent(context, GoogleDocsContainer.class);
                 context.startActivity(intent);

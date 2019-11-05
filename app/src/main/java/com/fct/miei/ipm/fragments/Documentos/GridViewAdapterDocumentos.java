@@ -1,17 +1,17 @@
 package com.fct.miei.ipm.fragments.Documentos;
 
 
-        import android.app.Activity;
-        import android.support.v7.widget.RecyclerView;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-        import com.brutal.ninjas.hackaton19.R;
+import com.brutal.ninjas.hackaton19.R;
 
-        import java.util.List;
+import java.util.List;
 
 
 public class GridViewAdapterDocumentos extends RecyclerView.Adapter<GridViewAdapterDocumentos.ViewHolder> {
@@ -35,7 +35,7 @@ public class GridViewAdapterDocumentos extends RecyclerView.Adapter<GridViewAdap
     public void onBindViewHolder(GridViewAdapterDocumentos.ViewHolder viewHolder, int position) {
         viewHolder.imageView.setImageResource(items.get(position).getDrawableId());
         viewHolder.textView.setText(items.get(position).getName());
-        viewHolder.estrelas.setText( String.valueOf(items.get(position).getEstrelas()));
+        viewHolder.estrelas.setText(String.valueOf(items.get(position).getEstrelas()));
     }
 
     @Override
@@ -53,9 +53,9 @@ public class GridViewAdapterDocumentos extends RecyclerView.Adapter<GridViewAdap
 
         public ViewHolder(View view) {
             super(view);
-            textView = (TextView)view.findViewById(R.id.text);
-            imageView = (ImageView) view.findViewById(R.id.image);
-            estrelas = (TextView)view.findViewById(R.id.stares);
+            textView = view.findViewById(R.id.text);
+            imageView = view.findViewById(R.id.image);
+            estrelas = view.findViewById(R.id.stares);
         }
     }
 }

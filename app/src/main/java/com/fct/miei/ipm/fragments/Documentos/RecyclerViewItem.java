@@ -6,7 +6,7 @@ public class RecyclerViewItem {
     private String name;
     private int estrelas;
 
-    public RecyclerViewItem(int drawableId, String name , int estrelas) {
+    public RecyclerViewItem(int drawableId, String name, int estrelas) {
         this.drawableId = drawableId;
         this.name = name;
         this.estrelas = estrelas;
@@ -16,7 +16,7 @@ public class RecyclerViewItem {
         return drawableId;
     }
 
-    public int getEstrelas(){
+    public int getEstrelas() {
         return this.estrelas;
     }
 

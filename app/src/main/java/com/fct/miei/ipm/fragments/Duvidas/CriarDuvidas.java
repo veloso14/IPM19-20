@@ -15,8 +15,8 @@ import com.brutal.ninjas.hackaton19.R;
 public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelectedListener {
 
 
-    private Spinner spinner;
     private static final String[] paths = {"Público", "Amigos", "????"};
+    private Spinner spinner;
 
 
     public CriarDuvidas() {
@@ -31,9 +31,9 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_duvida, container, false);
 
-        spinner = (Spinner) view.findViewById(R.id.spinner1);
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item,paths);
+        spinner = view.findViewById(R.id.spinner1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, paths);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);

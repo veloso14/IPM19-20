@@ -2,29 +2,21 @@ package com.fct.miei.ipm.fragments.Duvidas;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.MainActivity;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
-import com.fct.miei.ipm.semNet;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -43,14 +35,14 @@ public class Duvidas extends Fragment {
 
     public void ShowPopupResultados(View v) {
         myDialog.setContentView(R.layout.popup_resultado_duvida);
-        TextView txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        TextView txtclose = myDialog.findViewById(R.id.txtclose);
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
             }
         });
-        Button pesquisar =(Button) myDialog.findViewById(R.id.pesquisar);
+        Button pesquisar = myDialog.findViewById(R.id.pesquisar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +63,7 @@ public class Duvidas extends Fragment {
     public void ShowPopup(View v) {
         TextView txtclose;
         myDialog.setContentView(R.layout.popup_add_duvida);
-        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        txtclose = myDialog.findViewById(R.id.txtclose);
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +71,7 @@ public class Duvidas extends Fragment {
             }
         });
         //buscar
-        TextView pesquisar =(TextView) myDialog.findViewById(R.id.pesquisar);
+        TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,9 +100,9 @@ public class Duvidas extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //Mostrar Popup
-                Log.d("POPUP" , "Mostra POPUP");
-                ShowPopup( vista.findViewById(android.R.id.content) );
+                //Mostrar Popup
+                Log.d("POPUP", "Mostra POPUP");
+                ShowPopup(vista.findViewById(android.R.id.content));
             }
         });
 
@@ -145,9 +137,9 @@ public class Duvidas extends Fragment {
                 View view = super.getView(position, convertView, parent);
 
                 String[] entry = values.get(position);
-                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                TextView text1 = view.findViewById(android.R.id.text1);
                 text1.setTextSize(20);
-                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+                TextView text2 = view.findViewById(android.R.id.text2);
                 text1.setText(entry[0]);
                 text2.setText(entry[1]);
                 text2.setTextSize(14);
@@ -161,7 +153,6 @@ public class Duvidas extends Fragment {
                 return view;
             }
         });
-
 
 
         return view;

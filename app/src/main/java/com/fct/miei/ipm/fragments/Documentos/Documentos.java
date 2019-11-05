@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
@@ -38,13 +37,13 @@ public class Documentos extends Fragment {
     private void setDummyData() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex" , 100));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2." , 44));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2."  , 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2."  , 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex"  , 80));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex"  , 70));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex"  , 60));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
 
     }
 
@@ -52,7 +51,7 @@ public class Documentos extends Fragment {
 
         myDialog.setContentView(R.layout.popup_adicionar_documento);
         //Adicionar um apontamento
-        Button apontamentos =(Button) myDialog.findViewById(R.id.apontamentos);
+        Button apontamentos = myDialog.findViewById(R.id.apontamentos);
         apontamentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,11 +66,11 @@ public class Documentos extends Fragment {
         });
 
         //Adicionar um exercicios
-        Button exercicios =(Button) myDialog.findViewById(R.id.exercicios);
+        Button exercicios = myDialog.findViewById(R.id.exercicios);
         exercicios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Logo faço" , Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Logo faço", Toast.LENGTH_LONG).show();
                 myDialog.dismiss();
             }
         });
@@ -79,7 +78,6 @@ public class Documentos extends Fragment {
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
-
 
 
     @Override
@@ -102,20 +100,20 @@ public class Documentos extends Fragment {
         });
 
 
-       ImageView back = view.findViewById(R.id.back);
+        ImageView back = view.findViewById(R.id.back);
 
-       back.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-               ft.replace(R.id.content, new Home());
-               ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-               ft.addToBackStack(null);
-               ft.commit();
-           }
-       });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new Home());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
 
-       //Duvidas go to
+        //Duvidas go to
         ImageView duvidas = view.findViewById(R.id.duvidas);
 
         duvidas.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +127,7 @@ public class Documentos extends Fragment {
             }
         });
 
-        gridView = (RecyclerView) view.findViewById(R.id.grid);
+        gridView = view.findViewById(R.id.grid);
 
         setDummyData();
 
@@ -144,7 +142,6 @@ public class Documentos extends Fragment {
 
         return view;
     }
-
 
 
 }
