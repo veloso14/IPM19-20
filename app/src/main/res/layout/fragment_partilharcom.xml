@@ -25,7 +25,7 @@
         android:textColor="@color/themecolor"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/criar"
+        app:layout_constraintEnd_toStartOf="@+id/concluido"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +72,7 @@
         app:srcCompat="@drawable/backblack" />
 
     <Button
-        android:id="@+id/criar"
+        android:id="@+id/concluido"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@drawable/square_toggle_button"
@@ -99,5 +99,44 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tituloinput"
         app:layout_constraintTop_toBottomOf="@+id/tituloinput" />
+
+
+    <TextView
+        android:id="@+id/login_entrar3"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Contactos:"
+        android:textAlignment="center"
+        android:textColor="@color/themecolor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/login_entrar4"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contactos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar3">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar4">
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

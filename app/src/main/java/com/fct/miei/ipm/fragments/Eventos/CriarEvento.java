@@ -1,10 +1,6 @@
 package com.fct.miei.ipm.fragments.Eventos;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -12,8 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.semNet;
+import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
 public class CriarEvento  extends Fragment {
 
@@ -87,7 +81,7 @@ public class CriarEvento  extends Fragment {
 
         TextInputLayout titulo = view.findViewById(R.id.tituloinput);
         //Criar evento
-        Button criar = view.findViewById(R.id.criar);
+        Button criar = view.findViewById(R.id.concluido);
 
         criar.setOnClickListener(new View.OnClickListener() {
             @Override
