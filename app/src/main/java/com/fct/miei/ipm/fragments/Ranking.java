@@ -11,49 +11,71 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.semNet;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Ranking extends Fragment {
 
+    // Array of strings for ListView Title
+    String[] listviewTitle = new String[]{
+            "1º Lugar                                      ⭐ 1500",
+            "2º Lugar                                      ⭐ 1210",
+            "3º Lugar                                      ⭐ 1000",
+            "4º Lugar                                      ⭐ 502",
+    };
+
+
+    int[] listviewImage = new int[]{
+            R.drawable.veloso,
+            R.drawable.rita,
+            R.drawable.carlos,
+            R.drawable.grilo,
+    };
+
+    String[] listviewShortDescription = new String[]{
+            "\nJoão Veloso\nMestrado Integrado em Engenharia Informática",
+            "\nRita Rebelo\nMestrado Integrado em Engenharia Informática",
+            "\nCarlos Quendera\nMestrado Integrado em Engenharia Informática",
+            "\nLuís António Grilo\nLicenciatura em Bioquímica",
+      };
 
     public Ranking() {
         // Required empty public constructor
     }
 
 
-    public boolean isInternetAvailable() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() != null;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if (!isInternetAvailable()) {
-            Intent intent = new Intent(getContext(), semNet.class);
-            startActivity(intent);
-        }
+
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ranking, container, false);
+        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
-
-        WebView webView = view.findViewById(R.id.webView);
-
-        if (Build.VERSION.SDK_INT >= 19) {
-            webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        } else {
-            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        for (int i = 0; i < 4; i++) {
+            HashMap<String, String> hm = new HashMap<String, String>();
+            hm.put("listview_title", listviewTitle[i]);
+            hm.put("listview_discription", listviewShortDescription[i]);
+            hm.put("listview_image", Integer.toString(listviewImage[i]));
+            aList.add(hm);
         }
 
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        String[] from = {"listview_image", "listview_title", "listview_discription"};
+        int[] to = {R.id.listview_image, R.id.listview_item_title, R.id.listview_item_short_description};
 
-        webView.loadUrl("http://ninfgackaton19.atspace.cc/ranking/timetable.html");
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), aList, R.layout.listview_activity_ranking, from, to);
+        ListView androidListView = (ListView) view.findViewById(R.id.list_view);
+        androidListView.setAdapter(simpleAdapter);
+
 
         return view;
     }
