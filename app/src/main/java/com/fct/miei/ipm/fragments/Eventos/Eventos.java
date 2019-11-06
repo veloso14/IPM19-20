@@ -1,6 +1,7 @@
 package com.fct.miei.ipm.fragments.Eventos;
 
 import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -259,6 +260,11 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new CriarEvento());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
 
