@@ -3,6 +3,7 @@ package com.fct.miei.ipm.fragments.Eventos;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -181,7 +182,8 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
     private void getEvents() {
         Log.d("Eventos", "Start");
-        String eventosCriados = "";
+        SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
+        String eventosCriados  = settings.getString("Eventos", "");
         String json = "[\n" +
                 "  {\n" +
                 "    \"time\": \"21/11/2019\",\n" +

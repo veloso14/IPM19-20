@@ -117,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_entrar6" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/tituloinput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -130,13 +130,13 @@
 
 
         <AutoCompleteTextView
-            android:id="@+id/email2"
+            android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/rounded_border_edittext"
             android:focusedByDefault="false"
-            android:hint="Unidade Curricular"
+            android:hint="Título"
             android:inputType="text"
             android:maxLines="1"
             android:padding="10dp"
@@ -239,9 +239,9 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/tituloinput"
+        app:layout_constraintStart_toStartOf="@+id/tituloinput"
+        app:layout_constraintTop_toBottomOf="@+id/tituloinput" />
 
     <Switch
         android:id="@+id/switch1"
