@@ -51,11 +51,6 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     private boolean sc = false;
     private SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
 
-    private static final long DOUBLE_CLICK_TIME_DELTA = 300;//milliseconds
-    long lastClickTime = 0;
-
-    private static final long DOUBLE_CLICK_TIME_DELTA_CALENDAR = 400;//milliseconds
-    long lastClickTimeCalendar = 0;
 
     public Eventos() {
         // Required empty public constructor
@@ -94,7 +89,7 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
         // create the popup window
-
+        myDialog = new Dialog(getContext());
 
         //Calendario
         linearContainer = view.findViewById(R.id.linear);
@@ -156,21 +151,11 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
             @Override
             public void onDayClick(Date dateClicked) {
-
-                long clickTime = System.currentTimeMillis();
-                if (clickTime - lastClickTimeCalendar < DOUBLE_CLICK_TIME_DELTA_CALENDAR){
-                    Log.d("CLICK" ,"Double click");
-                    myDialog = new Dialog(getContext());
-                    ShowPopup( view.findViewById(android.R.id.content) );
-
-                } else {
-                    sc = true;
-                    scrollToDate(dateClicked);
-                }
-                lastClickTimeCalendar = clickTime;
-
-
+                sc = true;
+                scrollToDate(dateClicked);
+                ShowPopup(view.findViewById(android.R.id.content));
             }
+
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
@@ -195,30 +180,17 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
     private void getEvents() {
         Log.d("Eventos", "Start");
+        String eventosCriados = "";
         String json = "[\n" +
                 "  {\n" +
                 "    \"time\": \"21/11/2019\",\n" +
                 "    \"color\": \"#08A5CB\",\n" +
                 "    \"name\": \"Evento Sessão de estudo\"\n" +
                 "  },\n" +
-                "  {\n" +
-                "    \"time\": \"20/11/2019\",\n" +
-                "    \"color\": \"#08A5CB\",\n" +
-                "    \"name\": \"Evento Sessão de estudo\"\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"time\": \"19/11/2019\",\n" +
-                "    \"color\": \"#08A5CB\",\n" +
-                "    \"name\": \"Evento Sessão de estudo\"\n" +
-                "  },\n" +
+                eventosCriados +
                 "  {\n" +
                 "    \"time\": \"19/08/2019\",\n" +
                 "    \"color\": \"#08A5CB\",\n" +
-                "    \"name\": \"Evento Sessão de estudo\"\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"time\": \"19/08/2019\",\n" +
-                "    \"color\": \"#095280\",\n" +
                 "    \"name\": \"Evento Sessão de estudo\"\n" +
                 "  },\n" +
                 "  {\n" +
@@ -279,23 +251,17 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     }
 
     public void ShowPopup(View v) {
-        TextView txtclose;
-        Button btnFollow;
+
         myDialog.setContentView(R.layout.popup_window_criar_evento);
-        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
-        btnFollow = (Button) myDialog.findViewById(R.id.btnfollow);
-        btnFollow.setOnClickListener(new View.OnClickListener() {
+        Button novoEvento =(Button) myDialog.findViewById(R.id.novoEvento);
+
+        novoEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
             }
         });
-        txtclose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myDialog.dismiss();
-            }
-        });
+
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
@@ -388,20 +354,10 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
     @Override
     public void onEventoClick(int pos) {
-        long clickTime = System.currentTimeMillis();
-        if (clickTime - lastClickTime < DOUBLE_CLICK_TIME_DELTA){
-            Log.d("CLICK" ,"Double click");
-            myDialog = new Dialog(getContext());
-            ShowPopup( view.findViewById(android.R.id.content) );
-
-        } else {
-            long time = itemsData.get(pos).getTimeInMillis();
-            if (time > 0) {
-                calendar.setCurrentDate(new Date(time));
-                setMonthText();
-            }
+        long time = itemsData.get(pos).getTimeInMillis();
+        if (time > 0) {
+            calendar.setCurrentDate(new Date(time));
+            setMonthText();
         }
-        lastClickTime = clickTime;
-
     }
 }
