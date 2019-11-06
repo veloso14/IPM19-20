@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class Documentos extends Fragment {
     }
 
 
-    private void setDummyData() {
+    private void setOrderedDummyData() {
 
         operatingSystems = new ArrayList<>();
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
@@ -49,6 +50,20 @@ public class Documentos extends Fragment {
         operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+
+    }
+
+    private void setDummyData() {
+
+        operatingSystems = new ArrayList<>();
+        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+
 
     }
 
@@ -231,6 +246,16 @@ public class Documentos extends Fragment {
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
+            }
+        });
+        //Melhor classificaçãoSort
+        RadioButton melhorClassificacao = myDialog.findViewById(R.id.melhorClassificacao);
+        melhorClassificacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOrderedDummyData();
+                gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
+                gridView.setAdapter(gridViewAdapter);
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
