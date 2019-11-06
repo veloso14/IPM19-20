@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/customborder_square"
+    android:padding="5dp"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/fechar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filtrar por"
+        android:drawableRight="@drawable/crosssmall"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:gravity="center"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+
+
+
+
+        <TextView
+            android:id="@+id/ano"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ano lectivo"
+            android:textStyle="bold"
+            android:padding="6dp"
+            android:drawableRight="@drawable/arrosmall"/>
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data"
+            android:textStyle="bold"
+            android:padding="6dp"
+            android:drawableRight="@drawable/arrosmall"/>
+
+        <TextView
+            android:id="@+id/professor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Professor"
+            android:textStyle="bold"
+            android:padding="6dp"
+            android:drawableRight="@drawable/arrosmall"/>
+
+        <TextView
+            android:id="@+id/tipoAula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de aula"
+            android:textStyle="bold"
+            android:padding="6dp"
+            android:drawableRight="@drawable/arrosmall"/>
+
+        <TextView
+            android:id="@+id/turno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Turno"
+            android:textStyle="bold"
+            android:padding="6dp"
+            android:drawableRight="@drawable/arrosmall"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

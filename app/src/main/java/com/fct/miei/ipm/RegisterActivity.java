@@ -1,9 +1,9 @@
 package com.fct.miei.ipm;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.brutal.ninjas.hackaton19.R;
 
@@ -18,7 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
             supportActionBar.hide();
         }
 
-        findViewById(R.id.registar_button).setOnClickListener((event) ->{
+        findViewById(R.id.registar_button).setOnClickListener((event) -> {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();

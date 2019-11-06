@@ -41,7 +41,7 @@ public class Ranking extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ranking, container, false);
 
 
-        WebView webView = (WebView) view.findViewById(R.id.webView);
+        WebView webView = view.findViewById(R.id.webView);
 
         if (Build.VERSION.SDK_INT >= 19) {
             webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);

@@ -10,70 +10,54 @@ import android.content.SharedPreferences;
  * and choose the operating made that suits your needs, the default is
  * MODE_PRIVATE.
  *
- * IMPORTANT: The class is not thread safe. It should work fine in most 
+ * IMPORTANT: The class is not thread safe. It should work fine in most
  * circumstances since the write and read operations are fast. However
  * if you call edit for bulk updates and do not commit your changes
  * there is a possibility of data loss if a background thread has modified
  * preferences at the same time.
- * 
+ *
  * Usage:
- * 
+ *
  * int sampleInt = SharedPrefsUtil.getInstance(context).getInt(Key.SAMPLE_INT);
  * SharedPrefsUtil.getInstance(context).set(Key.SAMPLE_INT, sampleInt);
- * 
+ *
  * If SharedPrefsUtil.getInstance(Context) has been called once, you can
  * simple use SharedPrefsUtil.getInstance() to save some precious line space.
  */
 public class SharedPrefsUtil {
-	// TODO: CHANGE THIS TO SOMETHING MEANINGFUL
-	private static final String SETTINGS_NAME = "default_settings";
-	private static SharedPrefsUtil sSharedPrefs;
-	private SharedPreferences mPref;
-	private SharedPreferences.Editor mEditor;
-	private boolean mBulkUpdate = false;
+    // TODO: CHANGE THIS TO SOMETHING MEANINGFUL
+    private static final String SETTINGS_NAME = "default_settings";
+    private static SharedPrefsUtil sSharedPrefs;
+    private SharedPreferences mPref;
+    private SharedPreferences.Editor mEditor;
+    private boolean mBulkUpdate = false;
+    private LoginState loginState;
 
-	/**
-	 * Enum representing your setting names or key for your setting.
-	 */
-	public enum Key {
-	  /* Recommended naming convention:
-	   * ints, floats, doubles, longs:
-	   * SAMPLE_NUM or SAMPLE_COUNT or SAMPLE_INT, SAMPLE_LONG etc.
-	   *
-	   * boolean: IS_SAMPLE, HAS_SAMPLE, CONTAINS_SAMPLE
-	   * 
-	   * String: SAMPLE_KEY, SAMPLE_STR or just SAMPLE
-	   */
-		IS_LOGGED,
-        PW_KEY,
-        USERNAME_KEY
-	}
-
-	private SharedPrefsUtil(Context context) {
-		mPref = context.getSharedPreferences(SETTINGS_NAME, Context.MODE_PRIVATE);
-	}
+    private SharedPrefsUtil(Context context) {
+        mPref = context.getSharedPreferences(SETTINGS_NAME, Context.MODE_PRIVATE);
+    }
 
 
-	public static SharedPrefsUtil getInstance(Context context) {
-		if (sSharedPrefs == null) {
-			sSharedPrefs = new SharedPrefsUtil(context.getApplicationContext());
-		}
-		return sSharedPrefs;
-	}
+    public static SharedPrefsUtil getInstance(Context context) {
+        if (sSharedPrefs == null) {
+            sSharedPrefs = new SharedPrefsUtil(context.getApplicationContext());
+        }
+        return sSharedPrefs;
+    }
 
-	public static SharedPrefsUtil getInstance() {
-		if (sSharedPrefs != null) {
-			return sSharedPrefs;
-		}
-		
-		//Option 1:
-		throw new IllegalArgumentException("Should use getInstance(Context) at least once before using this method.");
-		
-		//Option 2:
-		// Alternatively, you can create a new instance here
-		// with something like this:
-		// getInstance(MyCustomApplication.getAppContext());
-	}
+    public static SharedPrefsUtil getInstance() {
+        if (sSharedPrefs != null) {
+            return sSharedPrefs;
+        }
+
+        //Option 1:
+        throw new IllegalArgumentException("Should use getInstance(Context) at least once before using this method.");
+
+        //Option 2:
+        // Alternatively, you can create a new instance here
+        // with something like this:
+        // getInstance(MyCustomApplication.getAppContext());
+    }
 
     public void put(Key key, String val) {
         doEdit();
@@ -203,38 +187,54 @@ public class SharedPrefsUtil {
         }
         doCommit();
     }
-	
-	/**
-	 * Remove all keys from SharedPreferences.
-	 */ 
-	public void clear() {
-		doEdit();
-		mEditor.clear();
-		doCommit();
-	}	
-	
-	public void edit() {
-		mBulkUpdate = true;
-		mEditor = mPref.edit();
-	}    private LoginState loginState;
 
+    /**
+     * Remove all keys from SharedPreferences.
+     */
+    public void clear() {
+        doEdit();
+        mEditor.clear();
+        doCommit();
+    }
+
+    public void edit() {
+        mBulkUpdate = true;
+        mEditor = mPref.edit();
+    }
 
     public void commit() {
-		mBulkUpdate = false;
-		mEditor.commit();
-		mEditor = null;
-	}
-	
-	private void doEdit() {
-		if (!mBulkUpdate && mEditor == null) {
-			mEditor = mPref.edit();
-		}
-	}
-	
-	private void doCommit() {
-		if (!mBulkUpdate && mEditor != null) {
-			mEditor.commit();
-			mEditor = null;
-		} 
-	}	
+        mBulkUpdate = false;
+        mEditor.commit();
+        mEditor = null;
+    }
+
+    private void doEdit() {
+        if (!mBulkUpdate && mEditor == null) {
+            mEditor = mPref.edit();
+        }
+    }
+
+    private void doCommit() {
+        if (!mBulkUpdate && mEditor != null) {
+            mEditor.commit();
+            mEditor = null;
+        }
+    }
+
+    /**
+     * Enum representing your setting names or key for your setting.
+     */
+    public enum Key {
+        /* Recommended naming convention:
+         * ints, floats, doubles, longs:
+         * SAMPLE_NUM or SAMPLE_COUNT or SAMPLE_INT, SAMPLE_LONG etc.
+         *
+         * boolean: IS_SAMPLE, HAS_SAMPLE, CONTAINS_SAMPLE
+         *
+         * String: SAMPLE_KEY, SAMPLE_STR or just SAMPLE
+         */
+        IS_LOGGED,
+        PW_KEY,
+        USERNAME_KEY
+    }
 }

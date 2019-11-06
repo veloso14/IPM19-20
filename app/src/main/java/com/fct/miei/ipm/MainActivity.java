@@ -14,12 +14,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
-
 import com.fct.miei.ipm.fragments.Adicionar;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
+import com.fct.miei.ipm.fragments.Adicionar;
+import com.fct.miei.ipm.fragments.Eventos;
+import com.fct.miei.ipm.fragments.Home;
 import com.fct.miei.ipm.fragments.Perfil;
 import com.fct.miei.ipm.fragments.Ranking;
-import com.fct.miei.ipm.fragments.Home;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.perfil:
                     changeFragment(new Perfil());
                     return true;
-                    //codigo do logout
+                //codigo do logout
                     /*
                     loginState.logout();
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("newToken", this.getPreferences(Context.MODE_PRIVATE).getString("fb", "empty :("));
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.home);
 
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
                             finish();
-                }
+                        }
                 )
                 .setPositiveButton("Não", ((dialog, which) -> {
                 }))

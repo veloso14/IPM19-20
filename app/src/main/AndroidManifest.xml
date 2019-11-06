@@ -40,7 +40,6 @@
         <activity
             android:name="com.fct.miei.ipm.semNet"
             android:screenOrientation="portrait" />
-        <activity android:name="com.fct.miei.ipm.GoogleDocsContainer"></activity>
     </application>
 
 </manifest>
