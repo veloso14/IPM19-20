@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
 public class CriarEvento  extends Fragment {
 
+    private int inited = 0;
 
     public CriarEvento() {
         // Required empty public constructor
@@ -48,16 +50,21 @@ public class CriarEvento  extends Fragment {
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                        Object item = parent.getItemAtPosition(pos);
-                        System.out.println(item.toString());     //prints the text in spinner item.
-                        //Clicou no partilhado com
-                        if(pos == 2){
-                            android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                            ft.replace(R.id.content, new PartilharCom());
-                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                            ft.addToBackStack(null);
-                            ft.commit();
+                        Log.d("Clicked" , "Clicou em " + pos);
+
+                        if(inited >= 1) {
+                            Object item = parent.getItemAtPosition(pos);
+                            System.out.println(item.toString());     //prints the text in spinner item.
+                            //Clicou no partilhado com
+                            if (pos == 2) {
+                                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                ft.replace(R.id.content, new PartilharCom());
+                                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                                ft.addToBackStack(null);
+                                ft.commit();
+                            }
                         }
+                        inited++;
 
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
@@ -65,6 +72,15 @@ public class CriarEvento  extends Fragment {
                 });
 
 
+        //Check Selector
+        SharedPreferences settings = getActivity().getSharedPreferences("selector", 0);
+        int selected = settings.getInt("selector", 0);
+        dropdown.setSelection(selected);
+
+        //Limpa a variavel
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("selector", 0);
+        editor.commit();
 
         ImageView back = view.findViewById(R.id.back);
 
