@@ -40,16 +40,26 @@ public class Documentos extends Fragment {
     }
 
 
-    private void setOrderedDummyData() {
+    private void setOrderedDummyDataRuyCosta() {
 
         operatingSystems = new ArrayList<>();
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+
+    }
+
+
+    private void setOrderedDummyData() {
+
+        operatingSystems = new ArrayList<>();
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+
 
     }
 
@@ -230,7 +240,11 @@ public class Documentos extends Fragment {
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setOrderedDummyDataRuyCosta();
+                gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
+                gridView.setAdapter(gridViewAdapter);
                 myDialog.dismiss();
+
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
