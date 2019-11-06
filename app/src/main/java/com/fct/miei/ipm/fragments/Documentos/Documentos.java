@@ -15,10 +15,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
+
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Home;
 
@@ -117,9 +119,9 @@ public class Documentos extends Fragment {
         });
 
         //Duvidas go to
-        ImageView duvidas = view.findViewById(R.id.duvidas);
+        ImageView gotoDuvidas = view.findViewById(R.id.duvidas);
 
-        duvidas.setOnClickListener(new View.OnClickListener() {
+        gotoDuvidas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -135,6 +137,20 @@ public class Documentos extends Fragment {
         setDummyData();
 
         gridView.setHasFixedSize(true);
+
+        //listeners dos layouts
+        ImageView duvidas = view.findViewById(R.id.duvidas);
+
+        duvidas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new Duvidas());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
 
         //set layout manager and adapter for "GridView"
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
@@ -160,9 +176,59 @@ public class Documentos extends Fragment {
                 });
 
 
+        //listeners dos settings
+        ImageView filtrarpor = view.findViewById(R.id.filtrarpor);
+
+        filtrarpor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowPopupFiltrarPor(vista.findViewById(android.R.id.content));
+            }
+        });
+
+        ImageView settings = view.findViewById(R.id.settings);
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowPopupOrdenarPor(vista.findViewById(android.R.id.content));
+            }
+        });
 
 
         return view;
+    }
+
+    public void ShowPopupOrdenarPor(View v) {
+        myDialog.setContentView(R.layout.popup_ordenar_por);
+        //Estrelas
+
+        //buscar
+        TextView pesquisar = myDialog.findViewById(R.id.fechar);
+        pesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
+    public void ShowPopupFiltrarPor(View v) {
+        myDialog.setContentView(R.layout.popup_filtrar_por);
+        //Estrelas
+
+        //buscar
+        TextView pesquisar = myDialog.findViewById(R.id.fechar);
+        pesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 
 

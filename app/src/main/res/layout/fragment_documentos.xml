@@ -33,12 +33,12 @@
         android:id="@+id/grid"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cadeira"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cadeira" />
+        app:layout_constraintTop_toBottomOf="@+id/settings" />
 
         <ImageView
             android:id="@+id/back"
@@ -68,6 +68,39 @@
         app:layout_constraintEnd_toEndOf="@+id/adicionar"
         app:layout_constraintStart_toStartOf="@+id/adicionar"
         app:srcCompat="@drawable/confused" />
+
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/cadeira"
+        app:layout_constraintTop_toBottomOf="@+id/cadeira"
+        app:srcCompat="@drawable/settingsicon" />
+
+    <ImageView
+        android:id="@+id/filtrarpor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/settings"
+        app:layout_constraintEnd_toStartOf="@+id/settings"
+        app:layout_constraintTop_toTopOf="@+id/settings"
+        app:srcCompat="@drawable/filterresults" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:text="Recentes"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/filtrarpor"
+        app:layout_constraintEnd_toStartOf="@+id/filtrarpor"
+        app:layout_constraintTop_toTopOf="@+id/filtrarpor" />
 
 
 </android.support.constraint.ConstraintLayout>
