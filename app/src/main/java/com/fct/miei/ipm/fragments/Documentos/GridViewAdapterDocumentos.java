@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 
@@ -18,24 +19,34 @@ public class GridViewAdapterDocumentos extends RecyclerView.Adapter<GridViewAdap
     private List<RecyclerViewItem> items;
     private Activity activity;
 
+
     public GridViewAdapterDocumentos(Activity activity, List<RecyclerViewItem> items) {
         this.activity = activity;
         this.items = items;
     }
+
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = activity.getLayoutInflater();
         View view = inflater.inflate(R.layout.item_grid_documentos, viewGroup, false);
 
+
+
         return new ViewHolder(view);
     }
+
+
+
 
     @Override
     public void onBindViewHolder(GridViewAdapterDocumentos.ViewHolder viewHolder, int position) {
         viewHolder.imageView.setImageResource(items.get(position).getDrawableId());
         viewHolder.textView.setText(items.get(position).getName());
         viewHolder.estrelas.setText(String.valueOf(items.get(position).getEstrelas()));
+
     }
 
     @Override

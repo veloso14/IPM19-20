@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
@@ -133,12 +136,31 @@ public class Documentos extends Fragment {
 
         gridView.setHasFixedSize(true);
 
-
         //set layout manager and adapter for "GridView"
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         gridView.setLayoutManager(layoutManager);
         gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
         gridView.setAdapter(gridViewAdapter);
+
+        ItemClickSupport.addTo(gridView)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        // do it
+                        Log.d("GRIDVIEW" , "Position" + position);
+                        //TODO extender para mais ficheiros
+                        if(position == 0){
+                            android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            ft.replace(R.id.content, new DocumentoWord());
+                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                            ft.addToBackStack(null);
+                            ft.commit();
+                        }
+                    }
+                });
+
+
+
 
         return view;
     }

@@ -42,7 +42,7 @@ public class Duvidas extends Fragment {
                 myDialog.dismiss();
             }
         });
-        Button pesquisar = myDialog.findViewById(R.id.pesquisar);
+        Button pesquisar = myDialog.findViewById(R.id.submit);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +71,7 @@ public class Duvidas extends Fragment {
             }
         });
         //buscar
-        TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
+        TextView pesquisar = myDialog.findViewById(R.id.submit);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

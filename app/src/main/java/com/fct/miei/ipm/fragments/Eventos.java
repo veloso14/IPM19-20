@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.GoogleDocsContainer;
 
 
 public class Eventos extends Fragment {
@@ -39,10 +38,6 @@ public class Eventos extends Fragment {
                 //aula privada, ir para pagina de partilhar documento
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://docs.google.com/document/d/1Ns71SNE2gnDIJwpTlHc6UbnaVdbyUypkyMR_MrCOpb0/edit"));
-                context.startActivity(intent);
-            } else if (checkedRadioButtonId == R.id.criar_aula_privada) {
-                //aula publice, ir diretamente para o doc
-                Intent intent = new Intent(context, GoogleDocsContainer.class);
                 context.startActivity(intent);
             }
         });
