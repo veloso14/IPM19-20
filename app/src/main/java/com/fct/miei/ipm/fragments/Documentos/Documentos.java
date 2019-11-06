@@ -199,10 +199,32 @@ public class Documentos extends Fragment {
         return view;
     }
 
+    public void ShowPopupPesquisarProfessor(View v) {
+        myDialog.setContentView(R.layout.popup_search_professor);
+        //buscar
+        TextView fechar = myDialog.findViewById(R.id.fechar);
+        fechar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+                ShowPopupFiltrarPor(vista.findViewById(android.R.id.content));
+            }
+        });
+        //Fechar
+        TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
+        pesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
+
     public void ShowPopupOrdenarPor(View v) {
         myDialog.setContentView(R.layout.popup_ordenar_por);
-        //Estrelas
-
         //buscar
         TextView pesquisar = myDialog.findViewById(R.id.fechar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
@@ -217,14 +239,21 @@ public class Documentos extends Fragment {
 
     public void ShowPopupFiltrarPor(View v) {
         myDialog.setContentView(R.layout.popup_filtrar_por);
-        //Estrelas
-
         //buscar
         TextView pesquisar = myDialog.findViewById(R.id.fechar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
+            }
+        });
+        //Pesquisar por professor
+        TextView professor = myDialog.findViewById(R.id.professor);
+        professor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+                ShowPopupPesquisarProfessor(vista.findViewById(android.R.id.content));
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
