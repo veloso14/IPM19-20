@@ -18,7 +18,7 @@ out/
 .ideia/
 .idea/
 build/
-.idea/
+.idea/libraries
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -79,3 +79,4 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 *.lock
+.idea/libraries/Gradle__com_android_support_test_exposed_instrumentation_api_publish_0_5_aar.xml
