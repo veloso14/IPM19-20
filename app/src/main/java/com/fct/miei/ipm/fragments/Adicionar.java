@@ -1,10 +1,12 @@
 package com.fct.miei.ipm.fragments;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.brutal.ninjas.hackaton19.R;
 
