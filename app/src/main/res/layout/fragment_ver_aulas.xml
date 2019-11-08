@@ -53,7 +53,7 @@
         </GridView>
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/adicionar"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

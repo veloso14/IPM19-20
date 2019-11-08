@@ -44,7 +44,7 @@ public class Perfil extends Fragment {
         });
 
         
-        ImageView noti = view.findViewById(R.id.imageView4);
+        ImageView noti = view.findViewById(R.id.adicionar);
         noti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,23 +1,15 @@
 package com.fct.miei.ipm.fragments;
 
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageView;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
-import com.fct.miei.ipm.semNet;
 
 public class Comentarios extends Fragment {
 
@@ -38,7 +30,7 @@ public class Comentarios extends Fragment {
 
 
         //Duvidas go to
-        ImageView fechar = view.findViewById(R.id.fechar);
+        ImageView fechar = view.findViewById(R.id.txtclose);
 
         fechar.setOnClickListener(new View.OnClickListener() {
             @Override

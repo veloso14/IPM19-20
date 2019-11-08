@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/fechar"
+        android:id="@+id/txtclose"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
@@ -38,10 +38,10 @@
         android:textColor="#000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/fechar"
+        app:layout_constraintBottom_toBottomOf="@+id/txtclose"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fechar"
-        app:layout_constraintTop_toTopOf="@+id/fechar" />
+        app:layout_constraintStart_toEndOf="@+id/txtclose"
+        app:layout_constraintTop_toTopOf="@+id/txtclose" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"

@@ -12,11 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -227,7 +225,7 @@ public class Documentos extends Fragment {
     public void ShowPopupPesquisarProfessor(View v) {
         myDialog.setContentView(R.layout.popup_search_professor);
         //buscar
-        TextView fechar = myDialog.findViewById(R.id.fechar);
+        TextView fechar = myDialog.findViewById(R.id.txtclose);
         fechar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,7 +253,7 @@ public class Documentos extends Fragment {
     public void ShowPopupOrdenarPor(View v) {
         myDialog.setContentView(R.layout.popup_ordenar_por);
         //buscar
-        TextView pesquisar = myDialog.findViewById(R.id.fechar);
+        TextView pesquisar = myDialog.findViewById(R.id.txtclose);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -279,7 +277,7 @@ public class Documentos extends Fragment {
     public void ShowPopupFiltrarPor(View v) {
         myDialog.setContentView(R.layout.popup_filtrar_por);
         //buscar
-        TextView pesquisar = myDialog.findViewById(R.id.fechar);
+        TextView pesquisar = myDialog.findViewById(R.id.txtclose);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

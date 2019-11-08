@@ -8,7 +8,7 @@
     android:layout_gravity="center">
 
     <TextView
-        android:id="@+id/fechar"
+        android:id="@+id/txtclose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Filtrar por"

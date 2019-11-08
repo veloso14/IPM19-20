@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -61,7 +60,7 @@ public class DocumentoWord extends Fragment {
         });
 
         //Duvidas go to
-        ImageView fechar = view.findViewById(R.id.fechar);
+        ImageView fechar = view.findViewById(R.id.txtclose);
 
         fechar.setOnClickListener(new View.OnClickListener() {
             @Override

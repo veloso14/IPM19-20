@@ -2,6 +2,7 @@ package com.fct.miei.ipm;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,16 +16,20 @@ import android.widget.TextView;
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 
+import java.util.Arrays;
+
+import static android.content.Context.MODE_PRIVATE;
+
 public class ImageAdapter extends BaseAdapter {
     // Keep all Images in array
     //Antigo
     //TODO aproveitar os cantos ou ficam redondos??
-    public Integer[] thumbnails = {
+   /* public Integer[] thumbnails = {
             R.drawable.aa, R.drawable.spbd,
             R.drawable.am, R.drawable.rit,
             R.drawable.pte, R.drawable.st,
 
-    };
+    };*/
 
 
     public String[] coresCadeiras = {
@@ -39,6 +44,7 @@ public class ImageAdapter extends BaseAdapter {
 
     public String[] nomesCadeiras = {
             "AA",
+            "IIO",
             "SPBD",
             "AM",
             "RIT" ,
@@ -51,6 +57,12 @@ public class ImageAdapter extends BaseAdapter {
     // Constructor
     public ImageAdapter(Context c) {
         mContext = c;
+
+        SharedPreferences prefs = c.getSharedPreferences("Cadeiras", MODE_PRIVATE);
+        String parse = prefs.getString("Cadeiras", "AA,IIO,SPBD,AM,RIT,PTE,ST");//The default value.
+        nomesCadeiras = parse.split(",");
+        //Alfabeticamente
+        Arrays.sort(nomesCadeiras);
     }
 
     @Override
@@ -89,7 +101,7 @@ public class ImageAdapter extends BaseAdapter {
         background.setAdjustViewBounds(true);
         int padding = 8 * 4;
         background.setPadding(padding, padding, padding, padding);
-        background.setBackgroundColor(Color.parseColor(coresCadeiras[position]));
+        background.setBackgroundColor(Color.parseColor(coresCadeiras[position % coresCadeiras.length]));
         //Titulo Cadeira
         TextView cadeira  = rowView.findViewById(R.id.texto);
         cadeira.setText(nomesCadeiras[position]);
