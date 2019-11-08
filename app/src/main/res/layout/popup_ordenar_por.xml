@@ -33,13 +33,13 @@
             android:id="@+id/RGroup">
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/maisAntigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mais antigo" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/maisRecente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mais recente" />
@@ -51,7 +51,7 @@
             android:text="Melhor classificação" />
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/Algabetico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ordem alfabética" />

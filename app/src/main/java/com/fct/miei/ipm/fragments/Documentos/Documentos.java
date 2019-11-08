@@ -47,7 +47,50 @@ public class Documentos extends Fragment {
     }
 
 
-    private void setOrderedDummyData() {
+    private void setOrderedAplhabeticedDummyData() {
+
+        operatingSystems = new ArrayList<>();
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+
+    }
+
+    private void setOrderedLeaseRecenteDummyData() {
+
+        operatingSystems = new ArrayList<>();
+        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+
+
+    }
+
+
+    private void setOrderedMostRecenteDummyData() {
+
+        operatingSystems = new ArrayList<>();
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+
+
+    }
+
+
+        private void setOrderedDummyData() {
 
         operatingSystems = new ArrayList<>();
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
@@ -262,6 +305,9 @@ public class Documentos extends Fragment {
         });
         //Melhor classificaçãoSort
         RadioButton melhorClassificacao = myDialog.findViewById(R.id.melhorClassificacao);
+        RadioButton maisAntigo = myDialog.findViewById(R.id.maisAntigo);
+        RadioButton maisRecente = myDialog.findViewById(R.id.maisRecente);
+        RadioButton Algabetico = myDialog.findViewById(R.id.Algabetico);
         melhorClassificacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -270,6 +316,34 @@ public class Documentos extends Fragment {
                 gridView.setAdapter(gridViewAdapter);
             }
         });
+
+        maisAntigo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOrderedLeaseRecenteDummyData();
+                gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
+                gridView.setAdapter(gridViewAdapter);
+            }
+        });
+
+        maisRecente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOrderedMostRecenteDummyData();
+                gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
+                gridView.setAdapter(gridViewAdapter);
+            }
+        });
+
+        Algabetico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOrderedAplhabeticedDummyData();
+                gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
+                gridView.setAdapter(gridViewAdapter);
+            }
+        });
+
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
