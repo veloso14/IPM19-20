@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +50,34 @@ public class Home extends Fragment {
         myDialog = new Dialog(getContext());
         this.vista = view;
 
+        //Pesquisar por cadeira
+        EditText search = view.findViewById(R.id.searchbycadeira);
+        search.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+            }
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(search.getText().toString().isEmpty()){
+                    Log.d("CHANGED" , "Vazio");
+                    gridView.setAdapter(new ImageAdapter(getActivity()));
+                    gridView.invalidateViews();
+                }
+                else {
+                    Log.d("CHANGED" , s.toString());
+                    gridView.setAdapter(new ImageAdapter(getActivity(), s.toString()));
+                    gridView.invalidateViews();
+
+                }
+            }
+        });
+
+
         //Add duvida
         ImageView add = view.findViewById(R.id.adicionar);
 
@@ -66,7 +96,6 @@ public class Home extends Fragment {
 
         gridView = view.findViewById(R.id.course_container);
         gridView.setAdapter(new ImageAdapter(getActivity()));
-
 
         return view;
     }

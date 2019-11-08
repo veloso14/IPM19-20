@@ -24,6 +24,7 @@ import com.fct.miei.ipm.fragments.Documentos.Documentos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -81,6 +82,16 @@ public class ImageAdapter extends BaseAdapter {
         String parse = prefs.getString("Cadeiras", "AA,IIO,SPBD,AM,RIT,PTE,ST");//The default value.
         nomesCadeiras = parse.split(",");
         //Alfabeticamente
+        List<String> pesquisar = Arrays.asList(nomesCadeiras);
+        List<String> mathcSearch = new LinkedList<>();
+
+        for(int i = 0 ; i < pesquisar.size() ; i++){
+            if(pesquisar.get(i).contains(SorteBy)){
+                mathcSearch.add(pesquisar.get(i));
+
+            }
+        }
+        nomesCadeiras = mathcSearch.toArray(new String[0]);
         Arrays.sort(nomesCadeiras);
 
     }
@@ -141,6 +152,7 @@ public class ImageAdapter extends BaseAdapter {
                                 sb.append(nomesCadeiras[i]).append(",");
                             }
 
+                            //Save das novas cadeiras
                             SharedPreferences.Editor editor = mContext.getSharedPreferences("Cadeiras", MODE_PRIVATE).edit();
                             editor.putString("Cadeiras", sb.toString());
                             editor.apply();
