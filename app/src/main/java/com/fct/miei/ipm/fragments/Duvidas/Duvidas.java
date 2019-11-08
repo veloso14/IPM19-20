@@ -162,7 +162,7 @@ public class Duvidas extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Log.d("CLICK" , "Listview Clicked" + position );
-                //TODO more items
+
                 if( position == 0) {
                     android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.content, new Comentarios());

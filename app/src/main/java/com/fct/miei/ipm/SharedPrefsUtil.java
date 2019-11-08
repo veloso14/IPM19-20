@@ -25,7 +25,7 @@ import android.content.SharedPreferences;
  * simple use SharedPrefsUtil.getInstance() to save some precious line space.
  */
 public class SharedPrefsUtil {
-    // TODO: CHANGE THIS TO SOMETHING MEANINGFUL
+
     private static final String SETTINGS_NAME = "default_settings";
     private static SharedPrefsUtil sSharedPrefs;
     private SharedPreferences mPref;

@@ -63,7 +63,7 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        // TODO Auto-generated method stub
+
     }
 
 }

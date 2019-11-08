@@ -47,13 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.perfil:
                     changeFragment(new Perfil());
                     return true;
-                //codigo do logout
-                    /*
-                    loginState.logout();
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    */
 
             }
             return false;

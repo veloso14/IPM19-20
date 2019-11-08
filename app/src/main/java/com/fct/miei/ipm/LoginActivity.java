@@ -7,6 +7,7 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -198,6 +200,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
+        boolean contaValida = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
@@ -217,12 +220,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView = mEmailView;
             cancel = true;
         }
+        //Conta Veloso
+        else if ( email.equals("jveloso077@gmail.com") && password.equals("ipm1920")) {
+            mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
+            contaValida = true;
+        }
+        else if ( email.equals("jm.veloso@campus.fct.unl.pt") && password.equals("ipm1920")) {
+            mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
+            contaValida = true;
+        }
+        else{
+            SharedPreferences prefs = getSharedPreferences(email+ "p:" + password, MODE_PRIVATE);
+            contaValida = prefs.getBoolean( email+ "p:" + password , false);
+
+        }
+
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
-        } else {
+        }
+        else if(!contaValida){
+
+            new AlertDialog.Builder(LoginActivity.this)
+                .setMessage("Conta inválida")
+                .setPositiveButton("Ok", ((dialog, which) -> {}) )
+               .create().show();
+
+        } else{
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
