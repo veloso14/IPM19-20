@@ -67,7 +67,7 @@ public class Home extends Fragment {
                     gridView.invalidateViews();
                 } else {
                     Log.d("CHANGED", s.toString());
-                    gridView.setAdapter(new ImageAdapter(getActivity(), s.toString()));
+                    gridView.setAdapter(new ImageAdapter(getActivity(), s.toString().toUpperCase()));
                     gridView.invalidateViews();
 
                 }
@@ -97,6 +97,31 @@ public class Home extends Fragment {
         return view;
     }
 
+    public void ShowPopupCadeiraVazia(View v) {
+        TextView txtclose;
+        myDialog.setContentView(R.layout.popup_cadeira_empty);
+        txtclose = myDialog.findViewById(R.id.txtclose);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        //buscar
+
+        TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
+        pesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+                ShowPopup(vista.findViewById(android.R.id.content));
+
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
 
     public void ShowPopup(View v) {
         TextView txtclose;
@@ -116,11 +141,8 @@ public class Home extends Fragment {
             public void onClick(View v) {
                 String cadeiraString = cadeira.getText().toString();
                 if (cadeiraString.isEmpty()) {
-                    new AlertDialog.Builder(getContext())
-                            .setMessage("Preencha o nome da cadeira")
-                            .setPositiveButton("Ok", ((dialog, which) -> {
-                            }))
-                            .create().show();
+                    myDialog.dismiss();
+                    ShowPopupCadeiraVazia(vista.findViewById(android.R.id.content));
 
                 } else {
                     //Adiciona
@@ -132,7 +154,7 @@ public class Home extends Fragment {
 
                     StringBuilder sb = new StringBuilder();
                     for (int i = 0; i < nomesCadeiras.length; i++) {
-                        sb.append(nomesCadeiras[i]).append(",");
+                        sb.append(nomesCadeiras[i].toUpperCase()).append(",");
                     }
 
                     SharedPreferences.Editor editor = getActivity().getSharedPreferences("Cadeiras", MODE_PRIVATE).edit();
