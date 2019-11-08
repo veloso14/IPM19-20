@@ -1,7 +1,6 @@
 package com.fct.miei.ipm.fragments.Comentarios;
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,36 +15,29 @@ import com.brutal.ninjas.hackaton19.R;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<ComentarioModel> implements View.OnClickListener{
+public class CustomAdapter extends ArrayAdapter<ComentarioModel> implements View.OnClickListener {
 
-    private ArrayList<ComentarioModel> dataSet;
     Context mContext;
-
-    // View lookup cache
-    private static class ViewHolder {
-        TextView comentario;
-        ImageView imagemPerfil;
-    }
+    private ArrayList<ComentarioModel> dataSet;
+    private int lastPosition = -1;
 
     public CustomAdapter(ArrayList<ComentarioModel> data, Context context) {
         super(context, R.layout.row_comentario, data);
         this.dataSet = data;
-        this.mContext=context;
+        this.mContext = context;
 
     }
 
     @Override
     public void onClick(View v) {
 
-        int position=(Integer) v.getTag();
-        Object object= getItem(position);
-        ComentarioModel dataModel=(ComentarioModel)object;
-        Log.d("CLICKED" , "Clicou no comentario : " + v.getId());
+        int position = (Integer) v.getTag();
+        Object object = getItem(position);
+        ComentarioModel dataModel = (ComentarioModel) object;
+        Log.d("CLICKED", "Clicou no comentario : " + v.getId());
 
 
     }
-
-    private int lastPosition = -1;
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -61,15 +53,15 @@ public class CustomAdapter extends ArrayAdapter<ComentarioModel> implements View
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_comentario, parent, false);
-            viewHolder.comentario = (TextView) convertView.findViewById(R.id.comentario);
-            viewHolder.imagemPerfil = (ImageView) convertView.findViewById(R.id.imagemPerfil);
+            viewHolder.comentario = convertView.findViewById(R.id.comentario);
+            viewHolder.imagemPerfil = convertView.findViewById(R.id.imagemPerfil);
 
-            result=convertView;
+            result = convertView;
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-            result=convertView;
+            result = convertView;
         }
 
         Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
@@ -82,5 +74,11 @@ public class CustomAdapter extends ArrayAdapter<ComentarioModel> implements View
         viewHolder.comentario.setTag(position);
         // Return the completed view to render on screen
         return convertView;
+    }
+
+    // View lookup cache
+    private static class ViewHolder {
+        TextView comentario;
+        ImageView imagemPerfil;
     }
 }

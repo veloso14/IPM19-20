@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.brutal.ninjas.hackaton19.R;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
@@ -25,16 +24,15 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
     }
 
 
-
     @Override
-    public CalendarioAdapter.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    public CalendarioAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_evento, parent, false);
         return new ViewHolder(v, evento_listener);
     }
 
 
     @Override
-    public void onBindViewHolder( ViewHolder holder, int pos) {
+    public void onBindViewHolder(ViewHolder holder, int pos) {
         Event evt = dataset.get(pos);
         if (evt != null) {
             holder.titulo.setText((String) evt.getData());

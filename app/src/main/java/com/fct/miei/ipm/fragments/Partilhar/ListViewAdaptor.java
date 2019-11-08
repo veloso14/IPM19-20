@@ -15,23 +15,9 @@ import java.util.List;
 public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyViewHolder> {
     private List<Data> mDataList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        public TextView name;
-        public RadioButton radioButton;
-        public ImageView imageView;
-
-        public MyViewHolder(View view){
-            super(view);
-            name = (TextView) view.findViewById(R.id.name);
-            radioButton= (RadioButton) view.findViewById(R.id.radioButton);
-            imageView = (ImageView) view.findViewById(R.id.image);
-        }
-    }
-
-    public ListViewAdaptor(List<Data> dataList){
+    public ListViewAdaptor(List<Data> dataList) {
         this.mDataList = dataList;
     }
-
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -51,5 +37,18 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
     @Override
     public int getItemCount() {
         return mDataList.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView name;
+        public RadioButton radioButton;
+        public ImageView imageView;
+
+        public MyViewHolder(View view) {
+            super(view);
+            name = view.findViewById(R.id.name);
+            radioButton = view.findViewById(R.id.radioButton);
+            imageView = view.findViewById(R.id.image);
+        }
     }
 }

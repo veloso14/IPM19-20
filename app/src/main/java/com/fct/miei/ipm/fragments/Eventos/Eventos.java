@@ -2,20 +2,16 @@ package com.fct.miei.ipm.fragments.Eventos;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -23,14 +19,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
+
 import com.brutal.ninjas.hackaton19.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,16 +50,10 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     private ArrayList<Event> itemsData = new ArrayList<>();
     private boolean sc = false;
     private SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
-
-
-    public Eventos() {
-        // Required empty public constructor
-    }
-
     private RecyclerView.OnScrollListener on_scroll = new RecyclerView.OnScrollListener() {
 
         @Override
-        public void onScrolled( RecyclerView recyclerView, int dx, int dy) {
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
             try {
                 int pos = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
@@ -78,14 +70,17 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
     };
 
+    public Eventos() {
+        // Required empty public constructor
+    }
+
     /**
      * Create a new instance of the fragment
      */
 
 
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
         view = inflater.inflate(R.layout.fragment_calendario, container, false);
@@ -112,7 +107,7 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged( RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
                 if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
@@ -176,14 +171,10 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     }
 
 
-
-
-
-
     private void getEvents() {
         Log.d("Eventos", "Start");
         SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
-        String eventosCriados  = settings.getString("Eventos", "");
+        String eventosCriados = settings.getString("Eventos", "");
         String json = "[\n" +
                 "  {\n" +
                 "    \"time\": \"21/11/2019\",\n" +
@@ -202,7 +193,6 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
                 "    \"name\": \"Evento Sessão de estudo\"\n" +
                 "  }\n" +
                 "]";
-
 
 
         itemsData.clear();
@@ -250,13 +240,12 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         Log.d("Eventos", "Q");
 
 
-
     }
 
     public void ShowPopup(View v) {
 
         myDialog.setContentView(R.layout.popup_window_criar_evento);
-        Button novoEvento =(Button) myDialog.findViewById(R.id.novoEvento);
+        Button novoEvento = myDialog.findViewById(R.id.novoEvento);
 
         novoEvento.setOnClickListener(new View.OnClickListener() {
             @Override

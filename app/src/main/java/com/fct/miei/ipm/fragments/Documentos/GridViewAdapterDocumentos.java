@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 
@@ -26,19 +25,14 @@ public class GridViewAdapterDocumentos extends RecyclerView.Adapter<GridViewAdap
     }
 
 
-
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = activity.getLayoutInflater();
         View view = inflater.inflate(R.layout.item_grid_documentos, viewGroup, false);
 
 
-
         return new ViewHolder(view);
     }
-
-
 
 
     @Override

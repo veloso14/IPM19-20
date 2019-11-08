@@ -2,22 +2,18 @@ package com.fct.miei.ipm;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
@@ -45,7 +41,7 @@ public class ImageAdapter extends BaseAdapter {
             "#F99E2C",
             "#23B04C",
             "#B71414",
-            "#3A64B0" ,
+            "#3A64B0",
             "#D6D412",
             "#843494"
 
@@ -56,7 +52,7 @@ public class ImageAdapter extends BaseAdapter {
             "IIO",
             "SPBD",
             "AM",
-            "RIT" ,
+            "RIT",
             "PTE",
             "ST"
 
@@ -75,7 +71,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     // Constructor
-    public ImageAdapter(Context c , String SorteBy) {
+    public ImageAdapter(Context c, String SorteBy) {
         mContext = c;
 
         SharedPreferences prefs = c.getSharedPreferences("Cadeiras", MODE_PRIVATE);
@@ -85,8 +81,8 @@ public class ImageAdapter extends BaseAdapter {
         List<String> pesquisar = Arrays.asList(nomesCadeiras);
         List<String> mathcSearch = new LinkedList<>();
 
-        for(int i = 0 ; i < pesquisar.size() ; i++){
-            if(pesquisar.get(i).contains(SorteBy)){
+        for (int i = 0; i < pesquisar.size(); i++) {
+            if (pesquisar.get(i).contains(SorteBy)) {
                 mathcSearch.add(pesquisar.get(i));
 
             }
@@ -136,27 +132,27 @@ public class ImageAdapter extends BaseAdapter {
             @Override
             public boolean onLongClick(View v) {
                 //your stuff
-                Log.d("CLICKED" , "Long press on cadeira" + nomesCadeiras[position] );
+                Log.d("CLICKED", "Long press on cadeira" + nomesCadeiras[position]);
                 new AlertDialog.Builder(mContext)
                         .setMessage("Desejar apagar " + nomesCadeiras[position] + " ?")
                         .setNegativeButton("Sim", (dialog, which) -> {
 
-                            //Inefficient compared to use of System.arraycopy
-                            //Mas fuck it é IPM
-                            List<String> list = new ArrayList<String>(Arrays.asList(nomesCadeiras));
-                            list.remove(nomesCadeiras[position]);
-                            nomesCadeiras = list.toArray(new String[0]);
+                                    //Inefficient compared to use of System.arraycopy
+                                    //Mas fuck it é IPM
+                                    List<String> list = new ArrayList<String>(Arrays.asList(nomesCadeiras));
+                                    list.remove(nomesCadeiras[position]);
+                                    nomesCadeiras = list.toArray(new String[0]);
 
-                            StringBuilder sb = new StringBuilder();
-                            for (int i = 0; i < nomesCadeiras.length; i++) {
-                                sb.append(nomesCadeiras[i]).append(",");
-                            }
+                                    StringBuilder sb = new StringBuilder();
+                                    for (int i = 0; i < nomesCadeiras.length; i++) {
+                                        sb.append(nomesCadeiras[i]).append(",");
+                                    }
 
-                            //Save das novas cadeiras
-                            SharedPreferences.Editor editor = mContext.getSharedPreferences("Cadeiras", MODE_PRIVATE).edit();
-                            editor.putString("Cadeiras", sb.toString());
-                            editor.apply();
-                            notifyDataSetInvalidated();
+                                    //Save das novas cadeiras
+                                    SharedPreferences.Editor editor = mContext.getSharedPreferences("Cadeiras", MODE_PRIVATE).edit();
+                                    editor.putString("Cadeiras", sb.toString());
+                                    editor.apply();
+                                    notifyDataSetInvalidated();
                                 }
                         )
                         .setPositiveButton("Não", ((dialog, which) -> {
@@ -171,7 +167,7 @@ public class ImageAdapter extends BaseAdapter {
         background.setPadding(padding, padding, padding, padding);
         background.setBackgroundColor(Color.parseColor(coresCadeiras[position % coresCadeiras.length]));
         //Titulo Cadeira
-        TextView cadeira  = rowView.findViewById(R.id.texto);
+        TextView cadeira = rowView.findViewById(R.id.texto);
         cadeira.setText(nomesCadeiras[position]);
 
 

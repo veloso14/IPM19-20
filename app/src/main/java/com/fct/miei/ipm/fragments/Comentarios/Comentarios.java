@@ -4,11 +4,8 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -20,9 +17,9 @@ import java.util.ArrayList;
 public class Comentarios extends Fragment {
 
 
+    private static CustomAdapter adapter;
     ArrayList<ComentarioModel> dataModels;
     ListView listView;
-    private static CustomAdapter adapter;
 
     public Comentarios() {
         // Required empty public constructor
@@ -32,7 +29,6 @@ public class Comentarios extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
 
         // Inflate the layout for this fragment
@@ -54,24 +50,22 @@ public class Comentarios extends Fragment {
         });
 
         //Comentários load
-        listView=(ListView) view.findViewById(R.id.list);
+        listView = view.findViewById(R.id.list);
 
-        dataModels= new ArrayList<>();
+        dataModels = new ArrayList<>();
 
         //Dummy data
-        dataModels.add(new ComentarioModel(R.drawable.pessoa7, "Tenho isso resolvido no caderno mas não percebi" ));
-        dataModels.add(new ComentarioModel(R.drawable.pessoa6, "Same \uD83D\uDE2D\uD83D\uDE2D\uD83D\uDE2D" ));
+        dataModels.add(new ComentarioModel(R.drawable.pessoa7, "Tenho isso resolvido no caderno mas não percebi"));
+        dataModels.add(new ComentarioModel(R.drawable.pessoa6, "Same \uD83D\uDE2D\uD83D\uDE2D\uD83D\uDE2D"));
 
 
-
-        adapter= new CustomAdapter(dataModels,getContext());
+        adapter = new CustomAdapter(dataModels, getContext());
 
         listView.setAdapter(adapter);
 
 
         return view;
     }
-
 
 
 }

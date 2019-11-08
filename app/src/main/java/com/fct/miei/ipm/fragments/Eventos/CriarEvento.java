@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
-public class CriarEvento  extends Fragment {
+public class CriarEvento extends Fragment {
 
     private int inited = 0;
 
@@ -33,7 +33,7 @@ public class CriarEvento  extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_criar_evento , container, false);
+        View view = inflater.inflate(R.layout.fragment_criar_evento, container, false);
 
 
         //get the spinner from the xml.
@@ -50,9 +50,9 @@ public class CriarEvento  extends Fragment {
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                        Log.d("Clicked" , "Clicou em " + pos);
+                        Log.d("Clicked", "Clicou em " + pos);
 
-                        if(inited >= 1) {
+                        if (inited >= 1) {
                             Object item = parent.getItemAtPosition(pos);
                             System.out.println(item.toString());     //prints the text in spinner item.
                             //Clicou no partilhado com
@@ -67,6 +67,7 @@ public class CriarEvento  extends Fragment {
                         inited++;
 
                     }
+
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
@@ -107,13 +108,13 @@ public class CriarEvento  extends Fragment {
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("Eventos",
                         "  {\n" +
-                        "    \"time\": \"19/08/2019\",\n" +
-                        "    \"color\": \"#08A5CB\",\n" +
-                        "    \"name\": \"" + titulo.getEditText().getText().toString() + "\"\n" +
-                        "  },\n" );
+                                "    \"time\": \"19/08/2019\",\n" +
+                                "    \"color\": \"#08A5CB\",\n" +
+                                "    \"name\": \"" + titulo.getEditText().getText().toString() + "\"\n" +
+                                "  },\n");
                 editor.commit();
 
-                Toast.makeText(getContext(),"Evento criado com sucesso",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Evento criado com sucesso", Toast.LENGTH_LONG).show();
                 android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content, new Eventos());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

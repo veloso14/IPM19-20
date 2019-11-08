@@ -4,7 +4,6 @@ package com.fct.miei.ipm.fragments;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +31,11 @@ public class NotificationPanel extends Fragment {
 
 
     int[] listviewImage = new int[]{
-            R.drawable.mail ,
-            R.drawable.mail ,
-            R.drawable.question ,
-            R.drawable.mail ,
-            R.drawable.question ,
+            R.drawable.mail,
+            R.drawable.mail,
+            R.drawable.question,
+            R.drawable.mail,
+            R.drawable.question,
             R.drawable.question
     };
 
@@ -87,12 +86,11 @@ public class NotificationPanel extends Fragment {
         int[] to = {R.id.listview_image, R.id.listview_item_title, R.id.listview_item_short_description};
 
         SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), aList, R.layout.listview_activity, from, to);
-        ListView androidListView = (ListView) view.findViewById(R.id.list_view);
+        ListView androidListView = view.findViewById(R.id.list_view);
         androidListView.setAdapter(simpleAdapter);
 
         return view;
     }
-
 
 
 }

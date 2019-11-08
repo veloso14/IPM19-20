@@ -4,9 +4,11 @@ public class Data {
 
     private String name;
     private int imageId;
-    public Data(){}
 
-    public Data(String name,int imageId){
+    public Data() {
+    }
+
+    public Data(String name, int imageId) {
         this.name = name;
         this.imageId = imageId;
     }

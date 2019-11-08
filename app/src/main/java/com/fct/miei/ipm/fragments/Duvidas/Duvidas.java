@@ -160,9 +160,9 @@ public class Duvidas extends Fragment {
         nonScrollListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                Log.d("CLICK" , "Listview Clicked" + position );
+                Log.d("CLICK", "Listview Clicked" + position);
 
-                if( position == 0) {
+                if (position == 0) {
                     android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.content, new Comentarios());
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

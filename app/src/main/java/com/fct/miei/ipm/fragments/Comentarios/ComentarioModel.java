@@ -6,9 +6,9 @@ public class ComentarioModel {
     String texto;
 
 
-    public ComentarioModel(int idImage , String texto ) {
-        this.idImage=idImage;
-        this.texto=texto;
+    public ComentarioModel(int idImage, String texto) {
+        this.idImage = idImage;
+        this.texto = texto;
 
     }
 

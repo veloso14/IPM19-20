@@ -221,19 +221,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
         //Conta Veloso
-        else if ( email.equals("jveloso077@gmail.com") && password.equals("ipm1920")) {
+        else if (email.equals("jveloso077@gmail.com") && password.equals("ipm1920")) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             contaValida = true;
-        }
-        else if ( email.equals("jm.veloso@campus.fct.unl.pt") && password.equals("ipm1920")) {
+        } else if (email.equals("jm.veloso@campus.fct.unl.pt") && password.equals("ipm1920")) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             contaValida = true;
-        }
-        else{
-            SharedPreferences prefs = getSharedPreferences(email+ "p:" + password, MODE_PRIVATE);
-            contaValida = prefs.getBoolean( email+ "p:" + password , false);
+        } else {
+            SharedPreferences prefs = getSharedPreferences(email + "p:" + password, MODE_PRIVATE);
+            contaValida = prefs.getBoolean(email + "p:" + password, false);
 
         }
 
@@ -242,15 +240,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
-        }
-        else if(!contaValida){
+        } else if (!contaValida) {
 
             new AlertDialog.Builder(LoginActivity.this)
-                .setMessage("Conta inválida")
-                .setPositiveButton("Ok", ((dialog, which) -> {}) )
-               .create().show();
+                    .setMessage("Conta inválida")
+                    .setPositiveButton("Ok", ((dialog, which) -> {
+                    }))
+                    .create().show();
 
-        } else{
+        } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);

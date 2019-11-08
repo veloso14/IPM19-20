@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
-
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Home;
 
@@ -90,7 +89,7 @@ public class Documentos extends Fragment {
     }
 
 
-        private void setOrderedDummyData() {
+    private void setOrderedDummyData() {
 
         operatingSystems = new ArrayList<>();
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
@@ -229,9 +228,9 @@ public class Documentos extends Fragment {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         // do it
-                        Log.d("GRIDVIEW" , "Position" + position);
+                        Log.d("GRIDVIEW", "Position" + position);
                         //TODO extender para mais ficheiros
-                        if(position == 0){
+                        if (position == 0) {
                             android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                             ft.replace(R.id.content, new DocumentoWord());
                             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.ImageAdapter;
-import com.fct.miei.ipm.LoginActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -63,13 +62,12 @@ public class Home extends Fragment {
 
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(search.getText().toString().isEmpty()){
-                    Log.d("CHANGED" , "Vazio");
+                if (search.getText().toString().isEmpty()) {
+                    Log.d("CHANGED", "Vazio");
                     gridView.setAdapter(new ImageAdapter(getActivity()));
                     gridView.invalidateViews();
-                }
-                else {
-                    Log.d("CHANGED" , s.toString());
+                } else {
+                    Log.d("CHANGED", s.toString());
                     gridView.setAdapter(new ImageAdapter(getActivity(), s.toString()));
                     gridView.invalidateViews();
 
@@ -112,25 +110,25 @@ public class Home extends Fragment {
             }
         });
         //buscar
-        EditText cadeira =  myDialog.findViewById(R.id.cadeira);
+        EditText cadeira = myDialog.findViewById(R.id.cadeira);
         TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String cadeiraString = cadeira.getText().toString();
-                if(cadeiraString.isEmpty()){
+                if (cadeiraString.isEmpty()) {
                     new AlertDialog.Builder(getContext())
                             .setMessage("Preencha o nome da cadeira")
-                            .setPositiveButton("Ok", ((dialog, which) -> {}) )
+                            .setPositiveButton("Ok", ((dialog, which) -> {
+                            }))
                             .create().show();
 
-                }
-                else{
+                } else {
                     //Adiciona
                     SharedPreferences prefs = getActivity().getSharedPreferences("Cadeiras", MODE_PRIVATE);
                     String parse = prefs.getString("Cadeiras", "AA,IIO,SPBD,AM,RIT,PTE,ST");//The default value.
                     String[] nomesCadeiras = parse.split(",");
-                    nomesCadeiras = increaseArray(nomesCadeiras,1);
+                    nomesCadeiras = increaseArray(nomesCadeiras, 1);
                     nomesCadeiras[nomesCadeiras.length - 1] = cadeiraString;
 
                     StringBuilder sb = new StringBuilder();
@@ -156,13 +154,11 @@ public class Home extends Fragment {
     }
 
 
-    public String[] increaseArray(String[] theArray, int increaseBy)
-    {
+    public String[] increaseArray(String[] theArray, int increaseBy) {
         int i = theArray.length;
         int n = ++i;
         String[] newArray = new String[n];
-        for(int cnt=0;cnt<theArray.length;cnt++)
-        {
+        for (int cnt = 0; cnt < theArray.length; cnt++) {
             newArray[cnt] = theArray[cnt];
         }
         return newArray;
