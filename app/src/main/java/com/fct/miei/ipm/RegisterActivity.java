@@ -42,6 +42,14 @@ public class RegisterActivity extends AppCompatActivity {
                         .setPositiveButton("Ok", ((dialog, which) -> {}) )
                         .create().show();
             }
+
+            else if( email.equals("jveloso077@gmail.com") || email.equals("jm.veloso@campus.fct.unl.pt")){
+                new AlertDialog.Builder(RegisterActivity.this)
+                        .setMessage("Email em uso")
+                        .setPositiveButton("Ok", ((dialog, which) -> {}) )
+                        .create().show();
+            }
+
             else if( password.length() < 6 ){
                 new AlertDialog.Builder(RegisterActivity.this)
                         .setMessage("A password tem de ter no mínimo 6 carácteres")
