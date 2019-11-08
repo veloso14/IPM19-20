@@ -157,14 +157,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
         startActivity(intent);
         finish();
-//       new AlertDialog.Builder(LoginActivity.this)
-//                .setMessage("Tem a certeza que pretende sair?")
-//                .setNegativeButton("Sim", (dialog, which) ->
-//                        finishAffinity()
-//                        )
-//                .setPositiveButton("Não", ((dialog, which) -> {}) )
-//                .create().show();
-
     }
 
     /**
