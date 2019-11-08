@@ -2,21 +2,29 @@ package com.fct.miei.ipm;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -65,6 +73,18 @@ public class ImageAdapter extends BaseAdapter {
         Arrays.sort(nomesCadeiras);
     }
 
+    // Constructor
+    public ImageAdapter(Context c , String SorteBy) {
+        mContext = c;
+
+        SharedPreferences prefs = c.getSharedPreferences("Cadeiras", MODE_PRIVATE);
+        String parse = prefs.getString("Cadeiras", "AA,IIO,SPBD,AM,RIT,PTE,ST");//The default value.
+        nomesCadeiras = parse.split(",");
+        //Alfabeticamente
+        Arrays.sort(nomesCadeiras);
+
+    }
+
     @Override
     public int getCount() {
         return nomesCadeiras.length;
@@ -98,6 +118,42 @@ public class ImageAdapter extends BaseAdapter {
             ft.addToBackStack(null);
             ft.commit();
         });
+        //Long key pressed
+        //TODO fazer o delete
+        background.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                //your stuff
+                Log.d("CLICKED" , "Long press on cadeira" + nomesCadeiras[position] );
+                new AlertDialog.Builder(mContext)
+                        .setMessage("Desejar apagar " + nomesCadeiras[position] + " ?")
+                        .setNegativeButton("Sim", (dialog, which) -> {
+
+                            //Inefficient compared to use of System.arraycopy
+                            //Mas fuck it é IPM
+                            List<String> list = new ArrayList<String>(Arrays.asList(nomesCadeiras));
+                            list.remove(nomesCadeiras[position]);
+                            nomesCadeiras = list.toArray(new String[0]);
+
+                            StringBuilder sb = new StringBuilder();
+                            for (int i = 0; i < nomesCadeiras.length; i++) {
+                                sb.append(nomesCadeiras[i]).append(",");
+                            }
+
+                            SharedPreferences.Editor editor = mContext.getSharedPreferences("Cadeiras", MODE_PRIVATE).edit();
+                            editor.putString("Cadeiras", sb.toString());
+                            editor.apply();
+                            notifyDataSetInvalidated();
+                                }
+                        )
+                        .setPositiveButton("Não", ((dialog, which) -> {
+                        }))
+                        .create().show();
+                return true;
+            }
+        });
+
         background.setAdjustViewBounds(true);
         int padding = 8 * 4;
         background.setPadding(padding, padding, padding, padding);
@@ -109,5 +165,6 @@ public class ImageAdapter extends BaseAdapter {
 
         return rowView;
     }
+
 
 }
