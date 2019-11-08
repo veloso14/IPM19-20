@@ -1,4 +1,4 @@
-package com.fct.miei.ipm;
+package com.fct.miei.ipm.fragments.Home;
 
 import android.app.FragmentTransaction;
 import android.content.Context;

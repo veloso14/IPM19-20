@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
-import com.fct.miei.ipm.fragments.Home;
+import com.fct.miei.ipm.fragments.Home.Home;
 
 import java.util.ArrayList;
 

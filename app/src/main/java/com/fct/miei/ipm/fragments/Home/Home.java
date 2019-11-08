@@ -1,4 +1,4 @@
-package com.fct.miei.ipm.fragments;
+package com.fct.miei.ipm.fragments.Home;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;
@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.ImageAdapter;
 
 import static android.content.Context.MODE_PRIVATE;
 

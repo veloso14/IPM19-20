@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
-import com.fct.miei.ipm.fragments.Home;
+import com.fct.miei.ipm.fragments.Home.Home;
 import com.fct.miei.ipm.fragments.Perfil;
 import com.fct.miei.ipm.fragments.Ranking;
 import com.google.firebase.iid.FirebaseInstanceId;
