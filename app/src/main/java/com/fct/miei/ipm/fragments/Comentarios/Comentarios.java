@@ -1,18 +1,28 @@
-package com.fct.miei.ipm.fragments;
+package com.fct.miei.ipm.fragments.Comentarios;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 
+import java.util.ArrayList;
+
 public class Comentarios extends Fragment {
 
+
+    ArrayList<ComentarioModel> dataModels;
+    ListView listView;
+    private static CustomAdapter adapter;
 
     public Comentarios() {
         // Required empty public constructor
@@ -43,7 +53,25 @@ public class Comentarios extends Fragment {
             }
         });
 
+        //Comentários load
+        listView=(ListView) view.findViewById(R.id.list);
+
+        dataModels= new ArrayList<>();
+
+        //Dummy data
+        dataModels.add(new ComentarioModel(R.drawable.pessoa7, "Tenho isso resolvido no caderno mas não percebi" ));
+        dataModels.add(new ComentarioModel(R.drawable.pessoa6, "Same \uD83D\uDE2D\uD83D\uDE2D\uD83D\uDE2D" ));
+
+
+
+        adapter= new CustomAdapter(dataModels,getContext());
+
+        listView.setAdapter(adapter);
+
+
         return view;
     }
+
+
 
 }

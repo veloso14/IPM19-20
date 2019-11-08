@@ -15,10 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.fragments.Comentarios;
+import com.fct.miei.ipm.fragments.Comentarios.Comentarios;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 
 import java.util.LinkedList;
