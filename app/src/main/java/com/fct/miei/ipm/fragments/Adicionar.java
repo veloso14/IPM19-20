@@ -44,8 +44,22 @@ public class Adicionar extends Fragment {
             }
         });
 
-        //Adicionar um apontamento
-        ImageView apontamentos = view.findViewById(R.id.novoDocumento);
+        ImageView apontamentosOuExercicios = view.findViewById(R.id.novoDocumento);
+
+        apontamentosOuExercicios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setVisibility(View.GONE);
+
+                Button apontamentos = view.findViewById(R.id.apontamentos);
+                Button exercicios = view.findViewById(R.id.exercicios);
+
+                apontamentos.setVisibility(View.VISIBLE);
+                exercicios.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Button apontamentos = view.findViewById(R.id.apontamentos);
 
         apontamentos.setOnClickListener(new View.OnClickListener() {
             @Override

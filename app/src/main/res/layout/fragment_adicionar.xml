@@ -6,6 +6,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/novoDocumento"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="60dp"
+        android:elevation="@dimen/desc_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fileadd" />
+
+    <Button
+        android:id="@+id/apontamentos"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:text="Apontamentos"
+        android:textSize="11sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.456"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/exercicios"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:text="Exercícios"
+        android:textSize="11sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apontamentos"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/documentosTexto"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:text="Apontamentos ou exercicios"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exercicios" />
+
     <TextView
         android:id="@+id/novoDocumentoTexto"
         android:layout_width="0dp"
@@ -30,27 +77,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/question" />
-
-    <ImageView
-        android:id="@+id/novoDocumento"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fileadd" />
-
-    <TextView
-        android:id="@+id/documentosTexto"
-        android:layout_width="97dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="12dp"
-        android:text="Apontamentos ou exercicios"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/novoDocumento" />
 
     <TextView
         android:id="@+id/duvidasTexto"
