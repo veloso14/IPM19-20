@@ -2,6 +2,7 @@ package com.fct.miei.ipm.fragments.Documentos;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.fragments.Adicionar.Exercicios;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Home.Home;
 
@@ -140,8 +142,17 @@ public class Documentos extends Fragment {
         exercicios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Logo faço", Toast.LENGTH_LONG).show();
                 myDialog.dismiss();
+                SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("BackDocumentos", true);
+                editor.commit();
+
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new Exercicios());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
 

@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             });
 
-            Button mEmailSignInButton = findViewById(R.id.avaliar);
+            Button mEmailSignInButton = findViewById(R.id.publicar);
 
             findViewById(R.id.loginFacebook).setOnClickListener(new OnClickListener() {
                 @Override

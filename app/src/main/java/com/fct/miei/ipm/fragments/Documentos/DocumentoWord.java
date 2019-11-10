@@ -49,7 +49,7 @@ public class DocumentoWord extends Fragment {
         }
 
         //Duvidas go to
-        Button avaliar = view.findViewById(R.id.avaliar);
+        Button avaliar = view.findViewById(R.id.publicar);
 
         avaliar.setOnClickListener(new View.OnClickListener() {
             @Override
