@@ -40,8 +40,8 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/password2"
-        app:layout_constraintTop_toBottomOf="@+id/password2" />
+        app:layout_constraintStart_toStartOf="@+id/fim"
+        app:layout_constraintTop_toBottomOf="@+id/fim" />
 
 
     <Spinner
@@ -52,7 +52,7 @@
         android:spinnerMode="dropdown"
         android:textColor="@color/themecolor"
         app:layout_constraintBottom_toBottomOf="@+id/login_entrar2"
-        app:layout_constraintEnd_toEndOf="@+id/password2"
+        app:layout_constraintEnd_toEndOf="@+id/fim"
         app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toEndOf="@+id/login_entrar2"
         app:layout_constraintTop_toTopOf="@+id/login_entrar2"
@@ -68,7 +68,7 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/password2"
+        app:layout_constraintStart_toStartOf="@+id/fim"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar2" />
 
     <android.support.design.widget.TextInputLayout
@@ -128,7 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <EditText
-        android:id="@+id/password2"
+        android:id="@+id/fim"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginTop="16dp"

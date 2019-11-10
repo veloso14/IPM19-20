@@ -12,12 +12,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
+
+import java.util.Random;
 
 public class CriarEvento extends Fragment {
 
@@ -83,6 +89,25 @@ public class CriarEvento extends Fragment {
         editor.putInt("selector", 0);
         editor.commit();
 
+        //End of day
+        EditText fim =  view.findViewById(R.id.fim);
+        TextView fimText =  view.findViewById(R.id.fimText);
+        //Switch
+        Switch mySwitch = view.findViewById(R.id.allday);
+        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+                    fim.setVisibility(View.INVISIBLE);
+                    fimText.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    fim.setVisibility(View.VISIBLE);
+                    fimText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         ImageView back = view.findViewById(R.id.back);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -105,13 +130,27 @@ public class CriarEvento extends Fragment {
             public void onClick(View v) {
                 //Save
                 SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
+                String[] playlists = settings.getString("Eventos", "").split(",");
+                playlists = increaseArray(playlists , 1);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putString("Eventos",
-                        "  {\n" +
+
+                //Random color
+                Random obj = new Random();
+                int rand_num = obj.nextInt(0xffffff + 1);
+                // format it as hexadecimal string and print
+                String colorCode = String.format("#%06x", rand_num);
+
+                playlists[playlists.length - 1] ="  {\n" +
                                 "    \"time\": \"19/08/2019\",\n" +
-                                "    \"color\": \"#08A5CB\",\n" +
+                                "    \"color\": \"" + colorCode + "\",\n" +
                                 "    \"name\": \"" + titulo.getEditText().getText().toString() + "\"\n" +
-                                "  },\n");
+                                "  },\n" ;
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < playlists.length; i++) {
+                    sb.append(playlists[i]).append(",");
+                }
+                editor.putString("Eventos", sb.toString());
                 editor.commit();
 
                 Toast.makeText(getContext(), "Evento criado com sucesso", Toast.LENGTH_LONG).show();
@@ -124,5 +163,16 @@ public class CriarEvento extends Fragment {
         });
 
         return view;
+    }
+
+
+    public String[] increaseArray(String[] theArray, int increaseBy) {
+        int i = theArray.length;
+        int n = ++i;
+        String[] newArray = new String[n];
+        for (int cnt = 0; cnt < theArray.length; cnt++) {
+            newArray[cnt] = theArray[cnt];
+        }
+        return newArray;
     }
 }
