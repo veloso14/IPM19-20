@@ -1,24 +1,21 @@
-package com.fct.miei.ipm.fragments;
+package com.fct.miei.ipm.fragments.Adicionar;
 
 import android.app.FragmentTransaction;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.fragments.Documentos.CriarApontamento;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 
-public class Adicionar extends Fragment {
+public class ShowAdicionar extends Fragment {
 
 
-    public Adicionar() {
+    public ShowAdicionar() {
         // Required empty public constructor
     }
 
@@ -28,7 +25,22 @@ public class Adicionar extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_adicionar, container, false);
+        View view = inflater.inflate(R.layout.fragment_show_adicionar, container, false);
+
+        //backbutton
+        ImageView backbutton = view.findViewById(R.id.backbutton);
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content, new Adicionar());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
+
 
 
         ImageView duvidas = view.findViewById(R.id.duvidas);
@@ -44,33 +56,8 @@ public class Adicionar extends Fragment {
             }
         });
 
-        ImageView apontamentosOuExercicios = view.findViewById(R.id.novoDocumento);
 
-        apontamentosOuExercicios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.setVisibility(View.GONE);
 
-                Button apontamentos = view.findViewById(R.id.apontamentos);
-                Button exercicios = view.findViewById(R.id.exercicios);
-
-                apontamentos.setVisibility(View.VISIBLE);
-                exercicios.setVisibility(View.VISIBLE);
-            }
-        });
-
-        Button apontamentos = view.findViewById(R.id.apontamentos);
-
-        apontamentos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new CriarApontamento());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
 
         return view;
     }

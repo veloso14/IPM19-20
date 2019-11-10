@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.fragments.Adicionar;
+import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
 import com.fct.miei.ipm.fragments.Home.Home;
 import com.fct.miei.ipm.fragments.Perfil;

@@ -5,32 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/novoDocumento"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="16dp"
-        android:elevation="@dimen/desc_padding"
-        app:layout_constraintBottom_toBottomOf="@+id/duvidas"
-        app:layout_constraintEnd_toStartOf="@+id/duvidas"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/duvidas"
-        app:srcCompat="@drawable/fileadd" />
-
     <TextView
         android:id="@+id/documentosTexto"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="0dp"
         android:gravity="center"
         android:fontFamily="sans-serif-medium"
         android:text="Apontamentos ou exercicios"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/novoDocumento"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/novoDocumento"
-        app:layout_constraintTop_toBottomOf="@+id/novoDocumento" />
+        app:layout_constraintBottom_toBottomOf="@+id/duvidasTexto"
+        app:layout_constraintEnd_toEndOf="@+id/apontamentos"
+        app:layout_constraintStart_toStartOf="@+id/apontamentos"
+        app:layout_constraintTop_toTopOf="@+id/duvidasTexto" />
 
     <TextView
         android:id="@+id/novoDocumentoTexto"
@@ -47,7 +33,7 @@
 
     <ImageView
         android:id="@+id/duvidas"
-        android:layout_width="0dp"
+        android:layout_width="149dp"
         android:layout_height="120dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
@@ -61,13 +47,53 @@
     <TextView
         android:id="@+id/duvidasTexto"
         android:layout_width="0dp"
-        android:fontFamily="sans-serif-medium"
         android:layout_height="36dp"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Dúvidas"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="@+id/duvidas"
         app:layout_constraintStart_toStartOf="@+id/duvidas"
         app:layout_constraintTop_toBottomOf="@+id/duvidas" />
+
+
+    <Button
+        android:id="@+id/exercicios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/square_toggle_button"
+        android:padding="10dp"
+        android:text="Exercícios"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/apontamentos"
+        app:layout_constraintEnd_toEndOf="@+id/apontamentos"
+        app:layout_constraintStart_toStartOf="@+id/apontamentos"
+        app:layout_constraintTop_toTopOf="@+id/duvidas" />
+
+    <Button
+        android:id="@+id/apontamentos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/square_toggle_button"
+        android:padding="10dp"
+        android:text="Apontamentos"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/duvidas"
+        app:layout_constraintEnd_toStartOf="@+id/duvidas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exercicios" />
+
+    <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="32dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/novoDocumentoTexto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/backbutton" />
 
 </android.support.constraint.ConstraintLayout>

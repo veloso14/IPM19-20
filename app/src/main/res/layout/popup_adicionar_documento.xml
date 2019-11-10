@@ -16,7 +16,6 @@
 
         <Button
             android:id="@+id/apontamentos"
-
             android:background="@drawable/square_toggle_button"
             android:textColor="#FFFFFF"
             android:layout_width="match_parent"
