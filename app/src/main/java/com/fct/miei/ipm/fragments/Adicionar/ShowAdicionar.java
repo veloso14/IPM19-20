@@ -35,8 +35,16 @@ public class ShowAdicionar extends Fragment {
         exercicios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("BackShowAdicionar", true);
+                editor.commit();
+                
                 android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new CriarApontamento());
+                ft.replace(R.id.content, new Exercicios());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.addToBackStack(null);
                 ft.commit();
