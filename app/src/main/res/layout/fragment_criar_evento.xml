@@ -84,12 +84,12 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/password5"
+        app:layout_constraintBottom_toBottomOf="@+id/dataInicio"
         app:layout_constraintStart_toStartOf="@+id/login_entrar5"
-        app:layout_constraintTop_toTopOf="@+id/password5" />
+        app:layout_constraintTop_toTopOf="@+id/dataInicio" />
 
     <TextView
-        android:id="@+id/login_entrar6"
+        android:id="@+id/fimText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -98,10 +98,10 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/password2"
+        app:layout_constraintBottom_toBottomOf="@+id/fim"
         app:layout_constraintEnd_toEndOf="@+id/login_entrar4"
         app:layout_constraintStart_toStartOf="@+id/login_entrar4"
-        app:layout_constraintTop_toTopOf="@+id/password2" />
+        app:layout_constraintTop_toTopOf="@+id/fim" />
 
     <TextView
         android:id="@+id/login_entrar7"
@@ -114,8 +114,8 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/login_entrar6"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar6" />
+        app:layout_constraintStart_toStartOf="@+id/fimText"
+        app:layout_constraintTop_toBottomOf="@+id/fimText" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/tituloinput"
@@ -130,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_entrar">
 
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
 
 
     <EditText
-        android:id="@+id/password5"
+        android:id="@+id/dataInicio"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -162,11 +162,11 @@
         android:padding="10dp"
         android:singleLine="true"
         app:layout_constraintStart_toEndOf="@+id/login_entrar4"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/allday" />
 
 
     <EditText
-        android:id="@+id/password2"
+        android:id="@+id/fim"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
@@ -179,9 +179,9 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/password5"
-        app:layout_constraintStart_toStartOf="@+id/password5"
-        app:layout_constraintTop_toBottomOf="@+id/password5" />
+        app:layout_constraintEnd_toEndOf="@+id/dataInicio"
+        app:layout_constraintStart_toStartOf="@+id/dataInicio"
+        app:layout_constraintTop_toBottomOf="@+id/dataInicio" />
 
     <EditText
         android:id="@+id/password3"
@@ -227,7 +227,7 @@
         app:layout_constraintStart_toEndOf="@+id/login_entrar"
         app:layout_constraintTop_toTopOf="@+id/login_entrar" />
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -245,7 +245,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tituloinput" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/allday"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/login_entrar5"

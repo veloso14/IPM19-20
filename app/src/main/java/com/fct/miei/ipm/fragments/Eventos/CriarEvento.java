@@ -1,5 +1,6 @@
 package com.fct.miei.ipm.fragments.Eventos;
 
+import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -18,16 +19,21 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
+import java.util.Calendar;
 import java.util.Random;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class CriarEvento extends Fragment {
 
     private int inited = 0;
+    private String date;
 
     public CriarEvento() {
         // Required empty public constructor
@@ -40,6 +46,12 @@ public class CriarEvento extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_evento, container, false);
+
+
+        //Get Selected date
+        SharedPreferences prefs = getActivity().getSharedPreferences("DATECLICKED", MODE_PRIVATE);
+        date  = prefs.getString("DATECLICKED", "14/10/2019");
+        Log.d("DATE" , "Received" + date);
 
 
         //get the spinner from the xml.
@@ -89,6 +101,25 @@ public class CriarEvento extends Fragment {
         editor.putInt("selector", 0);
         editor.commit();
 
+        //Data inicio picker
+        EditText inicio = view.findViewById(R.id.dataInicio);
+        inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        Log.d( "TIMEPICKER" , selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
         //End of day
         EditText fim =  view.findViewById(R.id.fim);
         TextView fimText =  view.findViewById(R.id.fimText);
@@ -121,7 +152,7 @@ public class CriarEvento extends Fragment {
             }
         });
 
-        TextInputLayout titulo = view.findViewById(R.id.tituloinput);
+        EditText titulo = view.findViewById(R.id.titulo);
         //Criar evento
         Button criar = view.findViewById(R.id.concluido);
 
@@ -130,7 +161,7 @@ public class CriarEvento extends Fragment {
             public void onClick(View v) {
                 //Save
                 SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
-                String[] playlists = settings.getString("Eventos", "").split(",");
+                String[] playlists = settings.getString("Eventos", "").split(";");
                 playlists = increaseArray(playlists , 1);
                 SharedPreferences.Editor editor = settings.edit();
 
@@ -140,15 +171,15 @@ public class CriarEvento extends Fragment {
                 // format it as hexadecimal string and print
                 String colorCode = String.format("#%06x", rand_num);
 
-                playlists[playlists.length - 1] ="  {\n" +
-                                "    \"time\": \"19/08/2019\",\n" +
+                playlists[playlists.length - 1] ="{\n" +
+                                "    \"time\": \""+ date + "\",\n" +
                                 "    \"color\": \"" + colorCode + "\",\n" +
-                                "    \"name\": \"" + titulo.getEditText().getText().toString() + "\"\n" +
+                                "    \"name\": \"" + titulo.getText().toString() + "\"\n" +
                                 "  },\n" ;
 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < playlists.length; i++) {
-                    sb.append(playlists[i]).append(",");
+                    sb.append(playlists[i]).append(";");
                 }
                 editor.putString("Eventos", sb.toString());
                 editor.commit();

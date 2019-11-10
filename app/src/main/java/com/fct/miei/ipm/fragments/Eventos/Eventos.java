@@ -29,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class Eventos extends Fragment implements CalendarioAdapter.eventoListener {
@@ -150,6 +153,13 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
             public void onDayClick(Date dateClicked) {
                 sc = true;
                 scrollToDate(dateClicked);
+                // 21/11/2019
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String parsed = formatter.format(dateClicked);
+                Log.d("DATE" ,parsed);
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("DATECLICKED", MODE_PRIVATE).edit();
+                editor.putString("DATECLICKED", parsed);
+                editor.apply();
                 ShowPopup(view.findViewById(android.R.id.content));
             }
 
@@ -174,13 +184,17 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     private void getEvents() {
         Log.d("Eventos", "Start");
         SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
-        String eventosCriados = settings.getString("Eventos", "");
+        String[] playlists = settings.getString("Eventos", "").split(";");
+        String eventosCriados = ",";
+        for( int i = 0 ; i < playlists.length ; i++){
+            eventosCriados = eventosCriados + " " + playlists[i] ;
+        }
         String json = "[\n" +
                 "  {\n" +
                 "    \"time\": \"21/11/2019\",\n" +
                 "    \"color\": \"#08A5CB\",\n" +
                 "    \"name\": \"Evento Sessão de estudo\"\n" +
-                "  },\n" +
+                "  }\n" +
                 eventosCriados +
                 "  {\n" +
                 "    \"time\": \"19/08/2019\",\n" +
