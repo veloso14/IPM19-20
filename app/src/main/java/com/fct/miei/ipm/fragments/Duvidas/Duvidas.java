@@ -2,6 +2,7 @@ package com.fct.miei.ipm.fragments.Duvidas;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
+import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Comentarios.Comentarios;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 
@@ -29,6 +32,8 @@ public class Duvidas extends Fragment {
     private NonScrollListView nonScrollListView;
     private Dialog myDialog;
     private View vista;
+    private boolean BackAdicionar = false;
+    private boolean BackShowAdicionar = false;
 
 
     public Duvidas() {
@@ -95,6 +100,15 @@ public class Duvidas extends Fragment {
         this.vista = view;
         myDialog = new Dialog(getContext());
         nonScrollListView = view.findViewById(R.id.listView);
+        //BackButton
+        SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
+        BackAdicionar = settings.getBoolean("BackAdicionar", false);
+        BackShowAdicionar = settings.getBoolean("BackShowAdicionar", false);
+        //Delete
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("BackAdicionar", false);
+        editor.putBoolean("BackShowAdicionar", false);
+        editor.commit();
 
         //Add duvida
         ImageView add = view.findViewById(R.id.add);
@@ -114,11 +128,29 @@ public class Duvidas extends Fragment {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new Documentos());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.addToBackStack(null);
-                ft.commit();
+
+                if(BackAdicionar){
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new Adicionar());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+
+                }
+                else if(BackShowAdicionar){
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new ShowAdicionar());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
+                else {
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new Documentos());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
             }
         });
 
