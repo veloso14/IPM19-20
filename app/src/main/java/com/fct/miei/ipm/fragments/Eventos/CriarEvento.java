@@ -59,52 +59,6 @@ public class CriarEvento extends Fragment {
         Log.d("DATE" , "Received" + date);
 
 
-        //get the spinner from the xml.
-        Spinner dropdown = view.findViewById(R.id.spinner1);
-        //create a list of items for the spinner.
-        String[] items = new String[]{"Público", "Privado", "Partilhar com"};
-        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
-        //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
-        //set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
-
-        dropdown.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-
-                        Log.d("Clicked", "Clicou em " + pos);
-
-                        if (inited >= 1) {
-                            Object item = parent.getItemAtPosition(pos);
-                            System.out.println(item.toString());     //prints the text in spinner item.
-                            //Clicou no partilhado com
-                            if (pos == 2) {
-                                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                ft.replace(R.id.content, new PartilharCom());
-                                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                                ft.addToBackStack(null);
-                                ft.commit();
-                            }
-                        }
-                        inited++;
-
-                    }
-
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
-
-
-        //Check Selector
-        SharedPreferences settings = getActivity().getSharedPreferences("selector", 0);
-        int selected = settings.getInt("selector", 0);
-        dropdown.setSelection(selected);
-
-        //Limpa a variavel
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("selector", 0);
-        editor.commit();
 
         //Data inicio picker
         TextView inicio = view.findViewById(R.id.dataInicio);
@@ -120,8 +74,8 @@ public class CriarEvento extends Fragment {
                 mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        Log.d( "TIMEPICKER" , selectedHour + ":" + selectedMinute);
-                        inicio.setText(selectedHour + ":" + selectedMinute);
+                        Log.d( "TIMEPICKER" , selectedHour + ":" + ((selectedMinute != 0 ) ? selectedMinute : "00"));
+                        inicio.setText(selectedHour + ":" + ((selectedMinute != 0 ) ? selectedMinute : "00"));
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -142,8 +96,8 @@ public class CriarEvento extends Fragment {
                 mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        Log.d( "TIMEPICKER" , selectedHour + ":" + selectedMinute);
-                        fim.setText(selectedHour + ":" + selectedMinute);
+                        Log.d( "TIMEPICKER" , selectedHour + ":" + ((selectedMinute != 0 ) ? selectedMinute : "00"));
+                        fim.setText(selectedHour + ":" + ((selectedMinute != 0 ) ? selectedMinute : "00"));
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -207,6 +161,9 @@ public class CriarEvento extends Fragment {
                 else if(numPessoas.getText().toString().isEmpty()){
                     Toast.makeText(getContext(),"O número de pessoas não pode estár vazio" ,Toast.LENGTH_LONG).show();
                 }
+                else if( Integer.valueOf( numPessoas.getText().toString()) < 1){
+                    Toast.makeText(getContext(),"O número de pessoas é invalido" ,Toast.LENGTH_LONG).show();
+                }
                 else if( !allDay && (  !inicio.getText().toString().contains(":") && !fim.getText().toString().contains(":"))){
                     Log.d("ALLDAY" ,  inicio.getText().toString());
                     Log.d("ALLDAY" ,  fim.getText().toString());
@@ -246,6 +203,84 @@ public class CriarEvento extends Fragment {
                 }
             }
         });
+
+
+        //get the spinner from the xml.
+        Spinner dropdown = view.findViewById(R.id.spinner1);
+        //create a list of items for the spinner.
+        String[] items = new String[]{"Público", "Privado", "Partilhar com"};
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        //set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
+
+        dropdown.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                        Log.d("Clicked", "Clicou em " + pos);
+
+                        if (inited >= 1) {
+                            Object item = parent.getItemAtPosition(pos);
+                            System.out.println(item.toString());     //prints the text in spinner item.
+                            //Clicou no partilhado com
+                            if (pos == 2) {
+
+                                //Salvar as variaveis
+                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("CriarEventosInput", MODE_PRIVATE).edit();
+                                editor.putString("titulo", titulo.getText().toString());
+                                editor.putString("local", local.getText().toString());
+                                editor.putString("inicio", inicio.getText().toString());
+                                editor.putString("fim", fim.getText().toString());
+                                editor.putString("npessoas", numPessoas.getText().toString());
+                                editor.apply();
+                                //Ir para o fragmento
+                                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                ft.replace(R.id.content, new PartilharCom());
+                                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                                ft.addToBackStack(null);
+                                ft.commit();
+                            }
+                        }
+                        inited++;
+
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+
+        //Check Selector
+        SharedPreferences settings = getActivity().getSharedPreferences("selector", 0);
+        int selected = settings.getInt("selector", 0);
+        dropdown.setSelection(selected);
+
+
+
+        SharedPreferences prefsUI = getActivity().getSharedPreferences("CriarEventosInput", MODE_PRIVATE);
+        titulo.setText(prefsUI.getString("titulo", ""));
+        local.setText(prefsUI.getString("local", ""));
+        inicio.setText(prefsUI.getString("inicio", ""));
+        fim.setText(prefsUI.getString("fim", ""));
+        numPessoas.setText(prefsUI.getString("npessoas", ""));
+        //Limpa a variavel
+        SharedPreferences.Editor editorUI = prefsUI.edit();
+        editorUI.remove("titulo");
+        editorUI.remove("local");
+        editorUI.remove("inicio");
+        editorUI.remove("fim");
+        editorUI.remove("npessoas");
+        editorUI.commit();
+
+
+        //Limpa a variavel
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("selector", 0);
+        editor.commit();
+
+
 
         return view;
     }
