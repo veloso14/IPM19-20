@@ -57,8 +57,8 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintStart_toStartOf="@+id/local"
+        app:layout_constraintTop_toBottomOf="@+id/local" />
 
     <Spinner
         android:id="@+id/spinner1"
@@ -69,13 +69,13 @@
         android:spinnerMode="dropdown"
         android:textColor="@color/themecolor"
         app:layout_constraintBottom_toBottomOf="@+id/login_entrar2"
-        app:layout_constraintEnd_toEndOf="@+id/password3"
+        app:layout_constraintEnd_toEndOf="@+id/numPessoas"
         app:layout_constraintStart_toEndOf="@+id/login_entrar2"
         app:layout_constraintTop_toTopOf="@+id/login_entrar2"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/login_entrar4"
+        android:id="@+id/inicioTexto"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:gravity="center"
@@ -99,8 +99,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/fim"
-        app:layout_constraintEnd_toEndOf="@+id/login_entrar4"
-        app:layout_constraintStart_toStartOf="@+id/login_entrar4"
+        app:layout_constraintEnd_toEndOf="@+id/inicioTexto"
+        app:layout_constraintStart_toStartOf="@+id/inicioTexto"
         app:layout_constraintTop_toTopOf="@+id/fim" />
 
     <TextView
@@ -146,14 +146,13 @@
     </android.support.design.widget.TextInputLayout>
 
 
-    <EditText
+    <TextView
         android:id="@+id/dataInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_border_edittext"
-        android:hint="                   "
         android:imeActionId="6"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
@@ -161,17 +160,16 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintStart_toEndOf="@+id/login_entrar4"
+        app:layout_constraintStart_toEndOf="@+id/inicioTexto"
         app:layout_constraintTop_toBottomOf="@+id/allday" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/fim"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_border_edittext"
-        android:hint="                   "
         android:imeActionId="6"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
@@ -184,7 +182,7 @@
         app:layout_constraintTop_toBottomOf="@+id/dataInicio" />
 
     <EditText
-        android:id="@+id/password3"
+        android:id="@+id/numPessoas"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -193,12 +191,12 @@
         android:imeActionId="6"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="@+id/login_entrar7"
-        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="@+id/local"
         app:layout_constraintStart_toEndOf="@+id/login_entrar7"
         app:layout_constraintTop_toTopOf="@+id/login_entrar7" />
 
@@ -228,7 +226,7 @@
         app:layout_constraintTop_toTopOf="@+id/login_entrar" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/local"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -249,7 +247,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/login_entrar5"
-        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="@+id/local"
         app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toEndOf="@+id/login_entrar5"
         app:layout_constraintTop_toTopOf="@+id/login_entrar5" />

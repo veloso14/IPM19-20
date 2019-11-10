@@ -1,6 +1,8 @@
 package com.fct.miei.ipm.fragments.Eventos;
 
+import android.app.Activity;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,6 +26,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.MainActivity;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
 import java.util.Calendar;
@@ -34,6 +38,7 @@ public class CriarEvento extends Fragment {
 
     private int inited = 0;
     private String date;
+    private boolean allDay = false;
 
     public CriarEvento() {
         // Required empty public constructor
@@ -102,10 +107,12 @@ public class CriarEvento extends Fragment {
         editor.commit();
 
         //Data inicio picker
-        EditText inicio = view.findViewById(R.id.dataInicio);
+        TextView inicio = view.findViewById(R.id.dataInicio);
         inicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -114,6 +121,7 @@ public class CriarEvento extends Fragment {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         Log.d( "TIMEPICKER" , selectedHour + ":" + selectedMinute);
+                        inicio.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -121,20 +129,47 @@ public class CriarEvento extends Fragment {
             }
         });
         //End of day
-        EditText fim =  view.findViewById(R.id.fim);
+        TextView fim =  view.findViewById(R.id.fim);
+        fim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        Log.d( "TIMEPICKER" , selectedHour + ":" + selectedMinute);
+                        fim.setText(selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+
         TextView fimText =  view.findViewById(R.id.fimText);
+        TextView inicioTexto =  view.findViewById(R.id.inicioTexto);
         //Switch
         Switch mySwitch = view.findViewById(R.id.allday);
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+                allDay = isChecked;
                 if(isChecked){
                     fim.setVisibility(View.INVISIBLE);
                     fimText.setVisibility(View.INVISIBLE);
+                    inicioTexto.setVisibility(View.INVISIBLE);
+                    inicio.setVisibility(View.INVISIBLE);
                 }
                 else{
                     fim.setVisibility(View.VISIBLE);
                     fimText.setVisibility(View.VISIBLE);
+                    inicioTexto.setVisibility(View.INVISIBLE);
+                    inicio.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -153,6 +188,8 @@ public class CriarEvento extends Fragment {
         });
 
         EditText titulo = view.findViewById(R.id.titulo);
+        EditText local = view.findViewById(R.id.local);
+        EditText numPessoas = view.findViewById(R.id.numPessoas);
         //Criar evento
         Button criar = view.findViewById(R.id.concluido);
 
@@ -160,36 +197,53 @@ public class CriarEvento extends Fragment {
             @Override
             public void onClick(View v) {
                 //Save
-                SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
-                String[] playlists = settings.getString("Eventos", "").split(";");
-                playlists = increaseArray(playlists , 1);
-                SharedPreferences.Editor editor = settings.edit();
 
-                //Random color
-                Random obj = new Random();
-                int rand_num = obj.nextInt(0xffffff + 1);
-                // format it as hexadecimal string and print
-                String colorCode = String.format("#%06x", rand_num);
-
-                playlists[playlists.length - 1] ="{\n" +
-                                "    \"time\": \""+ date + "\",\n" +
-                                "    \"color\": \"" + colorCode + "\",\n" +
-                                "    \"name\": \"" + titulo.getText().toString() + "\"\n" +
-                                "  },\n" ;
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < playlists.length; i++) {
-                    sb.append(playlists[i]).append(";");
+                if(titulo.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(),"O título não pode estár vazio" ,Toast.LENGTH_LONG).show();
                 }
-                editor.putString("Eventos", sb.toString());
-                editor.commit();
+                else if(local.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(),"O local não pode estár vazio" ,Toast.LENGTH_LONG).show();
+                }
+                else if(numPessoas.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(),"O número de pessoas não pode estár vazio" ,Toast.LENGTH_LONG).show();
+                }
+                else if( !allDay && (  !inicio.getText().toString().contains(":") && !fim.getText().toString().contains(":"))){
+                    Log.d("ALLDAY" ,  inicio.getText().toString());
+                    Log.d("ALLDAY" ,  fim.getText().toString());
+                    Toast.makeText(getContext(),"Indique a duracção" ,Toast.LENGTH_LONG).show();
+                }
+                else{
+                    SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
+                    String[] playlists = settings.getString("Eventos", "").split(";");
+                    playlists = increaseArray(playlists, 1);
+                    SharedPreferences.Editor editor = settings.edit();
 
-                Toast.makeText(getContext(), "Evento criado com sucesso", Toast.LENGTH_LONG).show();
-                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new Eventos());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.addToBackStack(null);
-                ft.commit();
+                    //Random color
+                    Random obj = new Random();
+                    int rand_num = obj.nextInt(0xffffff + 1);
+                    // format it as hexadecimal string and print
+                    String colorCode = String.format("#%06x", rand_num);
+
+                    playlists[playlists.length - 1] = "{\n" +
+                            "    \"time\": \"" + date + "\",\n" +
+                            "    \"color\": \"" + colorCode + "\",\n" +
+                            "    \"name\": \"" + titulo.getText().toString() + "\"\n" +
+                            "  },\n";
+
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < playlists.length; i++) {
+                        sb.append(playlists[i]).append(";");
+                    }
+                    editor.putString("Eventos", sb.toString());
+                    editor.commit();
+
+                    Toast.makeText(getContext(), "Evento criado com sucesso", Toast.LENGTH_LONG).show();
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new Eventos());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
             }
         });
 
@@ -197,13 +251,16 @@ public class CriarEvento extends Fragment {
     }
 
 
-    public String[] increaseArray(String[] theArray, int increaseBy) {
+    public String[] increaseArray(String[] theArray, int increaseBy)
+    {
         int i = theArray.length;
         int n = ++i;
         String[] newArray = new String[n];
-        for (int cnt = 0; cnt < theArray.length; cnt++) {
+        for(int cnt=0;cnt<theArray.length;cnt++)
+        {
             newArray[cnt] = theArray[cnt];
         }
         return newArray;
     }
+
 }
