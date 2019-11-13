@@ -93,9 +93,9 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/dataInicio"
+        app:layout_constraintBottom_toBottomOf="@+id/turno"
         app:layout_constraintStart_toStartOf="@+id/radioButton"
-        app:layout_constraintTop_toTopOf="@+id/dataInicio" />
+        app:layout_constraintTop_toTopOf="@+id/turno" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/unidade"
@@ -153,10 +153,10 @@
         app:layout_constraintEnd_toEndOf="@+id/unidade"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/unidade"
-        app:layout_constraintTop_toBottomOf="@+id/dataInicio" />
+        app:layout_constraintTop_toBottomOf="@+id/turno" />
 
     <EditText
-        android:id="@+id/dataInicio"
+        android:id="@+id/turno"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"

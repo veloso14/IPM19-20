@@ -56,7 +56,7 @@ public class CriarEvento extends Fragment {
 
 
         //Data inicio picker
-        TextView inicio = view.findViewById(R.id.dataInicio);
+        TextView inicio = view.findViewById(R.id.turno);
         inicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +138,7 @@ public class CriarEvento extends Fragment {
 
         EditText titulo = view.findViewById(R.id.titulo);
         EditText local = view.findViewById(R.id.unidade2);
-        EditText numPessoas = view.findViewById(R.id.numPessoas);
+        EditText numPessoas = view.findViewById(R.id.professor);
         //Criar evento
         Button criar = view.findViewById(R.id.concluido);
 

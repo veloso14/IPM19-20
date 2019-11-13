@@ -69,7 +69,7 @@
         android:spinnerMode="dropdown"
         android:textColor="@color/themecolor"
         app:layout_constraintBottom_toBottomOf="@+id/login_entrar2"
-        app:layout_constraintEnd_toEndOf="@+id/numPessoas"
+        app:layout_constraintEnd_toEndOf="@+id/professor"
         app:layout_constraintStart_toEndOf="@+id/login_entrar2"
         app:layout_constraintTop_toTopOf="@+id/login_entrar2"
         app:layout_constraintVertical_bias="0.0" />
@@ -84,9 +84,9 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/dataInicio"
+        app:layout_constraintBottom_toBottomOf="@+id/turno"
         app:layout_constraintStart_toStartOf="@+id/login_entrar5"
-        app:layout_constraintTop_toTopOf="@+id/dataInicio" />
+        app:layout_constraintTop_toTopOf="@+id/turno" />
 
     <TextView
         android:id="@+id/fimText"
@@ -147,7 +147,7 @@
 
 
     <TextView
-        android:id="@+id/dataInicio"
+        android:id="@+id/turno"
         android:layout_width="100dp"
         android:layout_height="39dp"
         android:layout_marginStart="16dp"
@@ -177,12 +177,12 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/dataInicio"
-        app:layout_constraintStart_toStartOf="@+id/dataInicio"
-        app:layout_constraintTop_toBottomOf="@+id/dataInicio" />
+        app:layout_constraintEnd_toEndOf="@+id/turno"
+        app:layout_constraintStart_toStartOf="@+id/turno"
+        app:layout_constraintTop_toBottomOf="@+id/turno" />
 
     <EditText
-        android:id="@+id/numPessoas"
+        android:id="@+id/professor"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
