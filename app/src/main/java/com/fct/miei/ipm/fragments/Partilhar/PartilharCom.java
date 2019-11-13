@@ -37,6 +37,8 @@ public class PartilharCom extends Fragment {
     public void prepareList() {
         Data data = new Data("João Veloso", R.drawable.perfil_joao);
         mDataList.add(data);
+        data = new Data("Carolina, Marco e Pedro", R.drawable.group);
+        mDataList.add(data);
         data = new Data("Miguel Calado", R.drawable.pessoa1);
         mDataList.add(data);
         data = new Data("Daniel Dias", R.drawable.pessoa2);
@@ -68,6 +70,8 @@ public class PartilharCom extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_partilharcom, container, false);
 
+        prepareContactos();
+        prepareList();
         mRecyclerView = view.findViewById(R.id.recycler_view);
 
         mAdapter = new ListViewAdaptor(mDataList);
@@ -76,18 +80,18 @@ public class PartilharCom extends Fragment {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter);
-        prepareList();
+
 
         //Contactos
         mRecyclerViewContactos = view.findViewById(R.id.contactos);
 
-        mAdapterContactos = new ListViewAdaptor(mDataList);
+        mAdapterContactos = new ListViewAdaptor(mDataListContactos);
         RecyclerView.LayoutManager mLayoutManagerContactos = new LinearLayoutManager(getContext());
         mRecyclerViewContactos.setLayoutManager(mLayoutManagerContactos);
         mRecyclerViewContactos.setItemAnimator(new DefaultItemAnimator());
         mRecyclerViewContactos.setHasFixedSize(true);
         mRecyclerViewContactos.setAdapter(mAdapterContactos);
-        prepareContactos();
+
 
 
         //Go Back
