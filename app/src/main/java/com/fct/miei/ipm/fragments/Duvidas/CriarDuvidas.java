@@ -108,13 +108,7 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                     new AlertDialog.Builder(getContext())
                             .setTitle("Erro")
                             .setMessage("Por favor complete todos os espaços")
-
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // Continue with delete operation
-                                }
-                            })
-                            .setNegativeButton(android.R.string.no, null)
+                            .setNegativeButton(android.R.string.yes, null)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }

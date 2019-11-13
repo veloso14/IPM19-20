@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:fadeScrollbars="false"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -87,15 +92,17 @@
         android:id="@+id/inicioTexto"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="Turno:"
         android:gravity="center"
+        android:text="Turno:"
         android:textAlignment="center"
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/turno"
-        app:layout_constraintStart_toStartOf="@+id/radioButton"
+        app:layout_constraintStart_toStartOf="@+id/login_entrar5"
         app:layout_constraintTop_toTopOf="@+id/turno" />
+
+
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/unidade"
@@ -116,7 +123,7 @@
             android:background="@drawable/rounded_border_edittext"
             android:focusedByDefault="false"
             android:hint="Unidade Curricular"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             android:maxLines="1"
             android:padding="10dp"
             android:singleLine="true" />
@@ -132,8 +139,8 @@
         android:text="Publicar"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fileChooser" />
 
 
     <EditText
@@ -146,7 +153,7 @@
         android:imeActionId="6"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
@@ -159,19 +166,19 @@
         android:id="@+id/turno"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_border_edittext"
         android:hint="                   "
         android:imeActionId="6"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
+        android:inputType="numberDecimal"
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
         app:layout_constraintStart_toEndOf="@+id/inicioTexto"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <ImageView
         android:id="@+id/fileChooser"
@@ -185,34 +192,36 @@
         app:layout_constraintTop_toBottomOf="@+id/login_entrar3"
         app:srcCompat="@drawable/exercicio" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Teórica"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton2"
-        app:layout_constraintStart_toStartOf="@+id/login_entrar5"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar5" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Prática"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButton"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton3"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toTopOf="@+id/radioButton" />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Teórico-Prática"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButton2"
+        android:layout_marginTop="8dp"
+        android:orientation='horizontal'
         app:layout_constraintEnd_toEndOf="@+id/unidade"
-        app:layout_constraintStart_toEndOf="@+id/radioButton2"
-        app:layout_constraintTop_toTopOf="@+id/radioButton2" />
+        app:layout_constraintStart_toStartOf="@+id/unidade"
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar5">
+
+        <RadioButton
+            android:id="@+id/Chest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teórica" />
+
+        <RadioButton
+            android:id="@+id/Leg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Prática" />
+
+        <RadioButton
+            android:id="@+id/Shoulder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Teórico-Prática" />
+
+
+    </RadioGroup>
 
     <ImageView
         android:id="@+id/back"
@@ -227,3 +236,4 @@
         app:srcCompat="@drawable/backblack" />
 
 </android.support.constraint.ConstraintLayout>
+    </ScrollView>
