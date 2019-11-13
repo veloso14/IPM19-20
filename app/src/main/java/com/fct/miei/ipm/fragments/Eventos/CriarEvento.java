@@ -117,8 +117,8 @@ public class CriarEvento extends Fragment {
                 else{
                     fim.setVisibility(View.VISIBLE);
                     fimText.setVisibility(View.VISIBLE);
-                    inicioTexto.setVisibility(View.INVISIBLE);
-                    inicio.setVisibility(View.INVISIBLE);
+                    inicioTexto.setVisibility(View.VISIBLE);
+                    inicio.setVisibility(View.VISIBLE);
                 }
             }
         });
