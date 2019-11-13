@@ -28,15 +28,15 @@ public class Ranking extends Fragment {
     int[] listviewImage = new int[]{
             R.drawable.veloso,
             R.drawable.rita,
-            R.drawable.carlos,
             R.drawable.grilo,
+            R.drawable.carlos
     };
 
     String[] listviewShortDescription = new String[]{
             "\nJoão Veloso\nMestrado Integrado em Engenharia Informática",
             "\nRita Rebelo\nMestrado Integrado em Engenharia Informática",
-            "\nCarlos Quendera\nMestrado Integrado em Engenharia Informática",
-            "\nLuís António Grilo\nLicenciatura em Bioquímica",
+            "\nLuís Grilo\nMestrado Integrado em Engenharia Informática",
+            "\nCarlos Quendera\nMestrado Integrado em Engenharia Informática"
     };
 
     public Ranking() {
