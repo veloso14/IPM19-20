@@ -40,8 +40,8 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/fim"
-        app:layout_constraintTop_toBottomOf="@+id/fim" />
+        app:layout_constraintStart_toStartOf="@+id/descricao"
+        app:layout_constraintTop_toBottomOf="@+id/descricao" />
 
 
     <Spinner
@@ -52,7 +52,7 @@
         android:spinnerMode="dropdown"
         android:textColor="@color/themecolor"
         app:layout_constraintBottom_toBottomOf="@+id/login_entrar2"
-        app:layout_constraintEnd_toEndOf="@+id/fim"
+        app:layout_constraintEnd_toEndOf="@+id/descricao"
         app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toEndOf="@+id/login_entrar2"
         app:layout_constraintTop_toTopOf="@+id/login_entrar2"
@@ -68,7 +68,7 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/fim"
+        app:layout_constraintStart_toStartOf="@+id/descricao"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar2" />
 
     <TextView
@@ -81,8 +81,8 @@
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintStart_toStartOf="@+id/unidade"
+        app:layout_constraintTop_toBottomOf="@+id/unidade" />
 
     <TextView
         android:id="@+id/inicioTexto"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toTopOf="@+id/dataInicio" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/unidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -111,7 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_entrar">
 
         <AutoCompleteTextView
-            android:id="@+id/local"
+            android:id="@+id/unidade2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_border_edittext"
@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/assunto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -150,9 +150,9 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/unidade"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/unidade"
         app:layout_constraintTop_toBottomOf="@+id/numPessoas" />
 
     <EditText
@@ -169,9 +169,9 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/unidade"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/unidade"
         app:layout_constraintTop_toBottomOf="@+id/inicioTexto" />
 
     <EditText
@@ -193,7 +193,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
 
     <EditText
-        android:id="@+id/fim"
+        android:id="@+id/descricao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -206,13 +206,13 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/unidade"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintStart_toStartOf="@+id/unidade"
+        app:layout_constraintTop_toBottomOf="@+id/assunto" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/fileChooser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -248,7 +248,7 @@
         android:layout_height="wrap_content"
         android:text="Teórico-Prática"
         app:layout_constraintBottom_toBottomOf="@+id/radioButton2"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/unidade"
         app:layout_constraintStart_toEndOf="@+id/radioButton2"
         app:layout_constraintTop_toTopOf="@+id/radioButton2" />
 

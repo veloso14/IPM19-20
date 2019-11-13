@@ -1,18 +1,14 @@
 package com.fct.miei.ipm.fragments.Eventos;
 
-import android.app.Activity;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,7 +22,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.MainActivity;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
 import java.util.Calendar;
@@ -83,7 +78,7 @@ public class CriarEvento extends Fragment {
             }
         });
         //End of day
-        TextView fim =  view.findViewById(R.id.fim);
+        TextView fim =  view.findViewById(R.id.descricao);
         fim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,7 +137,7 @@ public class CriarEvento extends Fragment {
         });
 
         EditText titulo = view.findViewById(R.id.titulo);
-        EditText local = view.findViewById(R.id.local);
+        EditText local = view.findViewById(R.id.unidade2);
         EditText numPessoas = view.findViewById(R.id.numPessoas);
         //Criar evento
         Button criar = view.findViewById(R.id.concluido);
