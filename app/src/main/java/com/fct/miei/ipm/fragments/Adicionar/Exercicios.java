@@ -73,7 +73,7 @@ public class Exercicios extends Fragment {
             ft.addToBackStack(null);
             ft.commit();
         }
-        if (BackDocumentos) {
+        else if (BackDocumentos) {
             android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content, new Documentos());
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

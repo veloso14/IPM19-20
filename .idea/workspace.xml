@@ -13,12 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="26291c1c-352d-4658-92d0-291610f2c79f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CriarEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CriarEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/popup_ordenar_por.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/popup_ordenar_por.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="195" column="4" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="4" />
+            <state relative-caret-position="143">
+              <caret line="142" column="108" lean-forward="true" selection-start-line="142" selection-start-column="108" selection-end-line="142" selection-end-column="108" />
             </state>
           </provider>
         </entry>
@@ -770,8 +764,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="195" column="4" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="4" />
+        <state relative-caret-position="143">
+          <caret line="142" column="108" lean-forward="true" selection-start-line="142" selection-start-column="108" selection-end-line="142" selection-end-column="108" />
         </state>
       </provider>
     </entry>
