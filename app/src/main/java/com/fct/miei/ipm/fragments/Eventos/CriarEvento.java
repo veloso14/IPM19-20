@@ -137,7 +137,7 @@ public class CriarEvento extends Fragment {
         });
 
         EditText titulo = view.findViewById(R.id.titulo);
-        EditText local = view.findViewById(R.id.unidade2);
+        EditText local = view.findViewById(R.id.local);
         EditText numPessoas = view.findViewById(R.id.professor);
         //Criar evento
         Button criar = view.findViewById(R.id.concluido);

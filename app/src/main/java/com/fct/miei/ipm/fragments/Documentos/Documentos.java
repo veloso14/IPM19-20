@@ -39,8 +39,6 @@ public class Documentos extends Fragment {
         // Required empty public constructor
     }
 
-    //TODO
-
     //0
     private void setDummyData() {
 
@@ -119,7 +117,6 @@ public class Documentos extends Fragment {
 
 
     }
-
 
 
     public void ShowPopup(View v) {

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,6 +41,16 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
 
     private Uri fileUri;
     private static final String[] paths = {"Público", "Privado"};
+    private static final String[] cadeiras = { "Interação Pessoa-Máquina",
+            "Sistemas de Computação em Cloud",
+            "Arquitetura e Protocolos de Redes de Computadores",
+            "Introdução à Investigação Operacional",
+            "Segurança de Software",
+            "Criptografia",
+            "Sistemas de Bases de Dados",
+            "Sistemas de Computação Móvel e Ubíqua",
+            "Inteligência Artificial" ,
+            "Interpretação e Compilação de Linguagens"};
     private Spinner spinner;
     private String fileName = "";
     private TextView fihcieroSelected;
@@ -56,6 +67,15 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_exercicio, container, false);
+
+        //AutoComplete
+        ArrayAdapter<String> adapterSearch = new ArrayAdapter<String>(getContext(),android.R.layout.select_dialog_item, cadeiras);
+        //Find TextView control
+        AutoCompleteTextView acTextView = (AutoCompleteTextView) view.findViewById(R.id.local);
+        //Set the number of characters the user must type before the drop down list is shown
+        acTextView.setThreshold(1);
+        //Set the adapter
+        acTextView.setAdapter(adapterSearch);
 
         fihcieroSelected = view.findViewById(R.id.ficheiros);
 
