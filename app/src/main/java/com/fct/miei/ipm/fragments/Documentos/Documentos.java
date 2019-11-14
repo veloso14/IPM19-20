@@ -33,34 +33,51 @@ public class Documentos extends Fragment {
     private ArrayList<RecyclerViewItem> operatingSystems;
     private Dialog myDialog;
     private View vista;
+    private int searched ;
 
     public Documentos() {
         // Required empty public constructor
     }
 
+    //TODO
 
+    //0
+    private void setDummyData() {
+
+        operatingSystems = new ArrayList<>();
+        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+
+
+
+    }
+    //1
     private void setOrderedDummyDataRuyCosta() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
 
     }
-
-
+    //2
     private void setOrderedAplhabeticedDummyData() {
 
         operatingSystems = new ArrayList<>();
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
 
     }
-
+    //3
     private void setOrderedLeaseRecenteDummyData() {
 
         operatingSystems = new ArrayList<>();
@@ -70,16 +87,15 @@ public class Documentos extends Fragment {
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
         operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
 
 
     }
-
-
+    //4
     private void setOrderedMostRecenteDummyData() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
@@ -89,12 +105,11 @@ public class Documentos extends Fragment {
 
 
     }
-
-
+    //5
     private void setOrderedDummyData() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
@@ -105,19 +120,7 @@ public class Documentos extends Fragment {
 
     }
 
-    private void setDummyData() {
 
-        operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 100));
-
-
-    }
 
     public void ShowPopup(View v) {
 
@@ -161,12 +164,17 @@ public class Documentos extends Fragment {
     }
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_documentos, container, false);
+
+        SharedPreferences settingsPreferences = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+        searched = settingsPreferences.getInt("DOCSEARCHSELECTED", 0);
 
         ImageView adicionar = view.findViewById(R.id.adicionar);
 
@@ -210,7 +218,35 @@ public class Documentos extends Fragment {
 
         gridView = view.findViewById(R.id.grid);
 
-        setDummyData();
+        switch (searched){
+            case 0:
+                setDummyData();
+                break;
+
+            case 1:
+                setOrderedDummyDataRuyCosta();
+                break;
+
+            case 2:
+                setOrderedAplhabeticedDummyData();
+                break;
+
+            case 3:
+                setOrderedLeaseRecenteDummyData();
+                break;
+
+            case 4:
+                setOrderedMostRecenteDummyData();
+                break;
+
+            case 5:
+                setOrderedDummyData();
+                break;
+
+                default:
+                    setDummyData();
+        }
+
 
         gridView.setHasFixedSize(true);
 
@@ -241,13 +277,13 @@ public class Documentos extends Fragment {
                         // do it
                         Log.d("GRIDVIEW", "Position" + position);
                         //TODO extender para mais ficheiros
-                        if (position == 0) {
+                      //  if (position == 0) {
                             android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                             ft.replace(R.id.content, new DocumentoWord());
                             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                             ft.addToBackStack(null);
                             ft.commit();
-                        }
+                       // }
                     }
                 });
 
@@ -292,6 +328,10 @@ public class Documentos extends Fragment {
             @Override
             public void onClick(View v) {
                 setOrderedDummyDataRuyCosta();
+                SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("DOCSEARCHSELECTED", 1);
+                editor.commit();
                 gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
                 gridView.setAdapter(gridViewAdapter);
                 myDialog.dismiss();
@@ -322,6 +362,10 @@ public class Documentos extends Fragment {
             @Override
             public void onClick(View v) {
                 setOrderedDummyData();
+                SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("DOCSEARCHSELECTED", 5);
+                editor.commit();
                 gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
                 gridView.setAdapter(gridViewAdapter);
             }
@@ -331,6 +375,10 @@ public class Documentos extends Fragment {
             @Override
             public void onClick(View v) {
                 setOrderedLeaseRecenteDummyData();
+                SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("DOCSEARCHSELECTED", 3);
+                editor.commit();
                 gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
                 gridView.setAdapter(gridViewAdapter);
             }
@@ -340,6 +388,10 @@ public class Documentos extends Fragment {
             @Override
             public void onClick(View v) {
                 setOrderedMostRecenteDummyData();
+                SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("DOCSEARCHSELECTED", 4);
+                editor.commit();
                 gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
                 gridView.setAdapter(gridViewAdapter);
             }
@@ -348,7 +400,12 @@ public class Documentos extends Fragment {
         Algabetico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 setOrderedAplhabeticedDummyData();
+                SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("DOCSEARCHSELECTED", 2);
+                editor.commit();
                 gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
                 gridView.setAdapter(gridViewAdapter);
             }
