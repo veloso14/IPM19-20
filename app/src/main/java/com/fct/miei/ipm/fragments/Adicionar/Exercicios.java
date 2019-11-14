@@ -20,10 +20,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 
+import java.io.File;
 import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -38,6 +41,8 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
     private Uri fileUri;
     private static final String[] paths = {"Público", "Privado"};
     private Spinner spinner;
+    private String fileName = "";
+    private TextView fihcieroSelected;
 
     public Exercicios() {
         // Required empty public constructor
@@ -51,6 +56,8 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_exercicio, container, false);
+
+        fihcieroSelected = view.findViewById(R.id.ficheiros);
 
         spinner = view.findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
@@ -100,8 +107,17 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
+                else if( fileName.isEmpty()){
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Escolha um anexo")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
                 else {
-                linker();
+                    Toast.makeText(getContext(),"Exercício cria com sucesso",Toast.LENGTH_LONG).show();
+                    linker();
                 }
 
             }
@@ -169,6 +185,9 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
                 if (resultCode == -1) {
                     fileUri = data.getData();
                     Log.d( "FILE" ,  fileUri.getPath());
+                    File f = new File(fileUri.getPath());
+                    fileName = f.getName();
+                    this.fihcieroSelected.setText(f.getName());
                 }
 
                 break;
