@@ -21,12 +21,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 
+import java.io.File;
 import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -37,6 +39,8 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
     private static final String[] paths = {"Público", "Privado"};
     private Spinner spinner;
     private boolean BackShowAdicionar = false;
+    private String fileName = "";
+    private TextView fihcieroSelected;
 
     public static final int PICKFILE_RESULT_CODE = 1;
 
@@ -55,6 +59,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_apontamento, container, false);
 
+        fihcieroSelected = view.findViewById(R.id.ficheiros);
 
         spinner = view.findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
@@ -129,6 +134,16 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
+                else if( fileName.isEmpty()){
+
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Por favor escolha um ficheiro")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                }
                 else if(tipo.getCheckedRadioButtonId() == -1){
                     new AlertDialog.Builder(getContext())
                             .setTitle("Erro")
@@ -156,6 +171,11 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
                 if (resultCode == -1) {
                     fileUri = data.getData();
                     Log.d( "FILE" ,  fileUri.getPath());
+                    File f = new File(fileUri.getPath());
+                    fileName = f.getName();
+                    this.fihcieroSelected.setText(f.getName());
+
+                    
                 }
 
                 break;
