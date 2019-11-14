@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -107,6 +108,19 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         calendar.shouldDrawIndicatorsBelowSelectedDays(true);
         calendar.setCurrentDayIndicatorStyle(2);
         calendar.setCurrentSelectedDayIndicatorStyle(2);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                        Log.d("Clicked" , "Cliou em " + position);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

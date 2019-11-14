@@ -12,16 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26291c1c-352d-4658-92d0-291610f2c79f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CriarEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CriarEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_duvida.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_duvida.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/Eventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/Eventos.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,23 +71,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
-              <folding>
-                <element signature="e#2080#2088#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Duvidas/CriarDuvidas.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/Eventos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="128" column="94" selection-start-line="128" selection-start-column="94" selection-end-line="128" selection-end-column="94" />
+            <state relative-caret-position="236">
+              <caret line="122" column="55" selection-start-line="122" selection-start-column="55" selection-end-line="122" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1923#2571#0" expanded="true" />
+                <element signature="e#2570#2571#0" expanded="true" />
+                <element signature="e#3943#3944#0" expanded="true" />
+                <element signature="e#3987#3988#0" expanded="true" />
+                <element signature="e#3764#4418#0" expanded="true" />
+                <element signature="e#4417#4418#0" expanded="true" />
+                <element signature="e#10411#10412#0" expanded="true" />
+                <element signature="e#10484#10485#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,7 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Date</find>
       <find>Json</find>
       <find>ShowPop</find>
       <find>increaseArray</find>
@@ -142,6 +132,7 @@
       <find>put</find>
       <find>Shared</find>
       <find>HOMES</find>
+      <find>recyclerView</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Github\IPM19-20\app\src\main\java\com\fct\miei\ipm\fragments\Home</dir>
@@ -166,7 +157,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Duvidas/Duvidas.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/Adicionar.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/ShowAdicionar.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/Eventos.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_show_adicionar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Partilhar/PartilharCom.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CriarEvento.java" />
@@ -175,10 +165,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_comentario.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_ver_aulas.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/Exercicios.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_duvida.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Duvidas/CriarDuvidas.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Home/Home.java" />
@@ -186,6 +174,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Duvidas/CriarDuvidas.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/Exercicios.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/Eventos.java" />
       </list>
     </option>
   </component>
@@ -284,6 +275,14 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="ipm" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="ipm" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
+              <item name="Adicionar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
@@ -453,9 +452,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21140939" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21140939" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -464,7 +464,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3286119" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.31586403" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.31586403" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.22804533" />
       <window_info anchor="bottom" id="Terminal" order="4" />
@@ -666,32 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="248" selection-start-line="248" selection-end-line="251" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_duvida.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="181" column="13" selection-start-line="181" selection-start-column="13" selection-end-line="181" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/Exercicios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="109" selection-start-line="109" selection-end-line="116" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
@@ -743,13 +717,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="346">
           <caret line="207" column="299" selection-start-line="207" selection-start-column="299" selection-end-line="207" selection-end-column="299" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/Eventos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -807,8 +774,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+        <state relative-caret-position="374">
+          <caret line="72" selection-start-line="72" selection-end-line="79" selection-end-column="45" />
           <folding>
             <element signature="e#2080#2088#0" expanded="true" />
           </folding>
@@ -817,8 +784,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Duvidas/CriarDuvidas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="128" column="94" selection-start-line="128" selection-start-column="94" selection-end-line="128" selection-end-column="94" />
+        <state relative-caret-position="323">
+          <caret line="67" selection-start-line="67" selection-end-line="74" selection-end-column="45" />
+          <folding>
+            <element signature="e#2347#2355#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/Exercicios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2423#2431#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="118" column="8" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_duvida.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="3077">
+          <caret line="181" column="13" selection-start-line="181" selection-start-column="13" selection-end-line="181" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/Eventos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="122" column="55" selection-start-line="122" selection-start-column="55" selection-end-line="122" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1923#2571#0" expanded="true" />
+            <element signature="e#2570#2571#0" expanded="true" />
+            <element signature="e#3943#3944#0" expanded="true" />
+            <element signature="e#3987#3988#0" expanded="true" />
+            <element signature="e#3764#4418#0" expanded="true" />
+            <element signature="e#4417#4418#0" expanded="true" />
+            <element signature="e#10411#10412#0" expanded="true" />
+            <element signature="e#10484#10485#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
