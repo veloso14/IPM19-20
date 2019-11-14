@@ -178,6 +178,11 @@ public class CriarEvento extends Fragment {
 
                     playlists[playlists.length - 1] = "{\n" +
                             "    \"time\": \"" + date + "\",\n" +
+                            "    \"numPessoas\": \"" + numPessoas.getText().toString() + "\",\n" +
+                            "    \"local\": \"" + local.getText().toString() + "\",\n" +
+                            "    \"fim\": \"" + fim.getText().toString() + "\",\n" +
+                            "    \"inicio\": \"" + inicio.getText().toString() + "\",\n" +
+                            "    \"allday\": \"" + allDay + "\",\n" +
                             "    \"color\": \"" + colorCode + "\",\n" +
                             "    \"name\": \"" + titulo.getText().toString() + "\"\n" +
                             "  },\n";

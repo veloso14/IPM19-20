@@ -53,6 +53,7 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
     private Dialog myDialog;
     private ArrayList<Event> itemsData = new ArrayList<>();
     private boolean sc = false;
+    private String eventdatabase = "";
     private SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
     private RecyclerView.OnScrollListener on_scroll = new RecyclerView.OnScrollListener() {
 
@@ -114,6 +115,14 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         Log.d("Clicked" , "Cliou em " + position);
+                        try {
+                            JSONArray evento = new JSONArray(eventdatabase);
+                            Log.d("Clicked" , evento.get(position).toString());
+                            ShowPopupEventoDetails( view.findViewById(android.R.id.content) , evento.getJSONObject(position));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -203,22 +212,35 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         for( int i = 0 ; i < playlists.length ; i++){
             eventosCriados = eventosCriados + " " + playlists[i] ;
         }
-        String json = "[\n" +
+        this.eventdatabase = "[\n" +
                 "  {\n" +
                 "    \"time\": \"21/11/2019\",\n" +
                 "    \"color\": \"#08A5CB\",\n" +
-                "    \"name\": \"Evento Sessão de estudo\"\n" +
+                "    \"name\": \"Evento Sessão de estudo\",\n" +
+                "    \"numPessoas\": \"" + "5" + "\",\n" +
+                "    \"local\": \"" + "Biblioteca FCT-UNL" + "\",\n" +
+                "    \"fim\": \"" + "16:30" + "\",\n" +
+                "    \"inicio\": \"" + "14:00" + "\",\n" +
+                "    \"allday\": false\n" +
                 "  }\n" +
                 eventosCriados +
                 "  {\n" +
                 "    \"time\": \"19/08/2019\",\n" +
                 "    \"color\": \"#08A5CB\",\n" +
-                "    \"name\": \"Evento Sessão de estudo\"\n" +
+                "    \"name\": \"Evento Sessão de estudo\",\n" +
+                "    \"numPessoas\": \"" + "5" + "\",\n" +
+                "    \"local\": \"" + "NEEC-FCT" + "\",\n" +
+                "    \"fim\": \"" + "22:30" + "\",\n" +
+                "    \"inicio\": \"" + "18:00" + "\",\n" +
+                "    \"allday\": false\n" +
                 "  },\n" +
                 "  {\n" +
                 "    \"time\": \"26/08/2019\",\n" +
                 "    \"color\": \"#095280\",\n" +
-                "    \"name\": \"Evento Sessão de estudo\"\n" +
+                "    \"name\": \"Evento Sessão de estudo\",\n" +
+                "    \"numPessoas\": \"" + "5" + "\",\n" +
+                "    \"local\": \"" + "Biblioteca FCT-UNL" + "\",\n" +
+                "    \"allday\": true\n" +
                 "  }\n" +
                 "]";
 
@@ -230,7 +252,7 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         Log.d("Eventos", "Recv");
         //Log.d("Response is: ", response);
         try {
-            JSONArray array = new JSONArray(json);
+            JSONArray array = new JSONArray( this.eventdatabase);
             Log.d("length", "" + array.length());
             itemsData.clear();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -268,6 +290,55 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         Log.d("Eventos", "Q");
 
 
+    }
+
+    public void ShowPopupEventoDetails(View v ,JSONObject data) {
+
+        myDialog.setContentView(R.layout.popup_show_evento);
+        TextView txtclose = myDialog.findViewById(R.id.txtclose);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+
+        TextView titulo = myDialog.findViewById(R.id.titulo);
+        TextView numpessoas = myDialog.findViewById(R.id.numpessoas);
+        TextView horas = myDialog.findViewById(R.id.horas);
+        TextView local = myDialog.findViewById(R.id.local);
+        //Data
+        try {
+            if(data.getBoolean("allday")){
+                horas.setText("O evento decorre o dia inteiro");
+            }
+            else{
+                horas.setText("Horas " + data.getString("inicio") + " às " +  data.getString("fim"));
+            }
+        } catch (JSONException e) {
+            horas.setText("Não Horas não estão defenido");
+        }
+        //Local
+        try {
+            local.setText(data.getString("local"));
+        } catch (JSONException e) {
+            local.setText("Não local não estão defenido");
+        }
+        //Numero pessoas
+        try {
+            numpessoas.setText(data.getString("numPessoas"));
+        } catch (JSONException e) {
+            numpessoas.setText("Não número de pessoas não defenido");
+        }
+        //Titulo
+        try {
+            titulo.setText(data.getString("name"));
+        } catch (JSONException e) {
+            titulo.setText("Não defenido");
+        }
+
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 
     public void ShowPopup(View v) {
