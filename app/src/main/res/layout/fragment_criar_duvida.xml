@@ -114,8 +114,10 @@
         android:text="Publicar"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/fileChooser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fileChooser" />
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar3"
+        app:layout_constraintVertical_bias="0.65999997" />
 
     <EditText
         android:id="@+id/assunto"
@@ -176,6 +178,22 @@
         app:layout_constraintTop_toTopOf="@+id/login_entrar"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/backbutton" />
+
+    <TextView
+        android:id="@+id/ficheiros"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fileChooser"
+        app:layout_constraintEnd_toStartOf="@+id/publicar"
+        app:layout_constraintStart_toEndOf="@+id/fileChooser"
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar3" />
 
 </android.support.constraint.ConstraintLayout>
 

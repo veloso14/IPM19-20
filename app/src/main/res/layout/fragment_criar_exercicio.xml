@@ -239,13 +239,14 @@
 
     <TextView
 
-        android:id="@+id/ficheiros"
+
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:id="@+id/ficheiros"
         android:text=""
         android:textColor="#000"
         android:textSize="16sp"

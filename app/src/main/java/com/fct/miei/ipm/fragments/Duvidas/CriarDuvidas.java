@@ -21,11 +21,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
 
+import java.io.File;
 import java.util.List;
+import java.util.Timer;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -35,7 +38,8 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
     private static final String[] paths = {"Público", "Privado"};
     private Spinner spinner;
     public static final int PICKFILE_RESULT_CODE = 1;
-
+    private String fileName = "";
+    private TextView fihcieroSelected;
     private Uri fileUri;
 
     public CriarDuvidas() {
@@ -50,6 +54,7 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_duvida, container, false);
 
+        fihcieroSelected = view.findViewById(R.id.ficheiros);
         spinner = view.findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, paths);
@@ -112,7 +117,16 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
+                else if( fileName.isEmpty()){
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Escolha um anexo")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
                 else {
+                    Toast.makeText(getContext(),"Dúvida publicada", Toast.LENGTH_LONG).show();
                     android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.content, new Duvidas());
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -146,6 +160,9 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                 if (resultCode == -1) {
                     fileUri = data.getData();
                     Log.d( "FILE" ,  fileUri.getPath());
+                    File f = new File(fileUri.getPath());
+                    fileName = f.getName();
+                    this.fihcieroSelected.setText(f.getName());
                 }
 
                 break;
