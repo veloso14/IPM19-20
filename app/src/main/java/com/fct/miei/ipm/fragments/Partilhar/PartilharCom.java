@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.fragments.Adicionar.Exercicios;
+import com.fct.miei.ipm.fragments.Documentos.CriarApontamento;
 import com.fct.miei.ipm.fragments.Eventos.CriarEvento;
 
 import java.util.ArrayList;
@@ -62,6 +64,9 @@ public class PartilharCom extends Fragment {
         mDataListContactos.add(data);
     }
 
+    private Boolean BackCriarApontamento;
+    private Boolean BackCriarExercicio;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +74,15 @@ public class PartilharCom extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_partilharcom, container, false);
+
+        SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
+        BackCriarApontamento = settings.getBoolean("BackCriarApontamento", false);
+        BackCriarExercicio = settings.getBoolean("BackCriarExercicio", false);
+        //Delete
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("BackCriarApontamento", false);
+        editor.putBoolean("BackCriarExercicio", false);
+        editor.commit();
 
         prepareContactos();
         prepareList();
@@ -123,11 +137,29 @@ public class PartilharCom extends Fragment {
                 editor.putInt("selector", 2);
                 editor.commit();
                 //Go to fragment
-                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new CriarEvento());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.addToBackStack(null);
-                ft.commit();
+
+                if(BackCriarApontamento){
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new CriarApontamento());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+
+                }
+                else if(BackCriarExercicio){
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new Exercicios());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
+                else {
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new CriarEvento());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
 
             }
         });

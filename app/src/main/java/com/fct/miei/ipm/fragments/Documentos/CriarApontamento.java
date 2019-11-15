@@ -28,16 +28,19 @@ import android.widget.Toast;
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
+import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
 import java.io.File;
 import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class CriarApontamento extends Fragment implements  AdapterView.OnItemSelectedListener , EasyPermissions.PermissionCallbacks {
 
 
-    private static final String[] paths = {"Público", "Privado"};
+
     private static final String[] cadeiras = { "Interação Pessoa-Máquina",
             "Sistemas de Computação em Cloud",
             "Arquitetura e Protocolos de Redes de Computadores",
@@ -50,6 +53,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
              "Interpretação e Compilação de Linguagens"};
     private Spinner spinner;
     private boolean BackShowAdicionar = false;
+    private int inited = 0;
     private String fileName = "";
     private TextView fihcieroSelected;
 
@@ -70,6 +74,58 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_apontamento, container, false);
 
+        //Partilhar com
+        //get the spinner from the xml.
+        Spinner dropdown = view.findViewById(R.id.spinner1);
+        //create a list of items for the spinner.
+        String[] items = new String[]{"Público", "Privado", "Partilhar com"};
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        //set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
+
+        dropdown.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                        Log.d("Clicked", "Clicou em " + pos);
+
+                        if (inited >= 1) {
+                            Object item = parent.getItemAtPosition(pos);
+                            System.out.println(item.toString());     //prints the text in spinner item.
+                            //Clicou no partilhado com
+                            if (pos == 2) {
+
+                                //Salvar as variaveis
+                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("CriarEventosInput", MODE_PRIVATE).edit();
+                              /*  editor.putString("titulo", titulo.getText().toString());
+                                editor.putString("local", local.getText().toString());
+                                editor.putString("inicio", inicio.getText().toString());
+                                editor.putString("fim", fim.getText().toString());
+                                editor.putString("npessoas", numPessoas.getText().toString());
+                                editor.apply();*/
+                                //Ir para o fragmento
+                                SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
+                                SharedPreferences.Editor editorr = settings.edit();
+                                editorr.putBoolean("BackCriarApontamento", true);
+                                editorr.commit();
+                                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                ft.replace(R.id.content, new PartilharCom());
+                                ft.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                                ft.addToBackStack(null);
+                                ft.commit();
+                            }
+                        }
+                        inited++;
+
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+
         //AutoComplete
         ArrayAdapter<String> adapterSearch = new ArrayAdapter<String>(getContext(),android.R.layout.select_dialog_item, cadeiras);
         //Find TextView control
@@ -81,13 +137,6 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
 
         fihcieroSelected = view.findViewById(R.id.ficheiros);
 
-        spinner = view.findViewById(R.id.spinner1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, paths);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
 
         //BackButton
         SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
