@@ -88,21 +88,6 @@
         app:layout_constraintStart_toStartOf="@+id/unidade"
         app:layout_constraintTop_toBottomOf="@+id/unidade" />
 
-    <TextView
-        android:id="@+id/inicioTexto"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text="Turno:"
-        android:textAlignment="center"
-        android:textColor="@color/themecolor"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/turno"
-        app:layout_constraintStart_toStartOf="@+id/login_entrar5"
-        app:layout_constraintTop_toTopOf="@+id/turno" />
-
-
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/unidade"
@@ -166,12 +151,11 @@
 
     <EditText
         android:id="@+id/turno"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_border_edittext"
-        android:hint="                   "
+        android:hint="Turno"
         android:imeActionId="6"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
@@ -179,7 +163,8 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        app:layout_constraintStart_toEndOf="@+id/inicioTexto"
+        app:layout_constraintEnd_toEndOf="@+id/assunto"
+        app:layout_constraintStart_toStartOf="@+id/assunto"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <ImageView
@@ -192,7 +177,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/login_entrar3"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar3"
-        app:srcCompat="@drawable/exercicio" />
+        app:srcCompat="@drawable/fileadd" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
