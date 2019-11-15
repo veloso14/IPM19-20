@@ -239,7 +239,7 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
       //  ((RadioButton)((RadioGroup)view.findViewById(R.id.radioGroup)).getChildAt(Restore.getInt("radioGroup",0)).
 
         //Limpa a variavel
-        SharedPreferences.Editor selector = settingss.edit();
+        SharedPreferences.Editor selector = Restore.edit();
         selector.putInt("selector", 0);
         selector.remove("unidade");
         selector.remove("turno");
