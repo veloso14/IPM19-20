@@ -116,11 +116,34 @@ public class PartilharCom extends Fragment {
             @Override
             public void onClick(View v) {
                 //Save settings
-                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new CriarEvento());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.addToBackStack(null);
-                ft.commit();
+                SharedPreferences settings = getContext().getSharedPreferences("selector", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("selector", 2);
+                editor.commit();
+                //Go to fragment
+
+                if(BackCriarApontamento){
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new CriarApontamento());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+
+                }
+                else if(BackCriarExercicio){
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new Exercicios());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
+                else {
+                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.content, new CriarEvento());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
             }
         });
 

@@ -20,6 +20,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
     private Spinner spinner;
     private String fileName = "";
     private TextView fihcieroSelected;
+    private View vista;
 
     public Exercicios() {
         // Required empty public constructor
@@ -73,6 +75,7 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_exercicio, container, false);
 
+        this.vista = view;
         //Partilhar com
         //get the spinner from the xml.
         Spinner dropdown = view.findViewById(R.id.spinner1);
@@ -97,12 +100,12 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
                             if (pos == 2) {
 
                                 //Salvar as variaveis
-                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("CriarEventosInput", MODE_PRIVATE).edit();
-                               /* editor.putString("titulo", view.findViewById(R.id.local).to);
-                                editor.putString("local", local.getText().toString());
-                                editor.putString("inicio", inicio.getText().toString());
-                                editor.putString("fim", fim.getText().toString());
-                                editor.putString("npessoas", numPessoas.getText().toString());*/
+                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Exercicios", MODE_PRIVATE).edit();
+                                editor.putString("unidade", ((TextInputLayout)vista.findViewById(R.id.unidade)).getEditText().getText().toString() );
+                                editor.putString("turno", ((EditText)vista.findViewById(R.id.turno)).getText().toString()  );
+                                editor.putString("assunto", ((EditText)vista.findViewById(R.id.assunto)).getText().toString()  );
+                                editor.putString("ficheiros", ((TextView)vista.findViewById(R.id.ficheiros)).getText().toString()  );
+                                editor.putInt("radioGroup", ((RadioGroup)vista.findViewById(R.id.radioGroup)).getCheckedRadioButtonId()  );
                                 editor.apply();
                                 SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
                                 SharedPreferences.Editor editorr = settings.edit();
@@ -227,9 +230,22 @@ public class Exercicios extends Fragment implements EasyPermissions.PermissionCa
         int selected = settingss.getInt("selector", 0);
         dropdown.setSelection(selected);
 
+        //Restore
+        SharedPreferences Restore = getActivity().getSharedPreferences("Exercicios", MODE_PRIVATE);
+        ((AutoCompleteTextView)view.findViewById(R.id.local)).setText(Restore.getString("unidade",""));
+        ((EditText)view.findViewById(R.id.turno)).setText(Restore.getString("turno",""));
+        ((EditText)view.findViewById(R.id.assunto)).setText(Restore.getString("assunto",""));
+        ((TextView)view.findViewById(R.id.ficheiros)).setText(Restore.getString("ficheiros",""));
+      //  ((RadioButton)((RadioGroup)view.findViewById(R.id.radioGroup)).getChildAt(Restore.getInt("radioGroup",0)).
+
         //Limpa a variavel
         SharedPreferences.Editor selector = settingss.edit();
         selector.putInt("selector", 0);
+        selector.remove("unidade");
+        selector.remove("turno");
+        selector.remove("assunto");
+        selector.remove("ficheiros");
+        selector.remove("radioGroup");
         selector.commit();
 
         return view;

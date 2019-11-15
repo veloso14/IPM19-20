@@ -38,12 +38,11 @@ public class ImageAdapter extends BaseAdapter {
 
 
     public String[] coresCadeiras = {
-            "#F99E2C",
-            "#23B04C",
-            "#B71414",
-            "#3A64B0",
-            "#D6D412",
-            "#843494"
+            "#90caf9",
+            "#5d99c6",
+            "#5d99c6",
+            "#90caf9",
+
 
     };
 
