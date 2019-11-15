@@ -52,8 +52,9 @@
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="135dp"
+        android:layout_width="0dp"
         android:layout_height="41dp"
+        android:layout_marginStart="16dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
         android:textColor="@color/themecolor"

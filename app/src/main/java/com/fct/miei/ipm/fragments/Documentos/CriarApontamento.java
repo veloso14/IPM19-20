@@ -229,6 +229,16 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
             }
         });
 
+        //Check Selector
+        SharedPreferences settingss = getActivity().getSharedPreferences("selector", 0);
+        int selected = settingss.getInt("selector", 0);
+        dropdown.setSelection(selected);
+
+        //Limpa a variavel
+        SharedPreferences.Editor selector = settingss.edit();
+        selector.putInt("selector", 0);
+        selector.commit();
+
         return view;
     }
 
