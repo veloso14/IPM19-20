@@ -67,7 +67,7 @@
         app:layout_constraintBottom_toTopOf="@+id/adicionar"
         app:layout_constraintEnd_toEndOf="@+id/adicionar"
         app:layout_constraintStart_toStartOf="@+id/adicionar"
-        app:srcCompat="@drawable/confused" />
+        app:srcCompat="@drawable/confused2" />
 
     <ImageView
         android:id="@+id/settings"
