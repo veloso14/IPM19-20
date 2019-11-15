@@ -286,7 +286,7 @@ public class Documentos extends Fragment {
 
 
         //listeners dos settings
-        ImageView filtrarpor = view.findViewById(R.id.filtrarpor);
+        ImageView filtrarpor = view.findViewById(R.id.settings);
 
         filtrarpor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,7 +295,7 @@ public class Documentos extends Fragment {
             }
         });
 
-        ImageView settings = view.findViewById(R.id.settings);
+        ImageView settings = view.findViewById(R.id.filtrarpor);
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
