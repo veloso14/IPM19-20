@@ -1,5 +1,9 @@
 package com.fct.miei.ipm.fragments.Partilhar;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +15,26 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyViewHolder> {
     private List<Data> mDataList;
     private int totalSelected = 0;
-    private ArrayList<String> selecionados = new ArrayList<String>();
+    private ArrayList<String> selecionados ;
+    private Context context;
 
-    public ListViewAdaptor(List<Data> dataList) {
+    public ListViewAdaptor(List<Data> dataList , Context  context) {
         this.mDataList = dataList;
+        this.context = context;
+        this.selecionados = getArrayList();
+        if(this.selecionados == null)
+            this.selecionados = new ArrayList<String>();
+
     }
 
     @Override
@@ -32,9 +45,6 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
         return new MyViewHolder(itemView);
     }
 
-    public int SelectNumber(){
-        return totalSelected;
-    }
 
     public ArrayList<String> getContactos(){
         return selecionados;
@@ -52,15 +62,20 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
                 if(isChecked) {
                     totalSelected++;
                     selecionados.add(data.getName());
+                    saveArrayList(selecionados );
 
                 }
                 else{
                         selecionados.remove(position);
                         totalSelected--;
+                        saveArrayList(selecionados );
                     }
             }
         }
         );
+        if(selecionados.contains(data.getName())){
+            holder.radioButton.setChecked (true);
+        }
     }
 
     @Override
@@ -80,4 +95,22 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
             imageView = view.findViewById(R.id.image);
         }
     }
+
+    public void saveArrayList(ArrayList<String> list){
+        SharedPreferences prefs = this.context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString("pref", json);
+        editor.apply();     // This line is IMPORTANT !!!
+    }
+
+    public ArrayList<String> getArrayList(){
+        SharedPreferences prefs = this.context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("pref", null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
+
 }

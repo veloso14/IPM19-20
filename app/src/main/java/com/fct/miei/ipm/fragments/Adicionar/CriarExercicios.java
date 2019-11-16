@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
@@ -57,7 +58,7 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
             "Sistemas de Computação Móvel e Ubíqua",
             "Inteligência Artificial" ,
             "Interpretação e Compilação de Linguagens"};
-    private Spinner spinner;
+    private NDSpinner spinner;
     private String fileName = "";
     private TextView fihcieroSelected;
     private View vista;
@@ -78,7 +79,7 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
         this.vista = view;
         //Partilhar com
         //get the spinner from the xml.
-        Spinner dropdown = view.findViewById(R.id.spinner1);
+        NDSpinner dropdown = view.findViewById(R.id.spinner1);
         //create a list of items for the spinner.
         String[] items = new String[]{"Público", "Privado", "Partilhar com"};
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
@@ -190,6 +191,9 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
                             .show();
                 }
                 else {
+                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
+                    prefs.remove("pref");
+                    prefs.commit();
                     Toast.makeText(getContext(),"Exercício cria com sucesso",Toast.LENGTH_LONG).show();
                     linker();
                 }
@@ -229,6 +233,7 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
         SharedPreferences settingss = getActivity().getSharedPreferences("selector", 0);
         int selected = settingss.getInt("selector", 0);
         dropdown.setSelection(selected);
+        settingss.edit().remove("selector").commit();
 
         //Restore
         SharedPreferences Restore = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE);

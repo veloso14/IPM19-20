@@ -2,6 +2,7 @@ package com.fct.miei.ipm.fragments.Documentos;
 
 import android.Manifest;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -26,8 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.util.List;
@@ -77,7 +80,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
 
         //Partilhar com
         //get the spinner from the xml.
-        Spinner dropdown = view.findViewById(R.id.spinner1);
+        NDSpinner dropdown = view.findViewById(R.id.spinner1);
         //create a list of items for the spinner.
         String[] items = new String[]{"Público", "Privado", "Partilhar com"};
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
@@ -225,6 +228,9 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
                             .show();
                 }
                 else {
+                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
+                    prefs.remove("pref");
+                    prefs.commit();
                     Toast.makeText(getContext(),"Publicado com Sucesso" , Toast.LENGTH_LONG).show();
                     linker();
                 }

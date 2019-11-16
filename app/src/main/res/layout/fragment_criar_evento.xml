@@ -68,7 +68,7 @@
             app:layout_constraintStart_toStartOf="@+id/local"
             app:layout_constraintTop_toBottomOf="@+id/local" />
 
-        <Spinner
+        <com.fct.miei.ipm.NDSpinner
             android:id="@+id/spinner1"
             android:layout_width="0dp"
             android:layout_height="41dp"

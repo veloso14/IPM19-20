@@ -2,6 +2,7 @@ package com.fct.miei.ipm.fragments.Partilhar;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -18,7 +19,10 @@ import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Documentos.CriarApontamento;
 import com.fct.miei.ipm.fragments.Eventos.CriarEvento;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,31 +42,31 @@ public class PartilharCom extends Fragment {
     }
 
     public void prepareList() {
-        Data data = new Data("João Veloso", R.drawable.perfil_joao);
+
+
+        Data data = new Data("Francisco Matos", R.drawable.pessoa6);
         mDataList.add(data);
         data = new Data("Carolina, Marco e Pedro", R.drawable.group);
         mDataList.add(data);
-        data = new Data("Miguel Calado", R.drawable.pessoa1);
+        data = new Data("Miguel Nunes", R.drawable.pessoa7);
         mDataList.add(data);
-        data = new Data("Daniel Dias", R.drawable.pessoa2);
-        mDataList.add(data);
-        data = new Data("Diogo Pereira", R.drawable.pessoa3);
-        mDataList.add(data);
-        data = new Data("Luís Grilo", R.drawable.pessoa4);
-        mDataList.add(data);
+
     }
 
     public void prepareContactos() {
         Data data = new Data("João Veloso", R.drawable.perfil_joao);
         mDataListContactos.add(data);
-        data = new Data("Leandro Filipe", R.drawable.pessoa5);
-        mDataListContactos.add(data);
-        data = new Data("Francisco Matos", R.drawable.pessoa6);
-        mDataListContactos.add(data);
-        data = new Data("João Miguel", R.drawable.pessoa7);
-        mDataListContactos.add(data);
         data = new Data("Miguel Raposo", R.drawable.pessoa8);
         mDataListContactos.add(data);
+        data = new Data("Miguel Calado", R.drawable.pessoa1);
+        mDataListContactos.add(data);
+        data = new Data("Daniel Dias", R.drawable.pessoa2);
+        mDataListContactos.add(data);
+        data = new Data("Diogo Pereira", R.drawable.pessoa3);
+        mDataListContactos.add(data);
+        data = new Data("Luís Grilo", R.drawable.pessoa4);
+        mDataListContactos.add(data);
+
     }
 
     private Boolean BackCriarApontamento;
@@ -89,7 +93,7 @@ public class PartilharCom extends Fragment {
         prepareList();
         mRecyclerView = view.findViewById(R.id.recycler_view);
 
-        mAdapter = new ListViewAdaptor(mDataList);
+        mAdapter = new ListViewAdaptor(mDataList , getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -100,7 +104,7 @@ public class PartilharCom extends Fragment {
         //Contactos
         mRecyclerViewContactos = view.findViewById(R.id.contactos);
 
-        mAdapterContactos = new ListViewAdaptor(mDataListContactos);
+        mAdapterContactos = new ListViewAdaptor(mDataListContactos , getContext());
         RecyclerView.LayoutManager mLayoutManagerContactos = new LinearLayoutManager(getContext());
         mRecyclerViewContactos.setLayoutManager(mLayoutManagerContactos);
         mRecyclerViewContactos.setItemAnimator(new DefaultItemAnimator());
@@ -194,5 +198,6 @@ public class PartilharCom extends Fragment {
 
         return view;
     }
+
 
 }

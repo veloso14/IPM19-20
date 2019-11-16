@@ -22,6 +22,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
 import java.util.Calendar;
@@ -206,7 +207,7 @@ public class CriarEvento extends Fragment {
 
 
         //get the spinner from the xml.
-        Spinner dropdown = view.findViewById(R.id.spinner1);
+        NDSpinner dropdown = view.findViewById(R.id.spinner1);
         //create a list of items for the spinner.
         String[] items = new String[]{"Público", "Privado", "Partilhar com"};
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.

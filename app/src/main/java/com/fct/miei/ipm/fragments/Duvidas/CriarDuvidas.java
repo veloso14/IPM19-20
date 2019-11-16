@@ -5,6 +5,7 @@ import android.Manifest;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
+import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
 
 import java.io.File;
@@ -32,6 +34,8 @@ import java.util.List;
 import java.util.Timer;
 
 import pub.devrel.easypermissions.EasyPermissions;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelectedListener, EasyPermissions.PermissionCallbacks {
 
@@ -47,7 +51,7 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
             "Sistemas de Computação Móvel e Ubíqua",
             "Inteligência Artificial" ,
             "Interpretação e Compilação de Linguagens"};
-    private Spinner spinner;
+    private NDSpinner spinner;
     public static final int PICKFILE_RESULT_CODE = 1;
     private String fileName = "";
     private TextView fihcieroSelected;
@@ -82,6 +86,8 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+
 
         ImageView filemanager = view.findViewById(R.id.fileChooser);
 
@@ -146,6 +152,9 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                             .show();
                 }
                 else {
+                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
+                    prefs.remove("pref");
+                    prefs.commit();
                     Toast.makeText(getContext(),"Dúvida publicada", Toast.LENGTH_LONG).show();
                     android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.content, new Duvidas());
