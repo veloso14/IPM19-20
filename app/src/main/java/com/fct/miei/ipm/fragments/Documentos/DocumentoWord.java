@@ -45,12 +45,6 @@ public class DocumentoWord extends Fragment {
         myDialog = new Dialog(getContext());
         WebView webView = view.findViewById(R.id.webview);
 
-        if (Build.VERSION.SDK_INT >= 19) {
-            webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        } else {
-            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        }
-
         //Duvidas go to
         Button avaliar = view.findViewById(R.id.publicar);
 
@@ -79,7 +73,7 @@ public class DocumentoWord extends Fragment {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
-        webView.loadUrl("https://drive.google.com/file/d/1l1NsKXdk6bM6h2RIkzIHgRSytbKVUpU1/view?usp=sharing");
+        webView.loadUrl("https://drive.google.com/file/d/1l1NsKXdk6bM6h2RIkzIHgRSytbKVUpU1/view");
 
 
         return view;

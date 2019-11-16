@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
-        public RadioButton radioButton;
+        public CheckBox radioButton;
         public ImageView imageView;
 
         public MyViewHolder(View view) {
