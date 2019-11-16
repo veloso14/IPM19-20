@@ -3,6 +3,7 @@ package com.fct.miei.ipm.fragments.Documentos;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -19,6 +20,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.brutal.ninjas.hackaton19.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class DocumentoWord extends Fragment {
@@ -87,6 +90,10 @@ public class DocumentoWord extends Fragment {
         myDialog.setContentView(R.layout.popup_avaliar_documento);
         //Estrelas
         RatingBar rating = myDialog.findViewById(R.id.ratingBar);
+        SharedPreferences prefs = getContext().getSharedPreferences("RatingWord", MODE_PRIVATE);
+        float saved = prefs.getFloat("RatingWord", 0);
+        if(saved > 0)
+            rating.setRating(saved);
 
         TextView txtclose = myDialog.findViewById(R.id.txtclose);
         txtclose.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +108,9 @@ public class DocumentoWord extends Fragment {
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("RatingWord", MODE_PRIVATE).edit();
+                editor.putFloat("RatingWord", rating.getRating());
+                editor.apply();
                 myDialog.dismiss();
             }
         });
