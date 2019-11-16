@@ -69,7 +69,7 @@ public class CustomAdapter extends ArrayAdapter<ComentarioModel> implements View
         lastPosition = position;
 
         viewHolder.comentario.setText(dataModel.getTexto());
-        viewHolder.imagemPerfil.setBackgroundResource(dataModel.getIdImage());
+        viewHolder.imagemPerfil.setImageResource(dataModel.getIdImage());
         viewHolder.comentario.setOnClickListener(this);
         viewHolder.comentario.setTag(position);
         // Return the completed view to render on screen
