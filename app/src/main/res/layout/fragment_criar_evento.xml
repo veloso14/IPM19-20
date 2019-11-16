@@ -43,7 +43,7 @@
             android:layout_height="41dp"
             android:layout_marginTop="24dp"
             android:gravity="center"
-            android:text="Quem pode ir ?"
+            android:text="Quem pode ir?"
             android:textAlignment="center"
             android:textColor="@color/themecolor"
             android:textSize="18sp"

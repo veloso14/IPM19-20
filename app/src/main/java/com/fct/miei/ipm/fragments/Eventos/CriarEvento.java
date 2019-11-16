@@ -148,13 +148,13 @@ public class CriarEvento extends Fragment {
                 //Save
 
                 if(titulo.getText().toString().isEmpty()){
-                    Toast.makeText(getContext(),"O título não pode estár vazio" ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"O título não pode estar vazio" ,Toast.LENGTH_LONG).show();
                 }
                 else if(local.getText().toString().isEmpty()){
-                    Toast.makeText(getContext(),"O local não pode estár vazio" ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"O local não pode estar vazio" ,Toast.LENGTH_LONG).show();
                 }
                 else if(numPessoas.getText().toString().isEmpty()){
-                    Toast.makeText(getContext(),"O número de pessoas não pode estár vazio" ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"O número de pessoas não pode estar vazio" ,Toast.LENGTH_LONG).show();
                 }
                 else if( Integer.valueOf( numPessoas.getText().toString()) < 1){
                     Toast.makeText(getContext(),"O número de pessoas é invalido" ,Toast.LENGTH_LONG).show();
@@ -162,7 +162,7 @@ public class CriarEvento extends Fragment {
                 else if( !allDay && (  !inicio.getText().toString().contains(":") && !fim.getText().toString().contains(":"))){
                     Log.d("ALLDAY" ,  inicio.getText().toString());
                     Log.d("ALLDAY" ,  fim.getText().toString());
-                    Toast.makeText(getContext(),"Indique a duracção" ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Indique a duração" ,Toast.LENGTH_LONG).show();
                 }
                 else{
                     SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
