@@ -65,10 +65,10 @@ public class Documentos extends Fragment {
     private void setOrderedAplhabeticedDummyData() {
 
         operatingSystems = new ArrayList<>();
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
         operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
