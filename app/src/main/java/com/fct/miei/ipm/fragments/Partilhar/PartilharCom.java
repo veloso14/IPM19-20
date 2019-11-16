@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
@@ -153,35 +154,38 @@ public class PartilharCom extends Fragment {
         concluido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Save settings
 
-                SharedPreferences settings = getContext().getSharedPreferences("selector", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putInt("selector", 2);
-                editor.commit();
-                //Go to fragment
-
-                if(BackCriarApontamento){
-                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new CriarApontamento());
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.addToBackStack(null);
-                    ft.commit();
-
+                if(mAdapter.getContactos().size() == 0 && mAdapterContactos.getContactos().size() == 0){
+                    Toast.makeText(getContext(),"Selecione pelo menos um contacto" , Toast.LENGTH_LONG).show();
                 }
-                else if(BackCriarExercicio){
-                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new CriarExercicios());
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.addToBackStack(null);
-                    ft.commit();
-                }
-                else {
-                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new CriarEvento());
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.addToBackStack(null);
-                    ft.commit();
+                else{
+                    //Save settings
+                    SharedPreferences settings = getContext().getSharedPreferences("selector", 0);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putInt("selector", 2);
+                    editor.commit();
+                    //Go to fragment
+
+                    if (BackCriarApontamento) {
+                        android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content, new CriarApontamento());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.addToBackStack(null);
+                        ft.commit();
+
+                    } else if (BackCriarExercicio) {
+                        android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content, new CriarExercicios());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                    } else {
+                        android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content, new CriarEvento());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                    }
                 }
 
             }
