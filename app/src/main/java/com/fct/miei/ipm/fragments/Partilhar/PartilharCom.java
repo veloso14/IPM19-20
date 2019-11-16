@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.fragments.Adicionar.Exercicios;
+import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Documentos.CriarApontamento;
 import com.fct.miei.ipm.fragments.Eventos.CriarEvento;
 
@@ -132,7 +132,7 @@ public class PartilharCom extends Fragment {
                 }
                 else if(BackCriarExercicio){
                     android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new Exercicios());
+                    ft.replace(R.id.content, new CriarExercicios());
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                     ft.addToBackStack(null);
                     ft.commit();
@@ -171,7 +171,7 @@ public class PartilharCom extends Fragment {
                 }
                 else if(BackCriarExercicio){
                     android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new Exercicios());
+                    ft.replace(R.id.content, new CriarExercicios());
                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                     ft.addToBackStack(null);
                     ft.commit();

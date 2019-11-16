@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/unidade" />
 
     <RadioGroup
-        android:id="@+id/aula"
+        android:id="@+id/radiogroupo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation='horizontal'
@@ -215,7 +215,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@+id/professor"
         app:layout_constraintStart_toStartOf="@+id/professor"
-        app:layout_constraintTop_toBottomOf="@+id/aula" />
+        app:layout_constraintTop_toBottomOf="@+id/radiogroupo" />
 
     <EditText
         android:id="@+id/descricao"

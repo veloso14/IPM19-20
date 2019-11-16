@@ -30,7 +30,7 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/aula">
+            android:id="@+id/radiogroupo">
 
         <RadioButton
             android:id="@+id/maisAntigo"

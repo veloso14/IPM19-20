@@ -17,10 +17,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
-import com.fct.miei.ipm.fragments.Adicionar.Exercicios;
+import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Home.Home;
 
@@ -149,7 +148,7 @@ public class Documentos extends Fragment {
                 editor.commit();
 
                 android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new Exercicios());
+                ft.replace(R.id.content, new CriarExercicios());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.addToBackStack(null);
                 ft.commit();

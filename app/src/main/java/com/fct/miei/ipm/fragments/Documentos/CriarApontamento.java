@@ -2,7 +2,6 @@ package com.fct.miei.ipm.fragments.Documentos;
 
 import android.Manifest;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -20,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,7 +27,6 @@ import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
-import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 
 import java.io.File;
@@ -56,6 +55,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
     private int inited = 0;
     private String fileName = "";
     private TextView fihcieroSelected;
+    private View vista;
 
     public static final int PICKFILE_RESULT_CODE = 1;
 
@@ -73,6 +73,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_apontamento, container, false);
+        this.vista = view;
 
         //Partilhar com
         //get the spinner from the xml.
@@ -98,14 +99,16 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
                             if (pos == 2) {
 
                                 //Salvar as variaveis
-                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("CriarEventosInput", MODE_PRIVATE).edit();
-                              /*  editor.putString("titulo", titulo.getText().toString());
-                                editor.putString("local", local.getText().toString());
-                                editor.putString("inicio", inicio.getText().toString());
-                                editor.putString("fim", fim.getText().toString());
-                                editor.putString("npessoas", numPessoas.getText().toString());
-                                editor.apply();*/
-                                //Ir para o fragmento
+                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE).edit();
+                                editor.putString("unidade", ((TextInputLayout)vista.findViewById(R.id.unidade)).getEditText().getText().toString() );
+                                editor.putString("turno", ((EditText)vista.findViewById(R.id.turno)).getText().toString()  );
+                                editor.putString("professor", ((EditText)vista.findViewById(R.id.professor)).getText().toString()  );
+                                editor.putString("assunto", ((EditText)vista.findViewById(R.id.assunto)).getText().toString()  );
+                                editor.putString("descricao", ((EditText)vista.findViewById(R.id.descricao)).getText().toString()  );
+                                editor.putString("ficheiros", ((TextView)vista.findViewById(R.id.ficheiros)).getText().toString()  );
+                               // Log.d("RadioButton" , "dei set " + ((RadioGroup)vista.findViewById(R.id.radiogroupo)).getCheckedRadioButtonId());
+                                editor.putInt("radioGroup", ((RadioGroup)vista.findViewById(R.id.radiogroupo)).getCheckedRadioButtonId()  );
+                                editor.apply();
                                 SharedPreferences settings = getContext().getSharedPreferences("Back", 0);
                                 SharedPreferences.Editor editorr = settings.edit();
                                 editorr.putBoolean("BackCriarApontamento", true);
@@ -184,7 +187,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
         EditText assunto = view.findViewById(R.id.assunto);
         EditText professor = view.findViewById(R.id.professor);
         TextInputLayout unidade = view.findViewById(R.id.unidade);
-        RadioGroup tipo  = view.findViewById(R.id.aula);
+        RadioGroup tipo  = view.findViewById(R.id.radiogroupo);
 
         publicar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,10 +237,52 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
         int selected = settingss.getInt("selector", 0);
         dropdown.setSelection(selected);
 
+        //Restore
+        SharedPreferences Restore = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE);
+        ((AutoCompleteTextView)view.findViewById(R.id.local)).setText(Restore.getString("unidade",""));
+        ((EditText)view.findViewById(R.id.turno)).setText(Restore.getString("turno",""));
+        ((EditText)view.findViewById(R.id.professor)).setText(Restore.getString("professor",""));
+        ((EditText)view.findViewById(R.id.descricao)).setText(Restore.getString("descricao",""));
+        ((EditText)view.findViewById(R.id.assunto)).setText(Restore.getString("assunto",""));
+        ((TextView)view.findViewById(R.id.ficheiros)).setText(Restore.getString("ficheiros",""));
+
+        //RadioButton
+        int id = Restore.getInt("radioGroup" ,-1);
+
+        switch (id) {
+            case R.id.Chest:
+                ((RadioButton)((RadioGroup)view.findViewById(R.id.radiogroupo)).getChildAt(0)).setChecked(true);
+                break;
+            case R.id.Leg:
+                ((RadioButton)((RadioGroup)view.findViewById(R.id.radiogroupo)).getChildAt(1)).setChecked(true);
+                break;
+            case R.id.Shoulder:
+                ((RadioButton)((RadioGroup)view.findViewById(R.id.radiogroupo)).getChildAt(2)).setChecked(true);
+                break;
+            //other checks for the other RadioButtons ids from the RadioGroup
+            case -1:
+                // no RadioButton is checked inthe Radiogroup
+                break;
+        }
+
+        ((TextView)view.findViewById(R.id.ficheiros)).setText(Restore.getString("ficheiros",""));
+
         //Limpa a variavel
-        SharedPreferences.Editor selector = settingss.edit();
+        SharedPreferences.Editor selector = Restore.edit();
         selector.putInt("selector", 0);
+        selector.remove("unidade");
+        selector.remove("turno");
+        selector.remove("assunto");
+        selector.remove("descricao");
+        selector.remove("ficheiros");
+        selector.remove("professor");
+        selector.remove("radioGroup");
         selector.commit();
+
+        //Limpa a variavel
+        SharedPreferences.Editor clean = settingss.edit();
+        clean.putInt("selector", 0);
+        clean.commit();
 
         return view;
     }

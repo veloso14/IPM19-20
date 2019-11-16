@@ -259,6 +259,7 @@ public class CriarEvento extends Fragment {
 
 
 
+
         SharedPreferences prefsUI = getActivity().getSharedPreferences("CriarEventosInput", MODE_PRIVATE);
         titulo.setText(prefsUI.getString("titulo", ""));
         local.setText(prefsUI.getString("local", ""));

@@ -44,7 +44,7 @@ public class ShowAdicionar extends Fragment {
                 editor.commit();
 
                 android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content, new Exercicios());
+                ft.replace(R.id.content, new CriarExercicios());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.addToBackStack(null);
                 ft.commit();
