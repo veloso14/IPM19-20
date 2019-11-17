@@ -84,7 +84,7 @@
         android:id="@+id/login_entrar5"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Aula:"
         android:textAlignment="center"
         android:textColor="@color/themecolor"
@@ -126,26 +126,12 @@
     <android.support.design.widget.TextInputLayout
         android:id="@+id/unidade"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="52dp"
         android:focusedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar">
-
-        <AutoCompleteTextView
-            android:id="@+id/local"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_border_edittext"
-            android:focusedByDefault="false"
-            android:hint="Unidade Curricular"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -278,6 +264,32 @@
         app:layout_constraintEnd_toStartOf="@+id/publicar"
         app:layout_constraintStart_toEndOf="@+id/fileChooser"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar3" />
+
+    <Spinner
+        android:id="@+id/spinner_uc"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="96dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/ucText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toEndOf="@+id/ucText"
+        app:layout_constraintTop_toTopOf="@+id/ucText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ucText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Unidade Curricular:"
+        android:textColor="@color/themecolor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
