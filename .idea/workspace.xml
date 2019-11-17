@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26291c1c-352d-4658-92d0-291610f2c79f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,11 +70,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="229" column="59" selection-start-line="229" selection-start-column="59" selection-end-line="229" selection-end-column="59" />
+            <state relative-caret-position="237">
+              <caret line="81" column="8" selection-start-line="81" selection-start-column="8" selection-end-line="103" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -84,7 +82,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/CriarExercicios.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2142">
+            <state relative-caret-position="-1224">
               <caret line="90" column="43" lean-forward="true" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
             </state>
           </provider>
@@ -98,6 +96,12 @@
               <caret line="122" selection-start-line="122" selection-end-line="122" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml">
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -188,15 +192,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/NDSpinner.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CriarEvento.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Partilhar/ListViewAdaptor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Partilhar/PartilharCom.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/CriarExercicios.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_duvida.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Duvidas/CriarDuvidas.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml" />
       </list>
     </option>
   </component>
@@ -436,9 +440,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26332623" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26332623" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -446,7 +451,7 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.23076923" />
+      <window_info anchor="bottom" id="Run" order="0" visible="true" weight="0.23076923" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.2875354" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.47308782" />
@@ -699,10 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_documento.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_adicionar.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
@@ -760,9 +761,23 @@
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/android/lib/layoutlib/data/framework_res.jar!/res/drawable-ldpi/ic_dialog_alert.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="81" column="8" selection-start-line="81" selection-start-column="8" selection-end-line="103" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_documento.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/CriarExercicios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="90" column="43" lean-forward="true" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_apontamento.xml">
       <provider selected="true" editor-type-id="android-designer2" />
@@ -772,19 +787,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Adicionar/CriarExercicios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2142">
-          <caret line="90" column="43" lean-forward="true" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/CriarApontamento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="229" column="59" selection-start-line="229" selection-start-column="59" selection-end-line="229" selection-end-column="59" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_exercicio.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

@@ -20,6 +20,32 @@
     <!-- Login progress -->
 
 
+    <Spinner
+        android:id="@+id/spinner_uc2"
+        android:layout_width="220dp"
+        android:layout_height="35dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/ucText2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ucText"
+        app:layout_constraintTop_toTopOf="@+id/ucText2"
+        app:layout_constraintVertical_bias="0.272" />
+
+    <TextView
+        android:id="@+id/ucText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Unidade Curricular:"
+        android:textColor="@color/themecolor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar" />
+
     <TextView
         android:id="@+id/login_entrar"
         android:layout_width="match_parent"
@@ -39,7 +65,7 @@
         android:id="@+id/login_entrar2"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="Quem pode ver ?"
         android:textAlignment="center"
@@ -76,19 +102,19 @@
         app:layout_constraintStart_toStartOf="@+id/login_entrar2"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar2" />
 
+
     <TextView
         android:id="@+id/login_entrar5"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Aula:"
         android:textAlignment="center"
         android:textColor="@color/themecolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/unidade"
-        app:layout_constraintTop_toBottomOf="@+id/unidade" />
-
+        app:layout_constraintStart_toStartOf="@+id/ucText2"
+        app:layout_constraintTop_toBottomOf="@+id/ucText2" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/unidade"
@@ -101,18 +127,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar">
-
-        <AutoCompleteTextView
-            android:id="@+id/local"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_border_edittext"
-            android:focusedByDefault="false"
-            android:hint="Unidade Curricular"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -135,7 +149,7 @@
         android:id="@+id/assunto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rounded_border_edittext"
         android:hint="Assunto"
         android:imeActionId="6"
@@ -146,15 +160,15 @@
         android:padding="10dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@+id/unidade"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/unidade"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/login_entrar5"
         app:layout_constraintTop_toBottomOf="@+id/turno" />
 
     <EditText
         android:id="@+id/turno"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_border_edittext"
         android:hint="Turno"
         android:imeActionId="6"
@@ -165,7 +179,8 @@
         android:padding="10dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@+id/assunto"
-        app:layout_constraintStart_toStartOf="@+id/assunto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/login_entrar5"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <ImageView
@@ -184,10 +199,11 @@
         android:id="@+id/radioGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:orientation='horizontal'
         app:layout_constraintEnd_toEndOf="@+id/unidade"
-        app:layout_constraintStart_toStartOf="@+id/unidade"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/login_entrar5"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar5">
 
         <RadioButton

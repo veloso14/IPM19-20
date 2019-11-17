@@ -30,6 +30,7 @@ import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
+import com.google.android.gms.common.util.ArrayUtils;
 
 import java.io.File;
 import java.util.List;
@@ -77,6 +78,34 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
         View view = inflater.inflate(R.layout.fragment_criar_exercicio, container, false);
 
         this.vista = view;
+
+        Spinner spinner_uc = view.findViewById(R.id.spinner_uc2);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Cadeiras", MODE_PRIVATE);
+        String parse = prefs.getString("Cadeiras", "AA,IIO,SPBD,AM,RIT,PTE,ST");//The default value.
+        String[] selecione = new String[]{"Selecione uma UC"};
+        String[] cadeiras = parse.split(",");
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, ArrayUtils.concat(selecione, cadeiras));
+        //set the spinners adapter to the previously created one.
+        spinner_uc.setAdapter(adp);
+
+        spinner_uc.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                        SharedPreferences uc = getActivity().getSharedPreferences("MYPREFS", 0);
+                        SharedPreferences.Editor editor = uc.edit();
+                        Log.d("UC", parent.getItemAtPosition(pos).toString());
+                        editor.putString("UC", parent.getItemAtPosition(pos).toString());
+                        editor.commit();
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+
+
+
         //Partilhar com
         //get the spinner from the xml.
         NDSpinner dropdown = view.findViewById(R.id.spinner1);
@@ -127,14 +156,6 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
-        //AutoComplete
-        ArrayAdapter<String> adapterSearch = new ArrayAdapter<String>(getContext(),android.R.layout.select_dialog_item, cadeiras);
-        //Find TextView control
-        AutoCompleteTextView acTextView = (AutoCompleteTextView) view.findViewById(R.id.local);
-        //Set the number of characters the user must type before the drop down list is shown
-        acTextView.setThreshold(1);
-        //Set the adapter
-        acTextView.setAdapter(adapterSearch);
 
         fihcieroSelected = view.findViewById(R.id.ficheiros);
 
@@ -152,7 +173,6 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
         editor.putBoolean("BackDocumentos", false);
         editor.commit();
 
-        TextInputLayout unidade = view.findViewById(R.id.unidade);
         EditText turno = view.findViewById(R.id.turno);
         EditText assunto = view.findViewById(R.id.assunto);
         RadioGroup tipo  = view.findViewById(R.id.radioGroup);
@@ -162,14 +182,25 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
             @Override
             public void onClick(View v) {
 
+                SharedPreferences uc = getActivity().getSharedPreferences("MYPREFS", 0);
+                String unidade = uc.getString("UC", "default");
+                Log.d( "UC" ,  unidade);
 
-                if( unidade.getEditText().getText().toString().isEmpty() ||
+                if(
                         assunto.getText().toString().isEmpty() ||
                         turno.getText().toString().isEmpty()){
 
                     new AlertDialog.Builder(getContext())
                             .setTitle("Erro")
                             .setMessage("Por favor complete todos os espaços")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+                else if(unidade.compareTo("Selecione uma UC") == 0){
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Por favor escolha uma unidade curricular")
                             .setNegativeButton(android.R.string.yes, null)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
@@ -237,7 +268,6 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
 
         //Restore
         SharedPreferences Restore = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE);
-        ((AutoCompleteTextView)view.findViewById(R.id.local)).setText(Restore.getString("unidade",""));
         ((EditText)view.findViewById(R.id.turno)).setText(Restore.getString("turno",""));
         ((EditText)view.findViewById(R.id.assunto)).setText(Restore.getString("assunto",""));
         ((TextView)view.findViewById(R.id.ficheiros)).setText(Restore.getString("ficheiros",""));
