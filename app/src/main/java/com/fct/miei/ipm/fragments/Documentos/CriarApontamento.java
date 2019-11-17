@@ -82,7 +82,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
         Spinner spinner_uc = view.findViewById(R.id.spinner_uc);
         SharedPreferences prefs = getActivity().getSharedPreferences("Cadeiras", MODE_PRIVATE);
         String parse = prefs.getString("Cadeiras", "AA,IIO,SPBD,AM,RIT,PTE,ST");//The default value.
-        String[] selecione = new String[]{"..."};
+        String[] selecione = new String[]{"Selecione uma UC"};
         String[] cadeiras = parse.split(",");
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, ArrayUtils.concat(selecione, cadeiras));
@@ -227,7 +227,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
-                else if(unidade.compareTo("...") == 0){
+                else if(unidade.compareTo("Selecione uma UC") == 0){
                     new AlertDialog.Builder(getContext())
                             .setTitle("Erro")
                             .setMessage("Por favor escolha uma unidade curricular")
