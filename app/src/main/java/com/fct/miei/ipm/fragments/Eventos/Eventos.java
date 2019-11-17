@@ -25,6 +25,8 @@ import android.widget.TextView;
 import com.brutal.ninjas.hackaton19.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +40,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -118,7 +121,7 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
                         try {
                             JSONArray evento = new JSONArray(eventdatabase);
                             Log.d("Clicked" , evento.get(position).toString());
-                            ShowPopupEventoDetails( view.findViewById(android.R.id.content) , evento.getJSONObject(position));
+                            ShowPopupEventoDetails( view.findViewById(android.R.id.content) , evento.getJSONObject(position) , position);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -292,9 +295,64 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
 
     }
 
-    public void ShowPopupEventoDetails(View v ,JSONObject data) {
+    public void ShowPopupEventoDetails(View v, JSONObject data, int position) {
 
-        myDialog.setContentView(R.layout.popup_show_evento);
+        int size = 0;
+        try {
+            size = new JSONArray(eventdatabase).length();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //Não apagar os default
+        if(position == 0 || (position == size -2) || (position == size -1) ){
+            myDialog.setContentView(R.layout.popup_show_evento);
+        }
+        else {
+            myDialog.setContentView(R.layout.popup_show_evento_delete);
+            Button apagar  = myDialog.findViewById(R.id.apagar);
+            apagar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        JSONArray jsonObject = new JSONArray(eventdatabase);
+
+                        ArrayList<String> list = new ArrayList<String>();
+                        JSONArray jsonArray = (JSONArray)jsonObject;
+                        int len = jsonArray.length();
+                        if (jsonArray != null) {
+                            for (int i=0;i<len;i++){
+                                list.add(jsonArray.get(i).toString());
+                            }
+                        }
+                        //Remove the element from arraylist
+                        list.remove(position);
+                        //save
+                        SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
+                        String[] playlists = new String[list.size() - 3];
+                        //copy
+                        for(int i = 1 ; i < list.size() - 2 ; i++){
+                                playlists[i] = list.get(i) + " , ";
+
+                        }
+                        SharedPreferences.Editor editor = settings.edit();
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 0; i < playlists.length; i++) {
+                            sb.append(playlists[i]).append(";");
+                        }
+                        editor.putString("Eventos", sb.toString());
+                        editor.commit();
+                        recyclerView.refreshDrawableState();
+                        getEvents();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        myDialog.dismiss();
+                    }
+                    myDialog.dismiss();
+                }
+            });
+        }
+
         TextView txtclose = myDialog.findViewById(R.id.txtclose);
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -302,6 +360,9 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
                 myDialog.dismiss();
             }
         });
+
+
+
 
         TextView titulo = myDialog.findViewById(R.id.titulo);
         TextView numpessoas = myDialog.findViewById(R.id.numpessoas);

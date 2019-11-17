@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text=""
-             />
+            />
 
         <Space
             android:layout_width="match_parent"
@@ -65,7 +65,7 @@
             android:layout_marginTop="5dp"
             android:text=""
             android:drawableLeft="@drawable/locationblue"
-           />
+            />
 
         <Space
             android:layout_width="match_parent"
@@ -80,13 +80,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text=""
-          />
+            />
 
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp" />
+        <Button
+            android:id="@+id/apagar"
+            android:background="@drawable/square_toggle_button"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apagar evento" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
 
 
     </LinearLayout>
