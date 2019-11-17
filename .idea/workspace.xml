@@ -12,7 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26291c1c-352d-4658-92d0-291610f2c79f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +29,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3_XL_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_29" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -70,43 +75,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popup_avaliar_documento.xml">
-          <provider editor-type-id="text-editor" />
-          <provider selected="true" editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/DocumentoWord.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="122" column="66" selection-start-line="122" selection-start-column="66" selection-end-line="122" selection-end-column="66" />
-              <folding>
-                <element signature="e#1009#1010#0" expanded="true" />
-                <element signature="e#1047#1048#0" expanded="true" />
-                <element signature="e#1711#1712#0" expanded="true" />
-                <element signature="e#1755#1756#0" expanded="true" />
-                <element signature="e#3774#3775#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-              <folding>
-                <element signature="method#setDummyData#0;class#Documentos#0" />
-                <element signature="method#setOrderedDummyDataRuyCosta#0;class#Documentos#0" />
-                <element signature="method#setOrderedAplhabeticedDummyData#0;class#Documentos#0" />
-                <element signature="method#setOrderedLeaseRecenteDummyData#0;class#Documentos#0" />
-                <element signature="method#setOrderedMostRecenteDummyData#0;class#Documentos#0" />
-                <element signature="method#setOrderedDummyData#0;class#Documentos#0" />
-              </folding>
+            <state relative-caret-position="243">
+              <caret line="29" column="40" lean-forward="true" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -194,7 +170,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_comentario.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/NDSpinner.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CriarEvento.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Partilhar/ListViewAdaptor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Partilhar/PartilharCom.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
@@ -207,14 +182,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/DocumentoWord.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/RecyclerViewItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="9" />
-    <option name="y" value="-13" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="8" />
+    <option name="y" value="-14" />
+    <option name="width" value="975" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -225,8 +201,40 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="ipm" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,48 +286,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="ipm" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="ipm" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IPM19-20" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="ipm" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-              <item name="Documentos" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3_XL_API_28" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-11-17T18:20:44.611Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_29" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-11-17T22:05:19.894Z" />
     <property name="ExportApk.ApkPath" value="C:\Github\IPM19-20\APKS" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
@@ -450,11 +422,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26332623" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26308724" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -469,7 +441,7 @@
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32827735" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50067115" side_tool="true" weight="0.49291784" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49932885" weight="0.29144096" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49932885" visible="true" weight="0.29036826" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.47733712" />
       <window_info anchor="bottom" id="Messages" order="9" />
       <window_info anchor="bottom" id="Android Profiler" order="10" />
@@ -478,7 +450,7 @@
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.3295302" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.29194632" />
+      <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.29194632" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Flutter Inspector" order="6" />
       <window_info anchor="right" id="Flutter Outline" order="7" />
@@ -542,14 +514,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="70" column="35" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Eventos/CalendarioAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -678,24 +642,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/android.jar!/android/content/Context.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/android.jar!/android/content/ContextWrapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1251">
-          <caret line="94" column="40" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/data/res/layout/simple_spinner_dropdown_item.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/android.jar!/android/content/Context.class" />
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/android.jar!/android/content/ContextWrapper.class" />
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/data/res/layout/simple_spinner_dropdown_item.xml" />
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/96c7dce78cc2d29039bc2d27c15bf3a9/play-services-basement-16.2.0/jars/classes.jar!/com/google/android/gms/common/util/ArrayUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -758,31 +707,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/android.jar!/android/content/SharedPreferences.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popup_avaliar_documento.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/DocumentoWord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="122" column="66" selection-start-line="122" selection-start-column="66" selection-end-line="122" selection-end-column="66" />
-          <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1047#1048#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-            <element signature="e#1755#1756#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/android.jar!/android/content/SharedPreferences.class" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/RecyclerViewItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -798,20 +723,31 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popup_avaliar_documento.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/Documentos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-          <folding>
-            <element signature="method#setDummyData#0;class#Documentos#0" />
-            <element signature="method#setOrderedDummyDataRuyCosta#0;class#Documentos#0" />
-            <element signature="method#setOrderedAplhabeticedDummyData#0;class#Documentos#0" />
-            <element signature="method#setOrderedLeaseRecenteDummyData#0;class#Documentos#0" />
-            <element signature="method#setOrderedMostRecenteDummyData#0;class#Documentos#0" />
-            <element signature="method#setOrderedDummyData#0;class#Documentos#0" />
-          </folding>
+        <state relative-caret-position="-1275">
+          <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fct/miei/ipm/fragments/Documentos/DocumentoWord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_criar_evento.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="29" column="40" lean-forward="true" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>
