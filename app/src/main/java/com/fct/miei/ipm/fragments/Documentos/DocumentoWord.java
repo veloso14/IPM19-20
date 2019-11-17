@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,14 @@ public class DocumentoWord extends Fragment {
 
     private Dialog myDialog;
     private View vista;
+    private int docSelected;
 
     public DocumentoWord() {
         // Required empty public constructor
+    }
+
+    public void docSelected(int doc){
+        this.docSelected = doc;
     }
 
 
@@ -84,10 +90,21 @@ public class DocumentoWord extends Fragment {
         myDialog.setContentView(R.layout.popup_avaliar_documento);
         //Estrelas
         RatingBar rating = myDialog.findViewById(R.id.ratingBar);
-        SharedPreferences prefs = getContext().getSharedPreferences("RatingWord", MODE_PRIVATE);
-        float saved = prefs.getFloat("RatingWord", 0);
-        if(saved > 0)
-            rating.setRating(saved);
+
+        SharedPreferences rate = getContext().getSharedPreferences("RatingWord"+this.docSelected, MODE_PRIVATE);
+        rating.setRating(rate.getFloat("RatingWord"+this.docSelected, 0));
+        //this.docSelected.setClassificacao(rate.getFloat("RatingWord", 0));
+        //rate.edit().putFloat("RatingWord", this.docSelected.getClassificacao());
+
+
+        rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("RatingWord"+docSelected, MODE_PRIVATE).edit();
+                editor.putFloat("RatingWord"+docSelected, rating);
+                editor.apply();
+            }
+        });
 
         TextView txtclose = myDialog.findViewById(R.id.txtclose);
         txtclose.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +122,7 @@ public class DocumentoWord extends Fragment {
                 SharedPreferences.Editor editor = getContext().getSharedPreferences("RatingWord", MODE_PRIVATE).edit();
                 editor.putFloat("RatingWord", rating.getRating());
                 editor.apply();
+
                 myDialog.dismiss();
             }
         });

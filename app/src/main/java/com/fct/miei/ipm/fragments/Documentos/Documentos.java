@@ -25,11 +25,13 @@ import com.fct.miei.ipm.fragments.Home.Home;
 
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Documentos extends Fragment {
 
     private RecyclerView gridView;
     private GridViewAdapterDocumentos gridViewAdapter;
-    private ArrayList<RecyclerViewItem> operatingSystems;
+    public ArrayList<RecyclerViewItem> operatingSystems;
     private Dialog myDialog;
     private View vista;
     private int searched ;
@@ -271,14 +273,17 @@ public class Documentos extends Fragment {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         // do it
-                        Log.d("GRIDVIEW", "Position" + position);
+                        Log.d("GRIDVIEW", "Position " + position);
                         //TODO extender para mais ficheiros
-                      //  if (position == 0) {
-                            android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                            ft.replace(R.id.content, new DocumentoWord());
-                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                            ft.addToBackStack(null);
-                            ft.commit();
+
+                        DocumentoWord wordDoc = new DocumentoWord();
+                        wordDoc.docSelected(position);
+
+                        android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.content, wordDoc);
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.addToBackStack(null);
+                        ft.commit();
                        // }
                     }
                 });
