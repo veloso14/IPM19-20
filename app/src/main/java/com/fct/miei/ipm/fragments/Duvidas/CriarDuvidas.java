@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
+import com.google.android.gms.common.util.ArrayUtils;
 
 import java.io.File;
 import java.util.List;
@@ -69,14 +70,32 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_criar_duvida, container, false);
 
-        //AutoComplete
-        ArrayAdapter<String> adapterSearch = new ArrayAdapter<String>(getContext(),android.R.layout.select_dialog_item, cadeiras);
-        //Find TextView control
-        AutoCompleteTextView acTextView = (AutoCompleteTextView) view.findViewById(R.id.local);
-        //Set the number of characters the user must type before the drop down list is shown
-        acTextView.setThreshold(1);
-        //Set the adapter
-        acTextView.setAdapter(adapterSearch);
+
+        Spinner spinner_uc = view.findViewById(R.id.spinner_uc3);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Cadeiras", MODE_PRIVATE);
+        String parse = prefs.getString("Cadeiras", "AA,IIO,SPBD,AM,RIT,PTE,ST");//The default value.
+        String[] selecione = new String[]{"Selecione uma UC"};
+        String[] cadeiras = parse.split(",");
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, ArrayUtils.concat(selecione, cadeiras));
+        //set the spinners adapter to the previously created one.
+        spinner_uc.setAdapter(adp);
+
+        spinner_uc.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                        SharedPreferences uc = getActivity().getSharedPreferences("MYPREFS", 0);
+                        SharedPreferences.Editor editor = uc.edit();
+                        Log.d("UC", parent.getItemAtPosition(pos).toString());
+                        editor.putString("UC", parent.getItemAtPosition(pos).toString());
+                        editor.commit();
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+
 
         fihcieroSelected = view.findViewById(R.id.ficheiros);
         spinner = view.findViewById(R.id.spinner1);
@@ -133,12 +152,24 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
             @Override
             public void onClick(View view) {
 
+                SharedPreferences uc = getActivity().getSharedPreferences("MYPREFS", 0);
+                String unidade = uc.getString("UC", "default");
+                Log.d( "UC" ,  unidade);
 
-                if( unidade.getEditText().getText().toString().isEmpty() || assunto.getText().toString().isEmpty() || descricao.getText().toString().isEmpty()){
+                if(
+                        assunto.getText().toString().isEmpty() || descricao.getText().toString().isEmpty()){
 
                     new AlertDialog.Builder(getContext())
                             .setTitle("Erro")
                             .setMessage("Por favor complete todos os espaços")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+                else if(unidade.compareTo("Selecione uma UC") == 0){
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Por favor escolha uma unidade curricular")
                             .setNegativeButton(android.R.string.yes, null)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();

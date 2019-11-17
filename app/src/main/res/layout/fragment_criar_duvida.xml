@@ -21,6 +21,32 @@
     <!-- Login progress -->
 
 
+    <Spinner
+        android:id="@+id/spinner_uc3"
+        android:layout_width="220dp"
+        android:layout_height="35dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/ucText3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ucText"
+        app:layout_constraintTop_toTopOf="@+id/ucText3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ucText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Unidade Curricular:"
+        android:textColor="@color/themecolor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_entrar" />
+
     <TextView
         android:id="@+id/login_entrar"
         android:layout_width="0dp"
@@ -92,18 +118,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_entrar">
 
-        <AutoCompleteTextView
-            android:id="@+id/local"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_border_edittext"
-            android:focusedByDefault="false"
-            android:hint="Unidade Curricular"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:singleLine="true" />
-
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -124,7 +138,7 @@
         android:id="@+id/assunto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/rounded_border_edittext"
         android:hint="Assunto"
         android:imeActionId="6"
@@ -135,7 +149,8 @@
         android:padding="10dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@+id/unidade"
-        app:layout_constraintStart_toStartOf="@+id/unidade"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ucText3"
         app:layout_constraintTop_toBottomOf="@+id/unidade" />
 
     <EditText
@@ -144,18 +159,17 @@
         android:layout_height="150dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_border_edittext"
+        android:gravity="top|left"
         android:hint="Descrição"
         android:imeActionId="6"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
         android:inputType="text"
         android:maxLines="1"
-        android:gravity="top|left"
         android:padding="10dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@+id/unidade"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/unidade"
+        app:layout_constraintStart_toStartOf="@+id/assunto"
         app:layout_constraintTop_toBottomOf="@+id/assunto" />
 
     <ImageView
