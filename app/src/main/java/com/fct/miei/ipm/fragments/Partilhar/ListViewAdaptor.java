@@ -52,7 +52,8 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Data data = mDataList.get(position);
+        int pos = position;
+        Data data = mDataList.get(pos);
         holder.name.setText(data.getName());
         holder.imageView.setImageResource(data.getImageId());
         holder.radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -66,7 +67,7 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
 
                 }
                 else{
-                        selecionados.remove(position);
+                        selecionados.remove(pos);
                         totalSelected--;
                         saveArrayList(selecionados );
                     }
