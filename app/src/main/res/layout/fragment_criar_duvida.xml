@@ -7,209 +7,208 @@
     android:layout_height="fill_parent"
     android:fillViewport="true">
 
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.fct.miei.ipm.LoginActivity">
-
-    <!-- Login progress -->
-
-
-    <Spinner
-        android:id="@+id/spinner_uc3"
-        android:layout_width="220dp"
-        android:layout_height="35dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/ucText3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ucText"
-        app:layout_constraintTop_toTopOf="@+id/ucText3"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/ucText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Unidade Curricular:"
-        android:textColor="@color/themecolor"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar" />
-
-    <TextView
-        android:id="@+id/login_entrar"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="Dúvida"
-        android:textAlignment="center"
-        android:textColor="@color/themecolor"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/login_entrar2"
-        android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Quem pode ver ?"
-        android:textAlignment="center"
-        android:textColor="@color/themecolor"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/descricao"
-        app:layout_constraintTop_toBottomOf="@+id/descricao" />
-
-
-    <com.fct.miei.ipm.NDSpinner
-        android:id="@+id/spinner1"
-        android:layout_width="0dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="16dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:textColor="@color/themecolor"
-        app:layout_constraintBottom_toBottomOf="@+id/login_entrar2"
-        app:layout_constraintEnd_toEndOf="@+id/descricao"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toEndOf="@+id/login_entrar2"
-        app:layout_constraintTop_toTopOf="@+id/login_entrar2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/login_entrar3"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:text="Anexos"
-        android:textAlignment="center"
-        android:textColor="@color/themecolor"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/descricao"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar2" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/unidade"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:focusedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.fct.miei.ipm.LoginActivity">
 
-    </android.support.design.widget.TextInputLayout>
+        <!-- Login progress -->
 
-    <Button
-        android:id="@+id/publicar"
-        android:layout_width="96dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/round_toggle_button_on"
-        android:text="Publicar"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/fileChooser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar3"
-        app:layout_constraintVertical_bias="0.65999997" />
 
-    <EditText
-        android:id="@+id/assunto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/rounded_border_edittext"
-        android:hint="Assunto"
-        android:imeActionId="6"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionUnspecified"
-        android:inputType="text"
-        android:maxLines="1"
-        android:padding="10dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/unidade"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ucText3"
-        app:layout_constraintTop_toBottomOf="@+id/unidade" />
+        <Spinner
+            android:id="@+id/spinner_uc3"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/ucText3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ucText3"
+            app:layout_constraintTop_toTopOf="@+id/ucText3" />
 
-    <EditText
-        android:id="@+id/descricao"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_border_edittext"
-        android:gravity="top|left"
-        android:hint="Descrição"
-        android:imeActionId="6"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionUnspecified"
-        android:inputType="text"
-        android:maxLines="1"
-        android:padding="10dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@+id/unidade"
-        app:layout_constraintStart_toStartOf="@+id/assunto"
-        app:layout_constraintTop_toBottomOf="@+id/assunto" />
+        <TextView
+            android:id="@+id/ucText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Unidade Curricular:"
+            android:textColor="@color/themecolor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_entrar" />
 
-    <ImageView
-        android:id="@+id/fileChooser"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitStart"
-        app:layout_constraintEnd_toEndOf="@+id/login_entrar3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/login_entrar3"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar3"
-        app:srcCompat="@drawable/fileadd" />
+        <TextView
+            android:id="@+id/login_entrar"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Dúvida"
+            android:textAlignment="center"
+            android:textColor="@color/themecolor"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="31dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/login_entrar"
-        app:layout_constraintEnd_toStartOf="@+id/login_entrar"
-        app:layout_constraintTop_toTopOf="@+id/login_entrar"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/backbutton" />
+        <TextView
+            android:id="@+id/login_entrar2"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Quem pode ver ?"
+            android:textAlignment="center"
+            android:textColor="@color/themecolor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/descricao"
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
 
-    <TextView
-        android:id="@+id/ficheiros"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text=""
-        android:textColor="#000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fileChooser"
-        app:layout_constraintEnd_toStartOf="@+id/publicar"
-        app:layout_constraintStart_toEndOf="@+id/fileChooser"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar3" />
 
-</android.support.constraint.ConstraintLayout>
+        <com.fct.miei.ipm.NDSpinner
+            android:id="@+id/spinner1"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/themecolor"
+            app:layout_constraintBottom_toBottomOf="@+id/login_entrar2"
+            app:layout_constraintEnd_toEndOf="@+id/descricao"
+            app:layout_constraintHorizontal_bias="0.202"
+            app:layout_constraintStart_toEndOf="@+id/login_entrar2"
+            app:layout_constraintTop_toTopOf="@+id/login_entrar2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/login_entrar3"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:text="Anexos"
+            android:textAlignment="center"
+            android:textColor="@color/themecolor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/descricao"
+            app:layout_constraintTop_toBottomOf="@+id/login_entrar2" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/unidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:focusedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_entrar">
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/publicar"
+            android:layout_width="96dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_toggle_button_on"
+            android:text="Publicar"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/fileChooser"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_entrar3"
+            app:layout_constraintVertical_bias="0.65999997" />
+
+        <EditText
+            android:id="@+id/assunto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/rounded_border_edittext"
+            android:hint="Assunto"
+            android:imeActionId="6"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@+id/unidade"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/ucText3"
+            app:layout_constraintTop_toBottomOf="@+id/unidade" />
+
+        <EditText
+            android:id="@+id/descricao"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_border_edittext"
+            android:gravity="top|left"
+            android:hint="Descrição"
+            android:imeActionId="6"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@+id/unidade"
+            app:layout_constraintStart_toStartOf="@+id/assunto"
+            app:layout_constraintTop_toBottomOf="@+id/assunto" />
+
+        <ImageView
+            android:id="@+id/fileChooser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scaleType="fitStart"
+            app:layout_constraintEnd_toEndOf="@+id/login_entrar3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/login_entrar3"
+            app:layout_constraintTop_toBottomOf="@+id/login_entrar3"
+            app:srcCompat="@drawable/fileadd" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="31dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/login_entrar"
+            app:layout_constraintEnd_toStartOf="@+id/login_entrar"
+            app:layout_constraintTop_toTopOf="@+id/login_entrar"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/backbutton" />
+
+        <TextView
+            android:id="@+id/ficheiros"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text=""
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fileChooser"
+            app:layout_constraintEnd_toStartOf="@+id/publicar"
+            app:layout_constraintStart_toEndOf="@+id/fileChooser"
+            app:layout_constraintTop_toBottomOf="@+id/login_entrar3" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
