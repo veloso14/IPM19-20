@@ -326,13 +326,19 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
                         }
                         //Remove the element from arraylist
                         list.remove(position);
+                        list.remove(0);
+                        list.remove(list.size() - 1);
+                        list.remove(list.size() - 1);
+
                         //save
                         SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
-                        String[] playlists = new String[list.size() - 3];
+                        String[] playlists = new String[list.size()];
                         //copy
-                        for(int i = 1 ; i < list.size() - 2 ; i++){
+                        for(int i = 0 ; i < list.size()  ; i++){
+                            if(i == list.size())
+                                playlists[i] = list.get(i) ;
+                            else
                                 playlists[i] = list.get(i) + " , ";
-
                         }
                         SharedPreferences.Editor editor = settings.edit();
                         StringBuilder sb = new StringBuilder();
