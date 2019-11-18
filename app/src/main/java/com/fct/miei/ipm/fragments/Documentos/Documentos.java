@@ -31,7 +31,7 @@ public class Documentos extends Fragment {
 
     private RecyclerView gridView;
     private GridViewAdapterDocumentos gridViewAdapter;
-    private ArrayList<RecyclerViewItem> operatingSystems;
+    public ArrayList<RecyclerViewItem> operatingSystems;
     private Dialog myDialog;
     private View vista;
     private int searched ;

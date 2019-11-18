@@ -130,7 +130,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
 
                                 //Salvar as variaveis
                                 SharedPreferences.Editor editor = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE).edit();
-                                editor.putString("unidade", ((TextInputLayout)vista.findViewById(R.id.unidade)).getEditText().getText().toString() );
+                                editor.putInt("unidade", ((Spinner)vista.findViewById(R.id.spinner_uc)).getSelectedItemPosition() );
                                 editor.putString("turno", ((EditText)vista.findViewById(R.id.turno)).getText().toString()  );
                                 editor.putString("professor", ((EditText)vista.findViewById(R.id.professor)).getText().toString()  );
                                 editor.putString("assunto", ((EditText)vista.findViewById(R.id.assunto)).getText().toString()  );
@@ -271,7 +271,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
 
         //Restore
         SharedPreferences Restore = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE);
-        //((AutoCompleteTextView)view.findViewById(R.id.local)).setText(Restore.getString("unidade",""));
+        ((Spinner)view.findViewById(R.id.spinner_uc)).setSelection(Restore.getInt("unidade",0));
         ((EditText)view.findViewById(R.id.turno)).setText(Restore.getString("turno",""));
         ((EditText)view.findViewById(R.id.professor)).setText(Restore.getString("professor",""));
         ((EditText)view.findViewById(R.id.descricao)).setText(Restore.getString("descricao",""));

@@ -131,7 +131,7 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
 
                                 //Salvar as variaveis
                                 SharedPreferences.Editor editor = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE).edit();
-                                editor.putString("unidade", ((TextInputLayout)vista.findViewById(R.id.unidade)).getEditText().getText().toString() );
+                                editor.putInt("unidade", ((Spinner)vista.findViewById(R.id.spinner_uc2)).getSelectedItemPosition());
                                 editor.putString("turno", ((EditText)vista.findViewById(R.id.turno)).getText().toString()  );
                                 editor.putString("assunto", ((EditText)vista.findViewById(R.id.assunto)).getText().toString()  );
                                 editor.putString("ficheiros", ((TextView)vista.findViewById(R.id.ficheiros)).getText().toString()  );
@@ -271,6 +271,7 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
         ((EditText)view.findViewById(R.id.turno)).setText(Restore.getString("turno",""));
         ((EditText)view.findViewById(R.id.assunto)).setText(Restore.getString("assunto",""));
         ((TextView)view.findViewById(R.id.ficheiros)).setText(Restore.getString("ficheiros",""));
+        ((Spinner)view.findViewById(R.id.spinner_uc2)).setSelection(Restore.getInt("unidade",0));
 
         //RadioButton
         int id = Restore.getInt("radioGroup" ,-1);
