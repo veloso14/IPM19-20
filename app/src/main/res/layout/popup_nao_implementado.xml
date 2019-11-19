@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="350dp"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:background="@drawable/customborder"
     android:padding="5dp"
@@ -17,14 +17,14 @@
         android:textStyle="bold"
         android:layout_gravity="end"
         android:gravity="center"
-         />
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
         android:orientation="vertical">
 
         <TextView
@@ -32,38 +32,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:text="Assunto da dúvida"
+            android:text="Não implementado"
             android:textAlignment="center"
             android:textColor="#000"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:paddingRight="50dp"
-            android:id="@+id/cadeira"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="50dp" />
 
-        <TextView
-            android:id="@+id/submit"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:layout_gravity="end"
-            android:gravity="center"
-            android:background="@drawable/rightarrow" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
     </LinearLayout>
-
-
 
 </LinearLayout>
