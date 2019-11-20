@@ -377,31 +377,31 @@ public class Eventos extends Fragment implements CalendarioAdapter.eventoListene
         //Data
         try {
             if(data.getBoolean("allday")){
-                horas.setText("O evento decorre o dia inteiro");
+                horas.setText("O evento decorre o dia inteiro.");
             }
             else{
                 horas.setText("Horas " + data.getString("inicio") + " às " +  data.getString("fim"));
             }
         } catch (JSONException e) {
-            horas.setText("Não Horas não estão defenido");
+            horas.setText("Horas não estão definido");
         }
         //Local
         try {
             local.setText(data.getString("local"));
         } catch (JSONException e) {
-            local.setText("Não local não estão defenido");
+            local.setText("Não local não estão definido");
         }
         //Numero pessoas
         try {
             numpessoas.setText(data.getString("numPessoas"));
         } catch (JSONException e) {
-            numpessoas.setText("Não número de pessoas não defenido");
+            numpessoas.setText("Não número de pessoas não definido.");
         }
         //Titulo
         try {
             titulo.setText(data.getString("name"));
         } catch (JSONException e) {
-            titulo.setText("Não defenido");
+            titulo.setText("Não definido.");
         }
 
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
