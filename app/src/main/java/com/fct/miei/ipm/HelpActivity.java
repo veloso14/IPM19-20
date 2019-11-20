@@ -28,12 +28,15 @@ public class HelpActivity extends AppCompatActivity {
         if(image.equalsIgnoreCase("cadeiras")){
             img.setImageResource(R.drawable.cadeiras);
         }
+        else if(image.equalsIgnoreCase("adicionar")){
+            img.setImageResource(R.drawable.adicionar_help);
+        }
+        else if(image.equalsIgnoreCase("ranking")){
+            img.setImageResource(R.drawable.ranking_help);
+        }
         else{
             img.setImageResource(R.drawable.ranking_help);
         }
-
-        System.out.println(image);
-
     }
 
 

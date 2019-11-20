@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "cadeiras");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Adicionar){
-            intent.putExtra("image", "ranking");
+            intent.putExtra("image", "adicionar");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Ranking){
             intent.putExtra("image", "ranking");
