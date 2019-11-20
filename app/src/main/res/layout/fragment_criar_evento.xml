@@ -187,6 +187,8 @@
             app:layout_constraintStart_toStartOf="@+id/turno"
             app:layout_constraintTop_toBottomOf="@+id/turno" />
 
+
+
         <EditText
             android:id="@+id/professor"
             android:layout_width="0dp"
@@ -218,18 +220,7 @@
             app:layout_constraintTop_toTopOf="@+id/login_entrar"
             app:srcCompat="@drawable/backblack" />
 
-        <Button
-            android:id="@+id/concluido"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:background="@drawable/square_toggle_button"
-            android:text="Criar"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/login_entrar"
-            app:layout_constraintEnd_toEndOf="@+id/login_entrar"
-            app:layout_constraintTop_toTopOf="@+id/login_entrar"
-            app:layout_constraintVertical_bias="1.0" />
+
 
         <EditText
             android:id="@+id/local"
@@ -247,6 +238,8 @@
             app:layout_constraintEnd_toEndOf="@+id/tituloinput"
             app:layout_constraintStart_toStartOf="@+id/tituloinput"
             app:layout_constraintTop_toBottomOf="@+id/tituloinput" />
+
+
 
         <Switch
             android:id="@+id/allday"
@@ -269,11 +262,28 @@
             app:layout_constraintTop_toBottomOf="@+id/login_entrar2" />
 
         <Space
+            android:id="@+id/space"
             android:layout_width="0dp"
             android:layout_height="100dp"
             app:layout_constraintEnd_toEndOf="@+id/pessoas"
             app:layout_constraintStart_toStartOf="@+id/pessoas"
             app:layout_constraintTop_toBottomOf="@+id/pessoas" />
+
+
+        <Button
+            android:id="@+id/concluido"
+            android:layout_width="96dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_toggle_button_on"
+            android:text="Publicar"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/space"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/space"
+            app:layout_constraintVertical_bias="0.65999997" />
+
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

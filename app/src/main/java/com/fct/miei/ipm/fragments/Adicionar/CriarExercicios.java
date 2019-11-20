@@ -1,6 +1,7 @@
 package com.fct.miei.ipm.fragments.Adicionar;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -229,11 +230,21 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
                             .show();
                 }
                 else {
-                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
-                    prefs.remove("pref");
-                    prefs.commit();
-                    Toast.makeText(getContext(),"Exercício cria com sucesso",Toast.LENGTH_LONG).show();
-                    linker();
+
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Confirmação")
+                            .setMessage("Tem a certeza que pretende adicionar exercício?")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
+                                    prefs.remove("pref");
+                                    prefs.commit();
+                                    Toast.makeText(getContext(),"Exercício criado com sucesso",Toast.LENGTH_LONG).show();
+                                    linker();
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
                 }
 
             }

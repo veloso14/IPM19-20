@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
@@ -78,12 +81,29 @@ public class Duvidas extends Fragment {
             }
         });
         //buscar
+
         TextView pesquisar = myDialog.findViewById(R.id.submit);
         pesquisar.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
+
+                EditText assuntoEditText = (EditText) myDialog.findViewById(R.id.cadeira);
+                String assunto = assuntoEditText.getText().toString();
+
+                if (assunto.isEmpty()) {
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Por favor complete o assunto da dúvida.")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+                else{
+
                 myDialog.dismiss();
-                ShowPopupResultados(v);
+                ShowPopupResultados(v);}
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

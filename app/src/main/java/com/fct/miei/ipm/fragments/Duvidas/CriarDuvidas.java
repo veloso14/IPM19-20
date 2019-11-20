@@ -175,15 +175,25 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                             .show();
                 }
                 else {
-                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
-                    prefs.remove("pref");
-                    prefs.commit();
-                    Toast.makeText(getContext(),"Dúvida publicada", Toast.LENGTH_LONG).show();
-                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new Duvidas());
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.addToBackStack(null);
-                    ft.commit();
+
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Confirmação")
+                            .setMessage("Tem a certeza que pretende adicionar dúvida?")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
+                                    prefs.remove("pref");
+                                    prefs.commit();
+                                    Toast.makeText(getContext(),"Dúvida publicada", Toast.LENGTH_LONG).show();
+                                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                    ft.replace(R.id.content, new Duvidas());
+                                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                                    ft.addToBackStack(null);
+                                    ft.commit();
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
                 }
 
             }

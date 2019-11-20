@@ -3,6 +3,7 @@ package com.fct.miei.ipm.fragments.Documentos;
 import android.Manifest;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -250,11 +251,22 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
                             .show();
                 }
                 else {
-                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
-                    prefs.remove("pref");
-                    prefs.commit();
-                    Toast.makeText(getContext(),"Publicado com Sucesso" , Toast.LENGTH_LONG).show();
-                    linker();
+
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Confirmação")
+                            .setMessage("Tem a certeza que pretende adicionar apontamento?")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
+                                    prefs.remove("pref");
+                                    prefs.commit();
+                                    Toast.makeText(getContext(),"Apontamento criado com sucesso",Toast.LENGTH_LONG).show();
+                                    linker();
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
+
                 }
 
             }

@@ -35,6 +35,7 @@ public class Documentos extends Fragment {
     private Dialog myDialog;
     private View vista;
     private int searched ;
+    private int[] stars = {100, 80};
 
     public Documentos() {
         // Required empty public constructor
@@ -46,10 +47,10 @@ public class Documentos extends Fragment {
         operatingSystems = new ArrayList<>();
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
 
 
@@ -59,7 +60,7 @@ public class Documentos extends Fragment {
     private void setOrderedDummyDataRuyCosta() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
 
     }
@@ -67,11 +68,11 @@ public class Documentos extends Fragment {
     private void setOrderedAplhabeticedDummyData() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
 
@@ -85,8 +86,8 @@ public class Documentos extends Fragment {
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
 
 
     }
@@ -94,8 +95,8 @@ public class Documentos extends Fragment {
     private void setOrderedMostRecenteDummyData() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
         operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
@@ -108,8 +109,8 @@ public class Documentos extends Fragment {
     private void setOrderedDummyData() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Simplex", 80));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
         operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
         operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
         operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
@@ -438,6 +439,7 @@ public class Documentos extends Fragment {
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
+
 
 
 }

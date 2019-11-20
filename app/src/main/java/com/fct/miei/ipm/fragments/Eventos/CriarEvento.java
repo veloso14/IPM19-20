@@ -2,10 +2,12 @@ package com.fct.miei.ipm.fragments.Eventos;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -179,41 +181,53 @@ public class CriarEvento extends Fragment {
                     Toast.makeText(getContext(),"Indique a duração" ,Toast.LENGTH_LONG).show();
                 }
                 else{
-                    SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
-                    String[] playlists = settings.getString("Eventos", "").split(";");
-                    playlists = increaseArray(playlists, 1);
-                    SharedPreferences.Editor editor = settings.edit();
 
-                    //Random color
-                    Random obj = new Random();
-                    int rand_num = obj.nextInt(0xffffff + 1);
-                    // format it as hexadecimal string and print
-                    String colorCode = String.format("#%06x", rand_num);
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Confirmação")
+                            .setMessage("Tem a certeza que pretende adicionar evento?")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                    playlists[playlists.length - 1] = "{\n" +
-                            "    \"time\": \"" + date + "\",\n" +
-                            "    \"numPessoas\": \"" + numPessoas.getText().toString() + "\",\n" +
-                            "    \"local\": \"" + local.getText().toString() + "\",\n" +
-                            "    \"fim\": \"" + fim.getText().toString() + "\",\n" +
-                            "    \"inicio\": \"" + inicio.getText().toString() + "\",\n" +
-                            "    \"allday\": \"" + allDay + "\",\n" +
-                            "    \"color\": \"" + colorCode + "\",\n" +
-                            "    \"name\": \"" + titulo.getText().toString() + "\"\n" +
-                            "  },\n";
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    SharedPreferences settings = getContext().getSharedPreferences("Eventos", 0);
+                                    String[] playlists = settings.getString("Eventos", "").split(";");
+                                    playlists = increaseArray(playlists, 1);
+                                    SharedPreferences.Editor editor = settings.edit();
 
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < playlists.length; i++) {
-                        sb.append(playlists[i]).append(";");
-                    }
-                    editor.putString("Eventos", sb.toString());
-                    editor.commit();
+                                    //Random color
+                                    Random obj = new Random();
+                                    int rand_num = obj.nextInt(0xffffff + 1);
+                                    // format it as hexadecimal string and print
+                                    String colorCode = String.format("#%06x", rand_num);
 
-                    Toast.makeText(getContext(), "Evento criado com sucesso", Toast.LENGTH_LONG).show();
-                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new Eventos());
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.addToBackStack(null);
-                    ft.commit();
+                                    playlists[playlists.length - 1] = "{\n" +
+                                            "    \"time\": \"" + date + "\",\n" +
+                                            "    \"numPessoas\": \"" + numPessoas.getText().toString() + "\",\n" +
+                                            "    \"local\": \"" + local.getText().toString() + "\",\n" +
+                                            "    \"fim\": \"" + fim.getText().toString() + "\",\n" +
+                                            "    \"inicio\": \"" + inicio.getText().toString() + "\",\n" +
+                                            "    \"allday\": \"" + allDay + "\",\n" +
+                                            "    \"color\": \"" + colorCode + "\",\n" +
+                                            "    \"name\": \"" + titulo.getText().toString() + "\"\n" +
+                                            "  },\n";
+
+                                    StringBuilder sb = new StringBuilder();
+                                    for (int i = 0; i < playlists.length; i++) {
+                                        sb.append(playlists[i]).append(";");
+                                    }
+                                    editor.putString("Eventos", sb.toString());
+                                    editor.commit();
+
+                                    Toast.makeText(getContext(), "Evento criado com sucesso", Toast.LENGTH_LONG).show();
+                                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                    ft.replace(R.id.content, new Eventos());
+                                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                                    ft.addToBackStack(null);
+                                    ft.commit();
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
+
+
                 }
             }
         });
