@@ -4,13 +4,16 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,8 +32,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 public class MainActivity extends AppCompatActivity {
 
     private LoginState loginState;
-    private Home home;
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,11 +77,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         loginState = new LoginState(this);
         setContentView(R.layout.activity_main);
-        //getSupportActionBar().hide();
 
+        ActionBar bar = getSupportActionBar();
 
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//        setSupportActionBar(myToolbar);
+        bar.setBackgroundDrawable(new ColorDrawable(0xFFFFFFFF));
+        bar.setTitle(Html.fromHtml("<font color='#007aff'>Note Uni</font>"));
+        bar.setElevation(0);
 
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, instanceIdResult -> {
             String newToken = instanceIdResult.getToken();
@@ -132,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Play perfil video", Toast.LENGTH_SHORT).show();
 
         }
-
-
 
         return true;
     }
