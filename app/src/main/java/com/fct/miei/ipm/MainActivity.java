@@ -36,6 +36,7 @@ import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
+import com.fct.miei.ipm.fragments.Eventos.CriarEvento;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
 import com.fct.miei.ipm.fragments.Home.Home;
 import com.fct.miei.ipm.fragments.Perfil;
@@ -143,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }else if (fragmentInFrame instanceof Eventos){
             intent.putExtra("image", "eventos");
+            startActivity(intent);
+        }else if (fragmentInFrame instanceof CriarEvento){
+            intent.putExtra("image", "criar_eventos");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Perfil){
             intent.putExtra("image", "perfil");
