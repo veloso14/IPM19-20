@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "ranking");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Eventos){
-            intent.putExtra("image", "ranking");
+            intent.putExtra("image", "eventos");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Perfil){
             intent.putExtra("image", "ranking");
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "ranking");
             startActivity(intent);
         }
-        
+
         return true;
     }
 
