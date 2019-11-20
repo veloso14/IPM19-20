@@ -26,6 +26,9 @@ import com.fct.miei.ipm.fragments.Home.Home;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -38,10 +41,11 @@ public class Documentos extends Fragment {
     private View vista;
     private int searched ;
     private int[] stars = {100, 80};
+    private int inc = 0;
 
     private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40, 1);
     private RecyclerViewItem doc2_ex_pdf = new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20, 1);
-    private RecyclerViewItem doc3_dual_doc = new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0], 2);
+    private RecyclerViewItem doc3_dual_doc = new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100, 2);
     private RecyclerViewItem doc4_simp_zip = new RecyclerViewItem(R.drawable.zip, "Simplex", 70, 3);
     private RecyclerViewItem doc5_simp_doc = new RecyclerViewItem(R.drawable.doc, "Simplex", 60, 4);
     private RecyclerViewItem doc6_dual_ppt = new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1], 4);
@@ -206,6 +210,13 @@ public class Documentos extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_documentos, container, false);
 
+
+
+
+//        operatingSystems.get(lastDocRating.toArray()[0])
+//        System.out.println(lastDocRating.toArray()[0]);
+
+
         SharedPreferences settingsPreferences = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
         searched = settingsPreferences.getInt("DOCSEARCHSELECTED", 0);
 
@@ -283,6 +294,43 @@ public class Documentos extends Fragment {
 
         gridView.setHasFixedSize(true);
 
+
+        SharedPreferences pref = getContext().getSharedPreferences("docRating", MODE_PRIVATE);
+
+        Set<String> lastDocRating = pref.getStringSet("docRating", null);
+
+        System.out.println(lastDocRating);
+
+        if(lastDocRating != null && lastDocRating.size() == 2){
+            Object[] myArr = lastDocRating.toArray();
+            String str1 = myArr[0].toString().split(" ")[0];
+            String value1 = myArr[0].toString().split(" ")[1];
+            String value2 = myArr[1].toString().split(" ")[1];
+
+
+            int doc;
+            int classif;
+
+            if(str1.equals("class")){
+                doc = Integer.parseInt(value2);
+                classif = Integer.parseInt(value1);
+            }
+            else{
+                doc = Integer.parseInt(value1);
+                classif = Integer.parseInt(value2);
+            }
+
+            System.out.println(doc);
+            System.out.println(classif);
+            operatingSystems.get(doc).incEstrealas(classif);
+        }
+
+
+        SharedPreferences.Editor edit = getContext().getSharedPreferences("docRating", MODE_PRIVATE).edit();
+        edit.putStringSet("docRating", null);
+        edit.apply();
+
+
         //listeners dos layouts
         ImageView duvidas = view.findViewById(R.id.duvidas);
 
@@ -317,7 +365,7 @@ public class Documentos extends Fragment {
                         android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.replace(R.id.content, wordDoc);
                         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        ft.addToBackStack(null);
+                        ft.addToBackStack("");
                         ft.commit();
                        // }
                     }
