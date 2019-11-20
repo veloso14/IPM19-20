@@ -1,7 +1,9 @@
 package com.fct.miei.ipm;
 
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
@@ -18,11 +20,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.Toast;
 import java.util.List;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
+import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
 import com.fct.miei.ipm.fragments.Home.Home;
 import com.fct.miei.ipm.fragments.Perfil;
@@ -115,9 +121,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (fragmentInFrame instanceof Home){
 
-            Toast.makeText(this, "Play home video", Toast.LENGTH_SHORT).show();
+            Intent inf=new Intent(MainActivity.this, HelpActivity.class);
+            startActivity(inf);
 
         }else if (fragmentInFrame instanceof Adicionar){
+
+
 
             Toast.makeText(this, "Play adicionar video", Toast.LENGTH_SHORT).show();
 
@@ -133,7 +142,48 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Play perfil video", Toast.LENGTH_SHORT).show();
 
+        }else if (fragmentInFrame instanceof Documentos){
+
+
+//            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+//            builder1.setMessage("Nesta página podes adicionar e vizualizar os teus documentos da cadeira, também podes submeter qualquer dúvida que tenhas sobre a matéria da disciplina.");
+//            builder1.setCancelable(true);
+//
+//            builder1.setPositiveButton(
+//                    "Ok!",
+//                    new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            dialog.cancel();
+//                        }
+//                    });
+//
+//            AlertDialog alert11 = builder1.create();
+//            alert11.show();
+
+            Toast.makeText(this, "Play documentos video", Toast.LENGTH_SHORT).show();
+
+        }else if (fragmentInFrame instanceof Documentos){
+
+
+//            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+//            builder1.setMessage("Nesta página podes adicionar e vizualizar os teus documentos da cadeira, também podes submeter qualquer dúvida que tenhas sobre a matéria da disciplina.");
+//            builder1.setCancelable(true);
+//
+//            builder1.setPositiveButton(
+//                    "Ok!",
+//                    new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            dialog.cancel();
+//                        }
+//                    });
+//
+//            AlertDialog alert11 = builder1.create();
+//            alert11.show();
+
+            Toast.makeText(this, "Play documentos video", Toast.LENGTH_SHORT).show();
+
         }
+
 
         return true;
     }
