@@ -117,12 +117,15 @@ public class ImageAdapter extends BaseAdapter {
 
         ImageView background = rowView.findViewById(R.id.background);
         background.setOnClickListener((event) -> {
-            FragmentManager manager = ((AppCompatActivity) mContext).getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction ft = manager.beginTransaction();
-            ft.replace(R.id.content, new Documentos());
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack(null);
-            ft.commit();
+
+            if(nomesCadeiras[position].equals("IIO")) {
+                FragmentManager manager = ((AppCompatActivity) mContext).getSupportFragmentManager();
+                android.support.v4.app.FragmentTransaction ft = manager.beginTransaction();
+                ft.replace(R.id.content, new Documentos());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
         });
         //Long key pressed
         //TODO fazer o delete
