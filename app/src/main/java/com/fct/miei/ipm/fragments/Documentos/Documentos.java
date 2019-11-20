@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Home.Home;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -37,6 +39,14 @@ public class Documentos extends Fragment {
     private int searched ;
     private int[] stars = {100, 80};
 
+    private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40, 1);
+    private RecyclerViewItem doc2_ex_pdf = new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20, 1);
+    private RecyclerViewItem doc3_dual_doc = new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0], 2);
+    private RecyclerViewItem doc4_simp_zip = new RecyclerViewItem(R.drawable.zip, "Simplex", 70, 3);
+    private RecyclerViewItem doc5_simp_doc = new RecyclerViewItem(R.drawable.doc, "Simplex", 60, 4);
+    private RecyclerViewItem doc6_dual_ppt = new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1], 4);
+    private RecyclerViewItem doc7_ex_pdf2 = new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44, 5);
+
     public Documentos() {
         // Required empty public constructor
     }
@@ -45,14 +55,13 @@ public class Documentos extends Fragment {
     private void setDummyData() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-
+        operatingSystems.add(doc1_ex_csv);
+        operatingSystems.add(doc2_ex_pdf);
+        operatingSystems.add(doc3_dual_doc);
+        operatingSystems.add(doc4_simp_zip);
+        operatingSystems.add(doc5_simp_doc);
+        operatingSystems.add(doc6_dual_ppt);
+        operatingSystems.add(doc7_ex_pdf2);
 
 
     }
@@ -60,62 +69,87 @@ public class Documentos extends Fragment {
     private void setOrderedDummyDataRuyCosta() {
 
         operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+        operatingSystems.add(doc3_dual_doc);
+        operatingSystems.add(doc7_ex_pdf2);
 
     }
     //2
     private void setOrderedAplhabeticedDummyData() {
 
-        operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+        if(operatingSystems == null || operatingSystems.size() == 2){
+            setDummyData();
+        }
+
+        Collections.sort(operatingSystems, RecyclerViewItem.DocNameComp);
+
+//        operatingSystems = new ArrayList<>();
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
 
     }
     //3
     private void setOrderedLeaseRecenteDummyData() {
 
-        operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+        if(operatingSystems == null || operatingSystems.size() == 2){
+            setDummyData();
+        }
+
+        Collections.sort(operatingSystems, RecyclerViewItem.DocOlderComp);
+
+//        operatingSystems = new ArrayList<>();
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
 
 
     }
     //4
     private void setOrderedMostRecenteDummyData() {
 
-        operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+
+        if(operatingSystems == null || operatingSystems.size() == 2){
+            setDummyData();
+        }
+
+        Collections.sort(operatingSystems, RecyclerViewItem.DocRecentComp);
+
+//        operatingSystems = new ArrayList<>();
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
 
 
     }
     //5
     private void setOrderedDummyData() {
 
-        operatingSystems = new ArrayList<>();
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        if(operatingSystems == null || operatingSystems.size() == 2){
+            setDummyData();
+        }
+
+        Collections.sort(operatingSystems, RecyclerViewItem.DocClassificationComp);
+
+//        operatingSystems = new ArrayList<>();
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
+//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
 
 
     }
@@ -324,7 +358,7 @@ public class Documentos extends Fragment {
                 ShowPopupFiltrarPor(vista.findViewById(android.R.id.content));
             }
         });
-        //Fechar
+        //Fecharm
         TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
