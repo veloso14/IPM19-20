@@ -34,6 +34,7 @@ import java.util.List;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
+import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
 import com.fct.miei.ipm.fragments.Home.Home;
@@ -126,12 +127,16 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragmentInFrame = getSupportFragmentManager().findFragmentById(R.id.content);
 
         Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
         if (fragmentInFrame instanceof Home){
             intent.putExtra("image", "cadeiras");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Adicionar){
             intent.putExtra("image", "adicionar");
+            startActivity(intent);
+        }else if (fragmentInFrame instanceof ShowAdicionar){
+            intent.putExtra("image", "adicionar_ex_apont");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Ranking){
             intent.putExtra("image", "ranking");
@@ -149,9 +154,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "ranking");
             startActivity(intent);
         }
-
-
-
+        
         return true;
     }
 

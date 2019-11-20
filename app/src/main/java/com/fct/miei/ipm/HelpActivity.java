@@ -31,6 +31,9 @@ public class HelpActivity extends AppCompatActivity {
         else if(image.equalsIgnoreCase("adicionar")){
             img.setImageResource(R.drawable.adicionar_help);
         }
+        else if(image.equalsIgnoreCase("adicionar_ex_apont")){
+            img.setImageResource(R.drawable.adicionar_ex_apont_help);
+        }
         else if(image.equalsIgnoreCase("ranking")){
             img.setImageResource(R.drawable.ranking_help);
         }
@@ -44,7 +47,6 @@ public class HelpActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         finish();
-
         return true;
     }
 }
