@@ -45,7 +45,7 @@ public class PartilharCom extends Fragment {
         
         Data data = new Data("Francisco Matos", R.drawable.pessoa6);
         mDataList.add(data);
-        data = new Data("Geraldo, Seco", R.drawable.group);
+        data = new Data("Ana, Vitória", R.drawable.group);
         mDataList.add(data);
         data = new Data("Pedro", R.drawable.pessoa2);
         mDataListContactos.add(data);
