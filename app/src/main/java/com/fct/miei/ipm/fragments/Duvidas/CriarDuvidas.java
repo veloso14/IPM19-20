@@ -174,14 +174,6 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
-                else if( fileName.isEmpty()){
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Erro")
-                            .setMessage("Escolha um anexo")
-                            .setNegativeButton(android.R.string.yes, null)
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
                 else {
                     SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
                     prefs.remove("pref");
