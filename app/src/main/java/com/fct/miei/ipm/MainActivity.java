@@ -125,26 +125,32 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment fragmentInFrame = getSupportFragmentManager().findFragmentById(R.id.content);
 
-        Intent intent =new Intent(MainActivity.this, HelpActivity.class);
+        Intent intent = new Intent(MainActivity.this, HelpActivity.class);
 
         if (fragmentInFrame instanceof Home){
             intent.putExtra("image", "cadeiras");
+            startActivity(intent);
         }else if (fragmentInFrame instanceof Adicionar){
             intent.putExtra("image", "ranking");
+            startActivity(intent);
         }else if (fragmentInFrame instanceof Ranking){
             intent.putExtra("image", "ranking");
+            startActivity(intent);
         }else if (fragmentInFrame instanceof Eventos){
             intent.putExtra("image", "ranking");
+            startActivity(intent);
         }else if (fragmentInFrame instanceof Perfil){
             intent.putExtra("image", "ranking");
+            startActivity(intent);
         }else if (fragmentInFrame instanceof Documentos){
             intent.putExtra("image", "ranking");
+            startActivity(intent);
         }else if (fragmentInFrame instanceof Documentos){
             intent.putExtra("image", "ranking");
+            startActivity(intent);
         }
 
 
-        startActivity(intent);
 
         return true;
     }
