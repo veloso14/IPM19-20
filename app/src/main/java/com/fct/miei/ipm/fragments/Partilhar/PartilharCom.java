@@ -48,10 +48,6 @@ public class PartilharCom extends Fragment {
         mDataList.add(data);
         data = new Data("Geraldo, Seco", R.drawable.group);
         mDataList.add(data);
-        data = new Data("Miguel Nunes", R.drawable.pessoa7);
-        mDataList.add(data);
-        data = new Data("Carolina", R.drawable.pessoa1);
-        mDataList.add(data);
 
     }
 
@@ -61,16 +57,6 @@ public class PartilharCom extends Fragment {
         data = new Data("Miguel Raposo", R.drawable.pessoa8);
         mDataListContactos.add(data);
         data = new Data("Marco", R.drawable.pessoa4);
-        mDataListContactos.add(data);
-        data = new Data("Miguel Calado", R.drawable.pessoa1);
-        mDataListContactos.add(data);
-        data = new Data("Daniel Dias", R.drawable.pessoa2);
-        mDataListContactos.add(data);
-        data = new Data("Diogo Pereira", R.drawable.pessoa3);
-        mDataListContactos.add(data);
-        data = new Data("Pedro", R.drawable.pessoa2);
-        mDataListContactos.add(data);
-        data = new Data("Luís Grilo", R.drawable.pessoa4);
         mDataListContactos.add(data);
 
     }
@@ -174,6 +160,7 @@ public class PartilharCom extends Fragment {
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putInt("selector", 2);
                     editor.commit();
+                    mAdapter.saveState();
                     //Go to fragment
 
                     if (BackCriarApontamento) {

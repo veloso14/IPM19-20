@@ -2,6 +2,7 @@ package com.fct.miei.ipm.fragments.Adicionar;
 
 import android.Manifest;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,9 +32,15 @@ import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 import com.google.android.gms.common.util.ArrayUtils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -265,6 +272,24 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
         int selected = settingss.getInt("selector", 0);
         dropdown.setSelection(selected);
         settingss.edit().remove("selector").commit();
+        if(selected == 2){
+            ArrayList<String> nomes = getArrayList();
+            Set<String> set = new HashSet<>(nomes);
+            nomes.clear();
+            nomes.addAll(set);
+            String selecionados = "";
+            for(int i = 0 ; i < nomes.size() ; i++){
+                selecionados = selecionados + nomes.get(i) + " ";
+                if( (i + 1 )< nomes.size())
+                    selecionados = selecionados + "," ;
+
+            }
+
+            TextView pessoas = view.findViewById(R.id.pessoas);
+            pessoas.setText(selecionados);
+
+        }
+
 
         //Restore
         SharedPreferences Restore = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE);
@@ -342,6 +367,15 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
 
                 break;
         }
+    }
+
+
+    public ArrayList<String> getArrayList(){
+        SharedPreferences prefs = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("pref", null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        return gson.fromJson(json, type);
     }
 
     @Override

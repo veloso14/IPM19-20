@@ -1,6 +1,7 @@
 package com.fct.miei.ipm.fragments.Eventos;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,9 +25,15 @@ import android.widget.Toast;
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -258,6 +265,25 @@ public class CriarEvento extends Fragment {
         int selected = settings.getInt("selector", 0);
         dropdown.setSelection(selected);
 
+        if(selected == 2){
+            ArrayList<String> nomes = getArrayList();
+            Set<String> set = new HashSet<>(nomes);
+            nomes.clear();
+            nomes.addAll(set);
+            String selecionados = "";
+            for(int i = 0 ; i < nomes.size() ; i++){
+                selecionados = selecionados + nomes.get(i) + " ";
+                if( (i + 1 )< nomes.size())
+                    selecionados = selecionados + "," ;
+
+            }
+
+            TextView pessoas = view.findViewById(R.id.pessoas);
+            pessoas.setText(selecionados);
+            pessoas.requestFocus();
+
+        }
+
 
 
 
@@ -287,6 +313,14 @@ public class CriarEvento extends Fragment {
         return view;
     }
 
+
+    public ArrayList<String> getArrayList(){
+        SharedPreferences prefs = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("pref", null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
 
     public String[] increaseArray(String[] theArray, int increaseBy)
     {

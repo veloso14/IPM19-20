@@ -90,19 +90,19 @@
             app:layout_constraintTop_toTopOf="@+id/login_entrar2"
             app:layout_constraintVertical_bias="0.0" />
 
+
         <TextView
             android:id="@+id/login_entrar3"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Anexos"
             android:textAlignment="center"
             android:textColor="@color/themecolor"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/login_entrar2"
-            app:layout_constraintTop_toBottomOf="@+id/login_entrar2" />
-
+            app:layout_constraintTop_toBottomOf="@+id/pessoas" />
 
         <TextView
             android:id="@+id/login_entrar5"
@@ -257,6 +257,16 @@
             app:layout_constraintEnd_toStartOf="@+id/publicar"
             app:layout_constraintStart_toEndOf="@+id/fileChooser"
             app:layout_constraintTop_toBottomOf="@+id/login_entrar3" />
+
+        <TextView
+            android:id="@+id/pessoas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text=" "
+            app:layout_constraintEnd_toEndOf="@+id/spinner1"
+            app:layout_constraintStart_toStartOf="@+id/login_entrar2"
+            app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     </android.support.constraint.ConstraintLayout>
     </ScrollView>

@@ -45,6 +45,10 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
         return new MyViewHolder(itemView);
     }
 
+    public void saveState(){
+        saveArrayList(selecionados);
+    }
+
 
     public ArrayList<String> getContactos(){
         return selecionados;

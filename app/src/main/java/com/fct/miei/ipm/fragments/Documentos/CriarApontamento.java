@@ -32,9 +32,14 @@ import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Partilhar.PartilharCom;
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -44,17 +49,8 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
 
 
 
-    private static final String[] cadeiras = { "Interação Pessoa-Máquina",
-            "Sistemas de Computação em Cloud",
-            "Arquitetura e Protocolos de Redes de Computadores",
-            "Introdução à Investigação Operacional",
-            "Segurança de Software",
-            "Criptografia",
-            "Sistemas de Bases de Dados",
-            "Sistemas de Computação Móvel e Ubíqua",
-            "Inteligência Artificial" ,
-             "Interpretação e Compilação de Linguagens"};
-    private Spinner spinner;
+
+
     private boolean BackShowAdicionar = false;
     private int inited = 0;
     private String fileName = "";
@@ -268,6 +264,24 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
         SharedPreferences settingss = getActivity().getSharedPreferences("selector", 0);
         int selected = settingss.getInt("selector", 0);
         dropdown.setSelection(selected);
+        settingss.edit().remove("selector").commit();
+        if(selected == 2){
+            ArrayList<String> nomes = getArrayList();
+            Set<String> set = new HashSet<>(nomes);
+            nomes.clear();
+            nomes.addAll(set);
+            String selecionados = "";
+            for(int i = 0 ; i < nomes.size() ; i++){
+                selecionados = selecionados + nomes.get(i) + " ";
+                if( (i + 1 )< nomes.size())
+                    selecionados = selecionados + "," ;
+
+            }
+
+            TextView pessoas = view.findViewById(R.id.pessoas);
+            pessoas.setText(selecionados);
+
+        }
 
         //Restore
         SharedPreferences Restore = getActivity().getSharedPreferences("CriarExercicios", MODE_PRIVATE);
@@ -375,6 +389,14 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
             ft.addToBackStack(null);
             ft.commit();
         }
+    }
+
+    public ArrayList<String> getArrayList(){
+        SharedPreferences prefs = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("pref", null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        return gson.fromJson(json, type);
     }
 
     @Override
