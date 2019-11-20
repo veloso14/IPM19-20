@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -24,6 +27,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import com.brutal.ninjas.hackaton19.R;
@@ -119,71 +125,26 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment fragmentInFrame = getSupportFragmentManager().findFragmentById(R.id.content);
 
+        Intent intent =new Intent(MainActivity.this, HelpActivity.class);
+
         if (fragmentInFrame instanceof Home){
-
-            Intent inf=new Intent(MainActivity.this, HelpActivity.class);
-            startActivity(inf);
-
+            intent.putExtra("image", "cadeiras");
         }else if (fragmentInFrame instanceof Adicionar){
-
-
-
-            Toast.makeText(this, "Play adicionar video", Toast.LENGTH_SHORT).show();
-
+            intent.putExtra("image", "ranking");
         }else if (fragmentInFrame instanceof Ranking){
-
-            Toast.makeText(this, "Play ranking video", Toast.LENGTH_SHORT).show();
-
+            intent.putExtra("image", "ranking");
         }else if (fragmentInFrame instanceof Eventos){
-
-            Toast.makeText(this, "Play eventos video", Toast.LENGTH_SHORT).show();
-
+            intent.putExtra("image", "ranking");
         }else if (fragmentInFrame instanceof Perfil){
-
-            Toast.makeText(this, "Play perfil video", Toast.LENGTH_SHORT).show();
-
+            intent.putExtra("image", "ranking");
         }else if (fragmentInFrame instanceof Documentos){
-
-
-//            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-//            builder1.setMessage("Nesta página podes adicionar e vizualizar os teus documentos da cadeira, também podes submeter qualquer dúvida que tenhas sobre a matéria da disciplina.");
-//            builder1.setCancelable(true);
-//
-//            builder1.setPositiveButton(
-//                    "Ok!",
-//                    new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            dialog.cancel();
-//                        }
-//                    });
-//
-//            AlertDialog alert11 = builder1.create();
-//            alert11.show();
-
-            Toast.makeText(this, "Play documentos video", Toast.LENGTH_SHORT).show();
-
+            intent.putExtra("image", "ranking");
         }else if (fragmentInFrame instanceof Documentos){
-
-
-//            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-//            builder1.setMessage("Nesta página podes adicionar e vizualizar os teus documentos da cadeira, também podes submeter qualquer dúvida que tenhas sobre a matéria da disciplina.");
-//            builder1.setCancelable(true);
-//
-//            builder1.setPositiveButton(
-//                    "Ok!",
-//                    new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            dialog.cancel();
-//                        }
-//                    });
-//
-//            AlertDialog alert11 = builder1.create();
-//            alert11.show();
-
-            Toast.makeText(this, "Play documentos video", Toast.LENGTH_SHORT).show();
-
+            intent.putExtra("image", "ranking");
         }
 
+
+        startActivity(intent);
 
         return true;
     }
