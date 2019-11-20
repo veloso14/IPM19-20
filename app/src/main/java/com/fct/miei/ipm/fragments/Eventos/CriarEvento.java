@@ -136,6 +136,12 @@ public class CriarEvento extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                SharedPreferences prefs = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.remove("pref");
+                editor.apply();     // This line is IMPORTANT !!!
+
                 android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content, new Eventos());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

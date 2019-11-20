@@ -3,6 +3,7 @@ package com.fct.miei.ipm;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -38,27 +39,37 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.addicionar:
+                    cleanUp();
                     changeFragment(new Adicionar());
                     return true;
                 case R.id.home:
+                    cleanUp();
                     changeFragment(new Home());
                     return true;
                 case R.id.eventos:
+                    cleanUp();
                     changeFragment(new Eventos());
                     return true;
                 case R.id.ranking:
+                    cleanUp();
                     changeFragment(new Ranking());
                     return true;
                 case R.id.perfil:
+                    cleanUp();
                     changeFragment(new Perfil());
                     return true;
-
             }
             return false;
         }
 
     };
 
+    public void cleanUp(){
+        SharedPreferences prefs = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("pref");
+        editor.apply();     // This line is IMPORTANT !!!
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

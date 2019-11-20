@@ -24,7 +24,6 @@ import java.util.List;
 
 public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyViewHolder> {
     private List<Data> mDataList;
-    private int totalSelected = 0;
     private ArrayList<String> selecionados ;
     private Context context;
 
@@ -65,14 +64,12 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked) {
-                    totalSelected++;
                     selecionados.add(data.getName());
                     saveArrayList(selecionados );
 
                 }
                 else{
                         selecionados.remove(pos);
-                        totalSelected--;
                         saveArrayList(selecionados );
                     }
             }
@@ -117,5 +114,7 @@ public class ListViewAdaptor extends RecyclerView.Adapter<ListViewAdaptor.MyView
         Type type = new TypeToken<ArrayList<String>>() {}.getType();
         return gson.fromJson(json, type);
     }
+
+
 
 }

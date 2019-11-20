@@ -330,6 +330,12 @@ public class CriarExercicios extends Fragment implements EasyPermissions.Permiss
     }
 
     private void linker() {
+
+        SharedPreferences prefs = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("pref");
+        editor.apply();     // This line is IMPORTANT !!!
+        
         if (BackShowAdicionar) {
             android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content, new ShowAdicionar());

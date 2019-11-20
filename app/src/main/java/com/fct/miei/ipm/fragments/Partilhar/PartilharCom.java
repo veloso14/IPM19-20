@@ -42,8 +42,7 @@ public class PartilharCom extends Fragment {
     }
 
     public void prepareList() {
-
-
+        
         Data data = new Data("Francisco Matos", R.drawable.pessoa6);
         mDataList.add(data);
         data = new Data("Geraldo, Seco", R.drawable.group);
