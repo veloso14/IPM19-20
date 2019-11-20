@@ -46,9 +46,11 @@ public class PartilharCom extends Fragment {
 
         Data data = new Data("Francisco Matos", R.drawable.pessoa6);
         mDataList.add(data);
-        data = new Data("Carolina, Marco e Pedro", R.drawable.group);
+        data = new Data("Geraldo, Seco", R.drawable.group);
         mDataList.add(data);
         data = new Data("Miguel Nunes", R.drawable.pessoa7);
+        mDataList.add(data);
+        data = new Data("Carolina", R.drawable.pessoa1);
         mDataList.add(data);
 
     }
@@ -58,11 +60,15 @@ public class PartilharCom extends Fragment {
         mDataListContactos.add(data);
         data = new Data("Miguel Raposo", R.drawable.pessoa8);
         mDataListContactos.add(data);
+        data = new Data("Marco", R.drawable.pessoa4);
+        mDataListContactos.add(data);
         data = new Data("Miguel Calado", R.drawable.pessoa1);
         mDataListContactos.add(data);
         data = new Data("Daniel Dias", R.drawable.pessoa2);
         mDataListContactos.add(data);
         data = new Data("Diogo Pereira", R.drawable.pessoa3);
+        mDataListContactos.add(data);
+        data = new Data("Pedro", R.drawable.pessoa2);
         mDataListContactos.add(data);
         data = new Data("Luís Grilo", R.drawable.pessoa4);
         mDataListContactos.add(data);
