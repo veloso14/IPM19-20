@@ -277,8 +277,8 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
         int selected = settingss.getInt("selector", 0);
         dropdown.setSelection(selected);
         settingss.edit().remove("selector").commit();
-        if(selected == 2){
-            ArrayList<String> nomes = getArrayList();
+        ArrayList<String> nomes = getArrayList();
+        if(selected == 2 && nomes != null){
             Set<String> set = new HashSet<>(nomes);
             nomes.clear();
             nomes.addAll(set);

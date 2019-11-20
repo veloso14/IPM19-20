@@ -284,9 +284,9 @@ public class CriarEvento extends Fragment {
         SharedPreferences settings = getActivity().getSharedPreferences("selector", 0);
         int selected = settings.getInt("selector", 0);
         dropdown.setSelection(selected);
+        ArrayList<String> nomes = getArrayList();
 
-        if(selected == 2){
-            ArrayList<String> nomes = getArrayList();
+        if(selected == 2 && nomes != null ){
             Set<String> set = new HashSet<>(nomes);
             nomes.clear();
             nomes.addAll(set);
