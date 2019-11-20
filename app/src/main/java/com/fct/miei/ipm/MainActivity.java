@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
+import java.util.List;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
@@ -96,7 +97,34 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+
+        Fragment fragmentInFrame = getSupportFragmentManager().findFragmentById(R.id.content);
+
+        if (fragmentInFrame instanceof Home){
+
+            Toast.makeText(this, "Play home video", Toast.LENGTH_SHORT).show();
+
+        }else if (fragmentInFrame instanceof Adicionar){
+
+            Toast.makeText(this, "Play adicionar video", Toast.LENGTH_SHORT).show();
+
+        }else if (fragmentInFrame instanceof Ranking){
+
+            Toast.makeText(this, "Play ranking video", Toast.LENGTH_SHORT).show();
+
+        }else if (fragmentInFrame instanceof Eventos){
+
+            Toast.makeText(this, "Play eventos video", Toast.LENGTH_SHORT).show();
+
+        }else if (fragmentInFrame instanceof Perfil){
+
+            Toast.makeText(this, "Play perfil video", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+        return true;
     }
 
     @Override
