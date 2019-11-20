@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 
@@ -29,7 +30,7 @@ public class DocumentoWord extends Fragment {
 
 
     private Dialog myDialog;
-    private View vista;
+    float avalicao = 0;
     private int docSelected;
 
     public DocumentoWord() {
@@ -100,9 +101,7 @@ public class DocumentoWord extends Fragment {
         rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                SharedPreferences.Editor editor = getContext().getSharedPreferences("RatingWord"+docSelected, MODE_PRIVATE).edit();
-                editor.putFloat("RatingWord"+docSelected, rating);
-                editor.apply();
+                avalicao =  rating;
             }
         });
 
@@ -119,6 +118,15 @@ public class DocumentoWord extends Fragment {
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //save settings
+                if( avalicao > 0) {
+                    SharedPreferences.Editor editorr = getContext().getSharedPreferences("RatingWord" + docSelected, MODE_PRIVATE).edit();
+                    editorr.putFloat("RatingWord" + docSelected, avalicao);
+                    editorr.apply();
+                    Toast.makeText(getContext(),"Rating guardado",Toast.LENGTH_LONG).show();
+                }
+
                 SharedPreferences.Editor editor = getContext().getSharedPreferences("RatingWord", MODE_PRIVATE).edit();
                 editor.putFloat("RatingWord", rating.getRating());
                 editor.apply();
