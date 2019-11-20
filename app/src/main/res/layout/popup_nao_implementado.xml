@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/customborder"
+    android:background="@drawable/customborder_square"
     android:padding="5dp"
     android:layout_gravity="center">
 
