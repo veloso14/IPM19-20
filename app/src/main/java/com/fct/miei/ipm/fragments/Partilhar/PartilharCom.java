@@ -48,18 +48,16 @@ public class PartilharCom extends Fragment {
         mDataList.add(data);
         data = new Data("Geraldo, Seco", R.drawable.group);
         mDataList.add(data);
-
-    }
-
-    public void prepareContactos() {
-        Data data = new Data("João Veloso", R.drawable.perfil_joao);
-        mDataListContactos.add(data);
+        data = new Data("João Veloso", R.drawable.perfil_joao);
+        mDataList.add(data);
         data = new Data("Miguel Raposo", R.drawable.pessoa8);
-        mDataListContactos.add(data);
+        mDataList.add(data);
         data = new Data("Marco", R.drawable.pessoa4);
-        mDataListContactos.add(data);
+        mDataList.add(data);
 
     }
+
+
 
     private Boolean BackCriarApontamento;
     private Boolean BackCriarExercicio;
@@ -81,7 +79,7 @@ public class PartilharCom extends Fragment {
         editor.putBoolean("BackCriarExercicio", false);
         editor.commit();
 
-        prepareContactos();
+
         prepareList();
         mRecyclerView = view.findViewById(R.id.recycler_view);
 
@@ -94,15 +92,6 @@ public class PartilharCom extends Fragment {
 
 
         //Contactos
-        mRecyclerViewContactos = view.findViewById(R.id.contactos);
-
-        mAdapterContactos = new ListViewAdaptor(mDataListContactos , getContext());
-        RecyclerView.LayoutManager mLayoutManagerContactos = new LinearLayoutManager(getContext());
-        mRecyclerViewContactos.setLayoutManager(mLayoutManagerContactos);
-        mRecyclerViewContactos.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerViewContactos.setHasFixedSize(true);
-        mRecyclerViewContactos.setAdapter(mAdapterContactos);
-
 
 
         //Go Back
