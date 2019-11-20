@@ -46,6 +46,9 @@ public class HelpActivity extends AppCompatActivity {
         else if(image.equalsIgnoreCase("perfil")){
             img.setImageResource(R.drawable.perfil_help);
         }
+        else if(image.equalsIgnoreCase("notificacoes")){
+            img.setImageResource(R.drawable.notificacoes_help);
+        }
         else{
             img.setImageResource(R.drawable.ranking_help);
         }

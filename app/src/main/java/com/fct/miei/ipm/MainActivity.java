@@ -39,6 +39,7 @@ import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Eventos.CriarEvento;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
 import com.fct.miei.ipm.fragments.Home.Home;
+import com.fct.miei.ipm.fragments.NotificationPanel;
 import com.fct.miei.ipm.fragments.Perfil;
 import com.fct.miei.ipm.fragments.Ranking;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -154,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
         }else if (fragmentInFrame instanceof Documentos){
             intent.putExtra("image", "ranking");
             startActivity(intent);
-        }else if (fragmentInFrame instanceof Documentos){
-            intent.putExtra("image", "ranking");
+        }else if (fragmentInFrame instanceof NotificationPanel){
+            intent.putExtra("image", "notificacoes");
             startActivity(intent);
         }
 
