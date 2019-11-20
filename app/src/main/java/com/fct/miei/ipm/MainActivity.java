@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "eventos");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Perfil){
-            intent.putExtra("image", "ranking");
+            intent.putExtra("image", "perfil");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Documentos){
             intent.putExtra("image", "ranking");
