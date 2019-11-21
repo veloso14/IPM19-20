@@ -8,12 +8,16 @@ public class RecyclerViewItem {
     private String name;
     private int estrelas;
     private int day;
+    private boolean isClassified;
+    private int classifi;
 
     public RecyclerViewItem(int drawableId, String name, int estrelas, int day) {
         this.drawableId = drawableId;
         this.name = name;
         this.estrelas = estrelas;
         this.day = day;
+        this.isClassified = false;
+        this.classifi = 0;
     }
 
     public int getDrawableId() {
@@ -21,7 +25,7 @@ public class RecyclerViewItem {
     }
 
     public int getEstrelas() {
-        return this.estrelas;
+        return this.estrelas + this.classifi;
     }
 
     public int getDay() { return this.day; }
@@ -31,7 +35,7 @@ public class RecyclerViewItem {
     }
 
     public void incEstrealas(int estrelas){
-        this.estrelas+=estrelas;
+        this.classifi = estrelas;
     }
 
     public static Comparator<RecyclerViewItem> DocNameComp = new Comparator<RecyclerViewItem>() {

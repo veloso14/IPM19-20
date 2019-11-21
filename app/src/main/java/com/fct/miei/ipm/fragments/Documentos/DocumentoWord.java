@@ -110,6 +110,7 @@ public class DocumentoWord extends Fragment {
         rating.setRating(rate.getFloat("RatingWord"+this.docSelected, 0));
         //this.docSelected.setClassificacao(rate.getFloat("RatingWord", 0));
         //rate.edit().putFloat("RatingWord", this.docSelected.getClassificacao());
+        avalicao = rating.getRating();
 
 
         rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
