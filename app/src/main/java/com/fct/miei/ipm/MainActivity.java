@@ -34,6 +34,7 @@ import java.util.List;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
+import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Eventos.CriarEvento;
@@ -136,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }else if (fragmentInFrame instanceof Adicionar){
             intent.putExtra("image", "adicionar");
+            startActivity(intent);
+        }else if (fragmentInFrame instanceof CriarExercicios){
+            intent.putExtra("image", "criar_exercicios");
             startActivity(intent);
         }else if (fragmentInFrame instanceof ShowAdicionar){
             intent.putExtra("image", "adicionar_ex_apont");
