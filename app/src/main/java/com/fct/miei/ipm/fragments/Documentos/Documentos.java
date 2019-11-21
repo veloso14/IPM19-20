@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -356,7 +357,7 @@ public class Documentos extends Fragment {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
 
-                        if(operatingSystems.get(position).getName().contains("Ag. Dual")) {
+                        if(operatingSystems.get(position).getName().contains("Ag. Dual") || operatingSystems.get(position).getName().contains("Dual")) {
                             DocumentoWord wordDoc = new DocumentoWord();
                             wordDoc.docSelected(position);
 
@@ -424,19 +425,34 @@ public class Documentos extends Fragment {
             }
         });
         //Fecharm
+        EditText prof = myDialog.findViewById(R.id.pesquisar_prof);
         TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setOrderedDummyDataRuyCosta();
-                SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putInt("DOCSEARCHSELECTED", 1);
-                editor.commit();
-                gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
-                gridView.setAdapter(gridViewAdapter);
-                myDialog.dismiss();
 
+
+                if(  prof.getText().toString().isEmpty()){
+
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Por favor introduza o nome do professor")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }else {
+
+                    setOrderedDummyDataRuyCosta();
+                    SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putInt("DOCSEARCHSELECTED", 1);
+                    editor.commit();
+                    gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
+                    gridView.setAdapter(gridViewAdapter);
+                    myDialog.dismiss();
+
+
+                }
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
