@@ -355,19 +355,21 @@ public class Documentos extends Fragment {
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        // do it
-                        Log.d("GRIDVIEW", "Position " + position);
-                        //TODO extender para mais ficheiros
 
-                        DocumentoWord wordDoc = new DocumentoWord();
-                        wordDoc.docSelected(position);
+                        if(operatingSystems.get(position).getName().contains("Ag. Dual")) {
+                            DocumentoWord wordDoc = new DocumentoWord();
+                            wordDoc.docSelected(position);
 
-                        android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.replace(R.id.content, wordDoc);
-                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        ft.addToBackStack("");
-                        ft.commit();
-                       // }
+                            android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            ft.replace(R.id.content, wordDoc);
+                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                            ft.addToBackStack("");
+                            ft.commit();
+                        }
+                        else{
+                            ShowPopupNaoImplementado(vista.findViewById(android.R.id.content));
+                        }
+
                     }
                 });
 
@@ -393,6 +395,21 @@ public class Documentos extends Fragment {
 
 
         return view;
+    }
+
+
+    public void ShowPopupNaoImplementado(View v) {
+        TextView txtclose;
+        myDialog.setContentView(R.layout.popup_nao_implementado);
+        txtclose = myDialog.findViewById(R.id.txtclose);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+
+        myDialog.show();
     }
 
     public void ShowPopupPesquisarProfessor(View v) {
