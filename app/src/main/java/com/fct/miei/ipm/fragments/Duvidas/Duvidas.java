@@ -2,12 +2,14 @@ package com.fct.miei.ipm.fragments.Duvidas;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +17,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
@@ -37,10 +38,17 @@ public class Duvidas extends Fragment {
     private View vista;
     private boolean BackAdicionar = false;
     private boolean BackShowAdicionar = false;
-
+    private final List<String[]> duvidas;
 
     public Duvidas() {
-        // Required empty public constructor
+        duvidas = new LinkedList<String[]>();
+        initDuvidas();
+    }
+
+    private void initDuvidas(){
+        duvidas.add(new String[]{"Exercício 2 do teste de 2017", "Estou com dúvidas a resolver o segundo exercício 2 do teste de 2017. Alguém conseguiu resolver?", "12 min"});
+        duvidas.add(new String[]{"Algoritmo Simplex", "Não percebo nada sobre este algoritmo", "3 d"});
+        duvidas.add(new String[]{"Dual - Ex. 7", "Alguém conseguiu resolver o exercício 7 dos exercícios suplementares? A minha resolução não coincide com as soluções.", "10 Nov"});
     }
 
     public void ShowPopupResultados(View v) {
@@ -69,7 +77,6 @@ public class Duvidas extends Fragment {
 
     }
 
-
     public void ShowPopup(View v) {
         TextView txtclose;
         myDialog.setContentView(R.layout.popup_add_duvida);
@@ -81,29 +88,12 @@ public class Duvidas extends Fragment {
             }
         });
         //buscar
-
         TextView pesquisar = myDialog.findViewById(R.id.submit);
         pesquisar.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-
-                EditText assuntoEditText = (EditText) myDialog.findViewById(R.id.cadeira);
-                String assunto = assuntoEditText.getText().toString();
-
-                if (assunto.isEmpty()) {
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Erro")
-                            .setMessage("Por favor complete o assunto da dúvida.")
-                            .setNegativeButton(android.R.string.yes, null)
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-                else{
-
                 myDialog.dismiss();
-                ShowPopupResultados(v);}
+                ShowPopupResultados(v);
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -174,15 +164,7 @@ public class Duvidas extends Fragment {
             }
         });
 
-        //Preencher lista
-        final List<String[]> values = new LinkedList<String[]>();
-        values.add(new String[]{"Exercício 2 do teste de 2017                \uD83C\uDD95", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac erat laoreet, fermentum justo ac, lobortis nisi. Vivamus ex lorem, venenatis ac leo sit amet, ultricies fermentum urna. Donec congue arcu in libero consectetur, eleifend porttitor augue maximus. Donec et nibh tellus. Sed suscipit lacus leo, quis fermentum tellus suscipit vitae. Duis ac augue hendrerit augue auctor cursus eu quis nisl. Nulla enim magna, tempor vitae venenatis sit amet, congue semper nisl. Ut blandit mi id tincidunt maximus. Duis suscipit vestibulum arcu."});
-        values.add(new String[]{"Algoritmo Simplex", "Não percebo nada"});
-        values.add(new String[]{"Dual - Ex. 7", "Praesent placerat diam in luctus pulvinar. Vestibulum ac leo nec nunc feugiat sagittis. Duis placerat vulputate finibus. Curabitur ligula enim, iaculis id elit quis, vulputate porta massa. Aenean erat ligula, venenatis sed mauris in, luctus sagittis tortor. Curabitur viverra metus ut massa eleifend, et tempus massa facilisis. Proin rutrum non enim ac cursus. In feugiat magna a augue placerat auctor. In auctor tortor tempor mattis sodales. Nulla aliquet ligula nec interdum luctus. Duis tincidunt leo non libero varius malesuada. Maecenas tempus interdum erat nec molestie."});
-        values.add(new String[]{"Teste 1 de 17/18", "Nullam non felis sem. Proin tempor libero ut felis bibendum, ut molestie nisi ullamcorper. Proin vulputate iaculis maximus. Aenean a nunc bibendum, congue nunc vel, sodales nunc. Vestibulum id pharetra urna, quis bibendum orci. Donec nec lorem ac ante gravida cursus. Nullam et arcu sapien. Sed orci quam, commodo sit amet tempor vel, bibendum ut erat. Donec eu bibendum eros, vel semper nisl. Sed ac felis iaculis, tincidunt sem nec, suscipit metus. Suspendisse eros felis, malesuada quis fermentum id, ullamcorper molestie urna. Donec vulputate sed lorem consectetur tristique. Curabitur non leo neque."});
-
-
-        nonScrollListView.setAdapter(new ArrayAdapter<String[]>(getContext(), android.R.layout.simple_expandable_list_item_2, android.R.id.text1, values) {
+        nonScrollListView.setAdapter(new ArrayAdapter<String[]>(getContext(), R.layout.listview_activity_duvida, android.R.id.text1, duvidas) {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -190,37 +172,37 @@ public class Duvidas extends Fragment {
                 // Get the current item from ListView
                 View view = super.getView(position, convertView, parent);
 
-                String[] entry = values.get(position);
+                String[] entry = duvidas.get(position);
                 TextView text1 = view.findViewById(android.R.id.text1);
-                text1.setTextSize(20);
                 TextView text2 = view.findViewById(android.R.id.text2);
+                TextView date = view.findViewById(R.id.date);
+
                 text1.setText(entry[0]);
                 text2.setText(entry[1]);
-                text2.setTextSize(14);
+                date.setText(entry[2]);
 
                 // Get the Layout Parameters for ListView Current Item View
                 ViewGroup.LayoutParams params = view.getLayoutParams();
 
                 // Set the height of the Item View
-                params.height = 260;
                 view.setLayoutParams(params);
+
+                view.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        if (position == 0) {
+                            android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            ft.replace(R.id.content, new Comentarios());
+                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                            ft.addToBackStack(null);
+                            ft.commit();
+                        }
+                    }
+                });
+
                 return view;
-            }
-        });
-
-
-        nonScrollListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                Log.d("CLICK", "Listview Clicked" + position);
-
-                if (position == 0) {
-                    android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.content, new Comentarios());
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.addToBackStack(null);
-                    ft.commit();
-                }
             }
         });
 

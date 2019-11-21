@@ -25,7 +25,7 @@
         android:text="Dúvidas de IIO"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back2"
+        app:layout_constraintStart_toStartOf="@+id/back2"
         app:layout_constraintTop_toTopOf="parent" />
 
 

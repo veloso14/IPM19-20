@@ -69,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="24dp"
-            android:text="Vivamus ornare rhoncus libero at fringilla. Sed eget semper augue. Maecenas ultricies eros sit amet felis tincidunt, id luctus nisi cursus. Donec vestibulum augue vitae turpis fringilla, non aliquam enim mattis. Quisque a aliquam felis, id tempor mauris. Pellentesque vehicula neque elementum dapibus molestie. Aenean vehicula eleifend sapien ac tempus."
+            android:text="Estou com dúvidas a resolver o segundo exercício 2 do teste de 2017. Alguém conseguiu resolver?"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView6"

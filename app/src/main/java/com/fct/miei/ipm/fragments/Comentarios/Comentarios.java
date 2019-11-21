@@ -1,8 +1,12 @@
 package com.fct.miei.ipm.fragments.Comentarios;
 
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brutal.ninjas.hackaton19.R;
@@ -21,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static android.content.Context.MODE_PRIVATE;
-
+import android.support.v7.app.AlertDialog;
 public class Comentarios extends Fragment {
 
 
@@ -33,11 +38,9 @@ public class Comentarios extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_comentario, container, false);
@@ -45,6 +48,20 @@ public class Comentarios extends Fragment {
         //Duvidas go to
         ImageView sendcomment = view.findViewById(R.id.sendcomment);
         EditText  comment = view.findViewById(R.id.comment);
+        ImageView docImg = view.findViewById(R.id.imageView6);
+
+        docImg.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+                AlertDialog.Builder alertdialg = new AlertDialog.Builder(getContext());
+                final View v = inflater.inflate(R.layout.popup_image, null);
+                alertdialg.setView(v);
+                alertdialg.setNeutralButton("Fechar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dlg, int sumthin) {}
+                });
+                alertdialg.show();
+            }
+        });
 
         sendcomment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +142,7 @@ public class Comentarios extends Fragment {
 
         return view;
     }
+
 
 
     public String[] increaseArray(String[] theArray, int increaseBy) {
