@@ -47,6 +47,7 @@ dependencies {
     //File Manager
     implementation 'pub.devrel:easypermissions:0.2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }
 
 
