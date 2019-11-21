@@ -155,8 +155,8 @@ public class Duvidas extends Fragment {
                     ft.commit();
 
                     //atualiza view
-                    gridView.setAdapter(new ImageAdapter(getActivity()));
-                    gridView.invalidateViews();
+//                    gridView.setAdapter(new ImageAdapter(getActivity()));
+//                    gridView.invalidateViews();
 
                 }
                 else if(BackShowAdicionar){
