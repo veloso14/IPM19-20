@@ -72,6 +72,9 @@ public class HelpActivity extends AppCompatActivity {
         else if(image.equalsIgnoreCase("comentarios")){
             img.setImageResource(R.drawable.comentarios_help);
         }
+        else if(image.equalsIgnoreCase("documentos")){
+            img.setImageResource(R.drawable.documentos_help);
+        }
         else{
             img.setImageResource(R.drawable.ranking_help);
         }
