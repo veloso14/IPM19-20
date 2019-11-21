@@ -38,7 +38,7 @@ public class Duvidas extends Fragment {
     private View vista;
     private boolean BackAdicionar = false;
     private boolean BackShowAdicionar = false;
-    private final List<String[]> duvidas;
+    private static List<String[]> duvidas;
 
     public Duvidas() {
         duvidas = new LinkedList<String[]>();
@@ -49,6 +49,10 @@ public class Duvidas extends Fragment {
         duvidas.add(new String[]{"Exercício 2 do teste de 2017", "Estou com dúvidas a resolver o segundo exercício 2 do teste de 2017. Alguém conseguiu resolver?", "12 min"});
         duvidas.add(new String[]{"Algoritmo Simplex", "Não percebo nada sobre este algoritmo", "3 d"});
         duvidas.add(new String[]{"Dual - Ex. 7", "Alguém conseguiu resolver o exercício 7 dos exercícios suplementares? A minha resolução não coincide com as soluções.", "10 Nov"});
+    }
+
+    public static void adicionarDuvida(String assunto, String descricao){
+        duvidas.add(new String[]{assunto, descricao, "Agora mesmo"});
     }
 
     public void ShowPopupResultados(View v) {
@@ -100,10 +104,10 @@ public class Duvidas extends Fragment {
         myDialog.show();
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_duvidas, container, false);

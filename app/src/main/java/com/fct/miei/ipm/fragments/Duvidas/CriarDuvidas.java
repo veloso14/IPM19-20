@@ -192,6 +192,7 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.addToBackStack(null);
                                     ft.commit();
+                                    Duvidas.adicionarDuvida(assunto.toString(), descricao.toString());
                                 }})
                             .setNegativeButton(android.R.string.no, null).show();
                 }
