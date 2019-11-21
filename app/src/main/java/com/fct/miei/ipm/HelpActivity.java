@@ -52,6 +52,15 @@ public class HelpActivity extends AppCompatActivity {
         else if(image.equalsIgnoreCase("criar_exercicios")){
             img.setImageResource(R.drawable.criar_exercicio_help);
         }
+        else if(image.equalsIgnoreCase("criar_apontamentos")){
+            img.setImageResource(R.drawable.criar_apontamento_help);
+        }
+        else if(image.equalsIgnoreCase("duvidas")){
+            img.setImageResource(R.drawable.ranking_help);
+        }
+        else if(image.equalsIgnoreCase("criar_duvidas")){
+            img.setImageResource(R.drawable.ranking_help);
+        }
         else{
             img.setImageResource(R.drawable.ranking_help);
         }
