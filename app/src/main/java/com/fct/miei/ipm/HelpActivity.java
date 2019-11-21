@@ -59,7 +59,7 @@ public class HelpActivity extends AppCompatActivity {
             img.setImageResource(R.drawable.ranking_help);
         }
         else if(image.equalsIgnoreCase("criar_duvidas")){
-            img.setImageResource(R.drawable.ranking_help);
+            img.setImageResource(R.drawable.criar_duvida_help);
         }
         else{
             img.setImageResource(R.drawable.ranking_help);
