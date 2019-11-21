@@ -63,9 +63,6 @@ public class HelpActivity extends AppCompatActivity {
         else if(image.equalsIgnoreCase("criar_apontamentos")){
             img.setImageResource(R.drawable.criar_apontamento_help);
         }
-        else if(image.equalsIgnoreCase("duvidas")){
-            img.setImageResource(R.drawable.ranking_help);
-        }
         else if(image.equalsIgnoreCase("criar_duvidas")){
             img.setImageResource(R.drawable.criar_duvida_help);
         }
@@ -77,6 +74,9 @@ public class HelpActivity extends AppCompatActivity {
         }
         else if(image.equalsIgnoreCase("documento")){
             img.setImageResource(R.drawable.documento_ajuda);
+        }
+        else if(image.equalsIgnoreCase("duvidas")){
+            img.setImageResource(R.drawable.duvidas_help);
         }
         else{
             img.setImageResource(R.drawable.ranking_help);
