@@ -41,7 +41,8 @@ public class Documentos extends Fragment {
     private Dialog myDialog;
     private View vista;
     private int searched ;
-    private int classif;
+    private int classif_ag_dual;
+    private int classif_dual;
     private int[] stars = {100, 80};
 
     private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40, 1);
@@ -296,14 +297,16 @@ public class Documentos extends Fragment {
 
 
         SharedPreferences settingsPreferences2 = getContext().getSharedPreferences("classification", MODE_PRIVATE);
-        classif = settingsPreferences2.getInt("classification", 0);
+        classif_ag_dual = settingsPreferences2.getInt("classification ag dual", 0);
+        classif_dual = settingsPreferences2.getInt("classification dual", 0);
 
 
-        System.out.println("classification " + classif);
+        System.out.println("classification ag dual " + classif_ag_dual);
+        System.out.println("classification dual " + classif_dual);
 
-        System.out.println(lastDocRating);
 
-        operatingSystems.get(operatingSystems.indexOf(doc3_dual_doc)).incEstrealas(classif);
+        operatingSystems.get(operatingSystems.indexOf(doc3_dual_doc)).incEstrealas(classif_ag_dual);
+        operatingSystems.get(operatingSystems.indexOf(doc6_dual_ppt)).incEstrealas(classif_dual);
 
         if(lastDocRating != null && lastDocRating.size() == 2){
             Object[] myArr = lastDocRating.toArray();
@@ -369,7 +372,7 @@ public class Documentos extends Fragment {
 
                         if(operatingSystems.get(position).getName().contains("Ag. Dual") || operatingSystems.get(position).getName().contains("Dual")) {
                             DocumentoWord wordDoc = new DocumentoWord();
-                            wordDoc.docSelected(position);
+                            wordDoc.docSelected(position, operatingSystems.get(position).getName());
 
                             android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                             ft.replace(R.id.content, wordDoc);

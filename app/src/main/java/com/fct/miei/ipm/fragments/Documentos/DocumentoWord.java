@@ -38,13 +38,15 @@ public class DocumentoWord extends Fragment {
     private Dialog myDialog;
     float avalicao = 0;
     private int docSelected;
+    private String docName;
 
     public DocumentoWord() {
         // Required empty public constructor
     }
 
-    public void docSelected(int doc){
+    public void docSelected(int doc, String name){
         this.docSelected = doc;
+        this.docName = name;
     }
 
 
@@ -146,9 +148,17 @@ public class DocumentoWord extends Fragment {
 
                 System.out.println("rounded "+ Math.round(avalicao));
 
-                SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
-                edition.putInt("classification", Math.round(avalicao));
-                edition.apply();
+                if(docName.contains("Ag. Dual")){
+                    SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
+                    edition.putInt("classification ag dual", Math.round(avalicao));
+                    edition.apply();
+                }
+                else{
+                    SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
+                    edition.putInt("classification dual", Math.round(avalicao));
+                    edition.apply();
+                }
+
 
                 SharedPreferences.Editor edit = getContext().getSharedPreferences("docRating", MODE_PRIVATE).edit();
 
