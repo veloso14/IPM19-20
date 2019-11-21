@@ -2,6 +2,8 @@ package com.fct.miei.ipm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
@@ -17,6 +19,10 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
         setContentView(R.layout.activity_help);
         getSupportActionBar().hide();
 
@@ -24,6 +30,8 @@ public class HelpActivity extends AppCompatActivity {
         String image = extras.getString("image");
 
         ImageView img = findViewById(R.id.helpImage);
+        img.getLayoutParams().height = displayMetrics.heightPixels;
+        img.getLayoutParams().width = displayMetrics.widthPixels;
 
         if(image.equalsIgnoreCase("cadeiras")){
             img.setImageResource(R.drawable.cadeiras);
