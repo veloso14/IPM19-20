@@ -38,6 +38,7 @@ import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Comentarios.Comentarios;
 import com.fct.miei.ipm.fragments.Documentos.CriarApontamento;
+import com.fct.miei.ipm.fragments.Documentos.DocumentoWord;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Duvidas.CriarDuvidas;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
@@ -176,6 +177,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (fragmentInFrame instanceof Comentarios){
             intent.putExtra("image", "comentarios");
+            startActivity(intent);
+        }
+        else if (fragmentInFrame instanceof DocumentoWord){
+            intent.putExtra("image", "documento");
             startActivity(intent);
         }
 //        else if (fragmentInFrame instanceof Duvidas){
