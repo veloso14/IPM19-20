@@ -36,6 +36,7 @@ import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
 import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
+import com.fct.miei.ipm.fragments.Comentarios.Comentarios;
 import com.fct.miei.ipm.fragments.Documentos.CriarApontamento;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
 import com.fct.miei.ipm.fragments.Duvidas.CriarDuvidas;
@@ -169,15 +170,18 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "notificacoes");
             startActivity(intent);
         }
-//        else if (fragmentInFrame instanceof Duvidas){
-//            intent.putExtra("image", "duvidas");
-//            startActivity(intent);
-//        }
         else if (fragmentInFrame instanceof CriarDuvidas){
             intent.putExtra("image", "criar_duvidas");
             startActivity(intent);
         }
-
+        else if (fragmentInFrame instanceof Comentarios){
+            intent.putExtra("image", "comentarios");
+            startActivity(intent);
+        }
+//        else if (fragmentInFrame instanceof Duvidas){
+//            intent.putExtra("image", "duvidas");
+//            startActivity(intent);
+//        }
         return true;
     }
 
