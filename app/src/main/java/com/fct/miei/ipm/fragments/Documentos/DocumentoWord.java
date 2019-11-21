@@ -108,6 +108,7 @@ public class DocumentoWord extends Fragment {
 
         SharedPreferences rate = getContext().getSharedPreferences("RatingWord"+this.docSelected, MODE_PRIVATE);
         rating.setRating(rate.getFloat("RatingWord"+this.docSelected, 0));
+
         //this.docSelected.setClassificacao(rate.getFloat("RatingWord", 0));
         //rate.edit().putFloat("RatingWord", this.docSelected.getClassificacao());
         avalicao = rating.getRating();
@@ -143,10 +144,15 @@ public class DocumentoWord extends Fragment {
                     Toast.makeText(getContext(),"Rating guardado",Toast.LENGTH_LONG).show();
                 }
 
+                System.out.println("rounded "+ Math.round(avalicao));
+
+                SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
+                edition.putInt("classification", Math.round(avalicao));
+                edition.apply();
+
                 SharedPreferences.Editor edit = getContext().getSharedPreferences("docRating", MODE_PRIVATE).edit();
 
                 lastDocRating.add("doc " + Integer.toString(docSelected));
-
                 lastDocRating.add("class " + Integer.toString(Math.round(avalicao)));
 
                 edit.putStringSet("docRating", lastDocRating);

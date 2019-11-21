@@ -41,8 +41,8 @@ public class Documentos extends Fragment {
     private Dialog myDialog;
     private View vista;
     private int searched ;
+    private int classif;
     private int[] stars = {100, 80};
-    private int inc = 0;
 
     private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40, 1);
     private RecyclerViewItem doc2_ex_pdf = new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20, 1);
@@ -212,14 +212,9 @@ public class Documentos extends Fragment {
         View view = inflater.inflate(R.layout.fragment_documentos, container, false);
 
 
-
-
-//        operatingSystems.get(lastDocRating.toArray()[0])
-//        System.out.println(lastDocRating.toArray()[0]);
-
-
         SharedPreferences settingsPreferences = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
         searched = settingsPreferences.getInt("DOCSEARCHSELECTED", 0);
+
 
         ImageView adicionar = view.findViewById(R.id.adicionar);
 
@@ -297,10 +292,18 @@ public class Documentos extends Fragment {
 
 
         SharedPreferences pref = getContext().getSharedPreferences("docRating", MODE_PRIVATE);
-
         Set<String> lastDocRating = pref.getStringSet("docRating", null);
 
+
+        SharedPreferences settingsPreferences2 = getContext().getSharedPreferences("classification", MODE_PRIVATE);
+        classif = settingsPreferences2.getInt("classification", 0);
+
+
+        System.out.println("classification " + classif);
+
         System.out.println(lastDocRating);
+
+        operatingSystems.get(operatingSystems.indexOf(doc3_dual_doc)).incEstrealas(classif);
 
         if(lastDocRating != null && lastDocRating.size() == 2){
             Object[] myArr = lastDocRating.toArray();
@@ -321,10 +324,17 @@ public class Documentos extends Fragment {
                 classif = Integer.parseInt(value2);
             }
 
-            System.out.println(doc);
-            System.out.println(classif);
+            SharedPreferences settings = getContext().getSharedPreferences("classification", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("classif", classif);
+            editor.commit();
+
             operatingSystems.get(doc).incEstrealas(classif);
         }
+
+
+
+
 
 
         SharedPreferences.Editor edit = getContext().getSharedPreferences("docRating", MODE_PRIVATE).edit();
