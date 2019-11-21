@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,33 +27,35 @@ import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
 import com.fct.miei.ipm.fragments.Comentarios.Comentarios;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
+import com.fct.miei.ipm.fragments.Home.ImageAdapter;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class Duvidas extends Fragment {
 
+    private static final String DUVIDA_1 = "Exercício 2 do teste de 2017";
 
     private NonScrollListView nonScrollListView;
     private Dialog myDialog;
     private View vista;
     private boolean BackAdicionar = false;
     private boolean BackShowAdicionar = false;
-    private static List<String[]> duvidas;
+    private GridView gridView;
+    public static List<String[]> duvidas= initList();
 
-    public Duvidas() {
-        duvidas = new LinkedList<String[]>();
-        initDuvidas();
-    }
+    public Duvidas() {}
 
-    private void initDuvidas(){
-        duvidas.add(new String[]{"Exercício 2 do teste de 2017", "Estou com dúvidas a resolver o segundo exercício 2 do teste de 2017. Alguém conseguiu resolver?", "12 min"});
-        duvidas.add(new String[]{"Algoritmo Simplex", "Não percebo nada sobre este algoritmo", "3 d"});
-        duvidas.add(new String[]{"Dual - Ex. 7", "Alguém conseguiu resolver o exercício 7 dos exercícios suplementares? A minha resolução não coincide com as soluções.", "10 Nov"});
-    }
-
-    public static void adicionarDuvida(String assunto, String descricao){
-        duvidas.add(new String[]{assunto, descricao, "Agora mesmo"});
+    private static List<String[]> initList(){   //default values
+        List<String[]> list= new LinkedList<String[]>();
+        list.add(new String[]{"Exercício 2 do teste de 2017", "Estou com dúvidas a resolver o segundo exercício 2 do teste de 2017. Alguém conseguiu resolver?", "12 min"});
+        list.add(new String[]{"Algoritmo Simplex", "Não percebo nada sobre este algoritmo", "3 d"});
+        list.add(new String[]{"Dual - Ex. 7", "Alguém conseguiu resolver o exercício 7 dos exercícios suplementares? A minha resolução não coincide com as soluções.", "10 Nov"});
+        return list;
     }
 
     public void ShowPopupResultados(View v) {
@@ -105,6 +108,7 @@ public class Duvidas extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -150,6 +154,10 @@ public class Duvidas extends Fragment {
                     ft.addToBackStack(null);
                     ft.commit();
 
+                    //atualiza view
+                    gridView.setAdapter(new ImageAdapter(getActivity()));
+                    gridView.invalidateViews();
+
                 }
                 else if(BackShowAdicionar){
                     android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -167,6 +175,7 @@ public class Duvidas extends Fragment {
                 }
             }
         });
+
 
         nonScrollListView.setAdapter(new ArrayAdapter<String[]>(getContext(), R.layout.listview_activity_duvida, android.R.id.text1, duvidas) {
 
@@ -196,7 +205,7 @@ public class Duvidas extends Fragment {
                     @Override
                     public void onClick(View v)
                     {
-                        if (position == 0) {
+                        if (duvidas.get(position)[0]==DUVIDA_1) {
                             android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                             ft.replace(R.id.content, new Comentarios());
                             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.NDSpinner;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
+import com.fct.miei.ipm.fragments.Home.ImageAdapter;
 import com.google.android.gms.common.util.ArrayUtils;
 
 import java.io.File;
@@ -192,7 +194,8 @@ public class CriarDuvidas extends Fragment implements AdapterView.OnItemSelected
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.addToBackStack(null);
                                     ft.commit();
-                                    Duvidas.adicionarDuvida(assunto.toString(), descricao.toString());
+                                    Duvidas.duvidas.add(0, new String[]{assunto.getText().toString(), descricao.getText().toString(), "Agora mesmo"});
+
                                 }})
                             .setNegativeButton(android.R.string.no, null).show();
                 }
