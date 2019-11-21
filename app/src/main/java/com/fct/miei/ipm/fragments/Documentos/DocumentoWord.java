@@ -38,13 +38,15 @@ public class DocumentoWord extends Fragment {
     private Dialog myDialog;
     float avalicao = 0;
     private int docSelected;
+    private String docName;
 
     public DocumentoWord() {
         // Required empty public constructor
     }
 
-    public void docSelected(int doc){
+    public void docSelected(int doc, String name){
         this.docSelected = doc;
+        this.docName = name;
     }
 
 
@@ -108,8 +110,10 @@ public class DocumentoWord extends Fragment {
 
         SharedPreferences rate = getContext().getSharedPreferences("RatingWord"+this.docSelected, MODE_PRIVATE);
         rating.setRating(rate.getFloat("RatingWord"+this.docSelected, 0));
+
         //this.docSelected.setClassificacao(rate.getFloat("RatingWord", 0));
         //rate.edit().putFloat("RatingWord", this.docSelected.getClassificacao());
+        avalicao = rating.getRating();
 
 
         rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -142,10 +146,23 @@ public class DocumentoWord extends Fragment {
                     Toast.makeText(getContext(),"Rating guardado",Toast.LENGTH_LONG).show();
                 }
 
+                System.out.println("rounded "+ Math.round(avalicao));
+
+                if(docName.contains("Ag. Dual")){
+                    SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
+                    edition.putInt("classification ag dual", Math.round(avalicao));
+                    edition.apply();
+                }
+                else{
+                    SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
+                    edition.putInt("classification dual", Math.round(avalicao));
+                    edition.apply();
+                }
+
+
                 SharedPreferences.Editor edit = getContext().getSharedPreferences("docRating", MODE_PRIVATE).edit();
 
                 lastDocRating.add("doc " + Integer.toString(docSelected));
-
                 lastDocRating.add("class " + Integer.toString(Math.round(avalicao)));
 
                 edit.putStringSet("docRating", lastDocRating);

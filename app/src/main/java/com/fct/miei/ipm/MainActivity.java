@@ -34,8 +34,14 @@ import java.util.List;
 
 import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.Adicionar;
+import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Adicionar.ShowAdicionar;
+import com.fct.miei.ipm.fragments.Comentarios.Comentarios;
+import com.fct.miei.ipm.fragments.Documentos.CriarApontamento;
+import com.fct.miei.ipm.fragments.Documentos.DocumentoWord;
 import com.fct.miei.ipm.fragments.Documentos.Documentos;
+import com.fct.miei.ipm.fragments.Duvidas.CriarDuvidas;
+import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Eventos.CriarEvento;
 import com.fct.miei.ipm.fragments.Eventos.Eventos;
 import com.fct.miei.ipm.fragments.Home.Home;
@@ -137,6 +143,12 @@ public class MainActivity extends AppCompatActivity {
         }else if (fragmentInFrame instanceof Adicionar){
             intent.putExtra("image", "adicionar");
             startActivity(intent);
+        }else if (fragmentInFrame instanceof CriarExercicios){
+            intent.putExtra("image", "criar_exercicios");
+            startActivity(intent);
+        }else if (fragmentInFrame instanceof CriarApontamento){
+            intent.putExtra("image", "criar_apontamentos");
+            startActivity(intent);
         }else if (fragmentInFrame instanceof ShowAdicionar){
             intent.putExtra("image", "adicionar_ex_apont");
             startActivity(intent);
@@ -153,13 +165,28 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "perfil");
             startActivity(intent);
         }else if (fragmentInFrame instanceof Documentos){
-            intent.putExtra("image", "ranking");
+            intent.putExtra("image", "documentos");
             startActivity(intent);
         }else if (fragmentInFrame instanceof NotificationPanel){
             intent.putExtra("image", "notificacoes");
             startActivity(intent);
         }
-
+        else if (fragmentInFrame instanceof CriarDuvidas){
+            intent.putExtra("image", "criar_duvidas");
+            startActivity(intent);
+        }
+        else if (fragmentInFrame instanceof Comentarios){
+            intent.putExtra("image", "comentarios");
+            startActivity(intent);
+        }
+        else if (fragmentInFrame instanceof DocumentoWord){
+            intent.putExtra("image", "documento");
+            startActivity(intent);
+        }
+//        else if (fragmentInFrame instanceof Duvidas){
+//            intent.putExtra("image", "duvidas");
+//            startActivity(intent);
+//        }
         return true;
     }
 

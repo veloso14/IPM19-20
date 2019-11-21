@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -40,8 +41,9 @@ public class Documentos extends Fragment {
     private Dialog myDialog;
     private View vista;
     private int searched ;
+    private int classif_ag_dual;
+    private int classif_dual;
     private int[] stars = {100, 80};
-    private int inc = 0;
 
     private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40, 1);
     private RecyclerViewItem doc2_ex_pdf = new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20, 1);
@@ -211,14 +213,9 @@ public class Documentos extends Fragment {
         View view = inflater.inflate(R.layout.fragment_documentos, container, false);
 
 
-
-
-//        operatingSystems.get(lastDocRating.toArray()[0])
-//        System.out.println(lastDocRating.toArray()[0]);
-
-
         SharedPreferences settingsPreferences = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
         searched = settingsPreferences.getInt("DOCSEARCHSELECTED", 0);
+
 
         ImageView adicionar = view.findViewById(R.id.adicionar);
 
@@ -296,10 +293,20 @@ public class Documentos extends Fragment {
 
 
         SharedPreferences pref = getContext().getSharedPreferences("docRating", MODE_PRIVATE);
-
         Set<String> lastDocRating = pref.getStringSet("docRating", null);
 
-        System.out.println(lastDocRating);
+
+        SharedPreferences settingsPreferences2 = getContext().getSharedPreferences("classification", MODE_PRIVATE);
+        classif_ag_dual = settingsPreferences2.getInt("classification ag dual", 0);
+        classif_dual = settingsPreferences2.getInt("classification dual", 0);
+
+
+        System.out.println("classification ag dual " + classif_ag_dual);
+        System.out.println("classification dual " + classif_dual);
+
+
+        operatingSystems.get(operatingSystems.indexOf(doc3_dual_doc)).incEstrealas(classif_ag_dual);
+        operatingSystems.get(operatingSystems.indexOf(doc6_dual_ppt)).incEstrealas(classif_dual);
 
         if(lastDocRating != null && lastDocRating.size() == 2){
             Object[] myArr = lastDocRating.toArray();
@@ -320,10 +327,17 @@ public class Documentos extends Fragment {
                 classif = Integer.parseInt(value2);
             }
 
-            System.out.println(doc);
-            System.out.println(classif);
+            SharedPreferences settings = getContext().getSharedPreferences("classification", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("classif", classif);
+            editor.commit();
+
             operatingSystems.get(doc).incEstrealas(classif);
         }
+
+
+
+
 
 
         SharedPreferences.Editor edit = getContext().getSharedPreferences("docRating", MODE_PRIVATE).edit();
@@ -355,19 +369,21 @@ public class Documentos extends Fragment {
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        // do it
-                        Log.d("GRIDVIEW", "Position " + position);
-                        //TODO extender para mais ficheiros
 
-                        DocumentoWord wordDoc = new DocumentoWord();
-                        wordDoc.docSelected(position);
+                        if(operatingSystems.get(position).getName().contains("Ag. Dual") || operatingSystems.get(position).getName().contains("Dual")) {
+                            DocumentoWord wordDoc = new DocumentoWord();
+                            wordDoc.docSelected(position, operatingSystems.get(position).getName());
 
-                        android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.replace(R.id.content, wordDoc);
-                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        ft.addToBackStack("");
-                        ft.commit();
-                       // }
+                            android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            ft.replace(R.id.content, wordDoc);
+                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                            ft.addToBackStack("");
+                            ft.commit();
+                        }
+                        else{
+                            ShowPopupNaoImplementado(vista.findViewById(android.R.id.content));
+                        }
+
                     }
                 });
 
@@ -395,6 +411,21 @@ public class Documentos extends Fragment {
         return view;
     }
 
+
+    public void ShowPopupNaoImplementado(View v) {
+        TextView txtclose;
+        myDialog.setContentView(R.layout.popup_nao_implementado);
+        txtclose = myDialog.findViewById(R.id.txtclose);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+
+        myDialog.show();
+    }
+
     public void ShowPopupPesquisarProfessor(View v) {
         myDialog.setContentView(R.layout.popup_search_professor);
         //buscar
@@ -407,19 +438,34 @@ public class Documentos extends Fragment {
             }
         });
         //Fecharm
+        EditText prof = myDialog.findViewById(R.id.pesquisar_prof);
         TextView pesquisar = myDialog.findViewById(R.id.pesquisar);
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setOrderedDummyDataRuyCosta();
-                SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putInt("DOCSEARCHSELECTED", 1);
-                editor.commit();
-                gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
-                gridView.setAdapter(gridViewAdapter);
-                myDialog.dismiss();
 
+
+                if(  prof.getText().toString().isEmpty()){
+
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Erro")
+                            .setMessage("Por favor introduza o nome do professor")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }else {
+
+                    setOrderedDummyDataRuyCosta();
+                    SharedPreferences settings = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putInt("DOCSEARCHSELECTED", 1);
+                    editor.commit();
+                    gridViewAdapter = new GridViewAdapterDocumentos(getActivity(), operatingSystems);
+                    gridView.setAdapter(gridViewAdapter);
+                    myDialog.dismiss();
+
+
+                }
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
