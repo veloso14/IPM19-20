@@ -380,9 +380,6 @@ public class Documentos extends Fragment {
                             ft.addToBackStack("");
                             ft.commit();
                         }
-                        else{
-                            ShowPopupNaoImplementado(vista.findViewById(android.R.id.content));
-                        }
 
                     }
                 });
@@ -411,20 +408,7 @@ public class Documentos extends Fragment {
         return view;
     }
 
-
-    public void ShowPopupNaoImplementado(View v) {
-        TextView txtclose;
-        myDialog.setContentView(R.layout.popup_nao_implementado);
-        txtclose = myDialog.findViewById(R.id.txtclose);
-        txtclose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myDialog.dismiss();
-            }
-        });
-
-        myDialog.show();
-    }
+    
 
     public void ShowPopupPesquisarProfessor(View v) {
         myDialog.setContentView(R.layout.popup_search_professor);
