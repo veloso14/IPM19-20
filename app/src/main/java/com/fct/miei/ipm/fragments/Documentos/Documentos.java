@@ -306,7 +306,9 @@ public class Documentos extends Fragment {
 
 
         operatingSystems.get(operatingSystems.indexOf(doc3_dual_doc)).incEstrealas(classif_ag_dual);
-        operatingSystems.get(operatingSystems.indexOf(doc6_dual_ppt)).incEstrealas(classif_dual);
+
+        if(operatingSystems.size() != 2)
+            operatingSystems.get(operatingSystems.indexOf(doc6_dual_ppt)).incEstrealas(classif_dual);
 
         if(lastDocRating != null && lastDocRating.size() == 2){
             Object[] myArr = lastDocRating.toArray();
