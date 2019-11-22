@@ -183,10 +183,16 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("image", "documento");
             startActivity(intent);
         }
-//        else if (fragmentInFrame instanceof Duvidas){
+        else if (fragmentInFrame instanceof Duvidas){
 //            intent.putExtra("image", "duvidas");
 //            startActivity(intent);
-//        }
+            new AlertDialog.Builder(this)
+                    .setTitle("Ecrã de dúvidas")
+                    .setMessage("Neste ecrã é possível:\n\n\t-Clicar numa dúvida para obter mais informação sobre a mesma.\n\n\t-Adicionar uma nova dúvida carregando no \"+\" situado no canto inferior direito.")
+                    .setPositiveButton(android.R.string.ok, null)
+                    .setIcon(android.R.drawable.ic_menu_help)
+                    .show();
+        }
         return true;
     }
 
