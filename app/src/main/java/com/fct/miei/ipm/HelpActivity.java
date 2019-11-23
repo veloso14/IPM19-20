@@ -70,7 +70,7 @@ public class HelpActivity extends AppCompatActivity {
             img.setImageResource(R.drawable.comentarios_help);
         }
         else if(image.equalsIgnoreCase("documentos")){
-            img.setImageResource(R.drawable.documentos_help);
+            img.setImageResource(R.drawable.documentos_help2);
         }
         else if(image.equalsIgnoreCase("documento")){
             img.setImageResource(R.drawable.documento_ajuda);

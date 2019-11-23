@@ -31,16 +31,15 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/grid"
-        android:layout_width="385dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cadeira"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="@+id/settings"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
+    <ImageView
             android:id="@+id/back"
             android:layout_width="22dp"
             android:layout_height="wrap_content"
@@ -107,7 +106,6 @@
         android:id="@+id/search"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:drawableLeft="@drawable/loupe"
@@ -117,7 +115,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.089"
-        app:layout_constraintStart_toStartOf="@+id/grid"
+        app:layout_constraintStart_toStartOf="@+id/back"
         app:layout_constraintTop_toBottomOf="@+id/cadeira" />
 
 
