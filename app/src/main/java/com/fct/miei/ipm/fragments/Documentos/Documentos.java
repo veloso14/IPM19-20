@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ import com.brutal.ninjas.hackaton19.R;
 import com.fct.miei.ipm.fragments.Adicionar.CriarExercicios;
 import com.fct.miei.ipm.fragments.Duvidas.Duvidas;
 import com.fct.miei.ipm.fragments.Home.Home;
+import com.fct.miei.ipm.fragments.Home.ImageAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,6 +46,7 @@ public class Documentos extends Fragment {
     private int searched ;
     private int classif_ag_dual;
     private int classif_dual;
+    private String searchKey = "";
     private int[] stars = {100, 80};
 
     private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40, 1);
@@ -86,16 +90,8 @@ public class Documentos extends Fragment {
             setDummyData();
         }
 
-        Collections.sort(operatingSystems, RecyclerViewItem.DocNameComp);
+        Collections.sort(filterDoc(operatingSystems), RecyclerViewItem.DocNameComp);
 
-//        operatingSystems = new ArrayList<>();
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
 
     }
     //3
@@ -105,16 +101,7 @@ public class Documentos extends Fragment {
             setDummyData();
         }
 
-        Collections.sort(operatingSystems, RecyclerViewItem.DocOlderComp);
-
-//        operatingSystems = new ArrayList<>();
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
+        Collections.sort(filterDoc(operatingSystems), RecyclerViewItem.DocOlderComp);
 
 
     }
@@ -126,17 +113,7 @@ public class Documentos extends Fragment {
             setDummyData();
         }
 
-        Collections.sort(operatingSystems, RecyclerViewItem.DocRecentComp);
-
-//        operatingSystems = new ArrayList<>();
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-
+        Collections.sort(filterDoc(operatingSystems), RecyclerViewItem.DocRecentComp);
 
     }
     //5
@@ -146,16 +123,7 @@ public class Documentos extends Fragment {
             setDummyData();
         }
 
-        Collections.sort(operatingSystems, RecyclerViewItem.DocClassificationComp);
-
-//        operatingSystems = new ArrayList<>();
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Ag. Dual", stars[0]));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1]));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.zip, "Simplex", 70));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.doc, "Simplex", 60));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40));
-//        operatingSystems.add(new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20));
+        Collections.sort(filterDoc(operatingSystems), RecyclerViewItem.DocClassificationComp);
 
 
     }
@@ -407,10 +375,106 @@ public class Documentos extends Fragment {
         });
 
 
+        //Pesquisar por documento
+        EditText search = view.findViewById(R.id.search);
+        search.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+            }
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if (search.getText().toString().isEmpty()) {
+                    Log.d("CHANGED", "Vazio");
+                    searchKey = "";
+                    switch (searched){
+                        case 0:
+                            setDummyData();
+                            break;
+
+                        case 1:
+                            setOrderedDummyDataRuyCosta();
+                            break;
+
+                        case 2:
+                            setOrderedAplhabeticedDummyData();
+                            break;
+
+                        case 3:
+                            setOrderedLeaseRecenteDummyData();
+                            break;
+
+                        case 4:
+                            setOrderedMostRecenteDummyData();
+                            break;
+
+                        case 5:
+                            setOrderedDummyData();
+                            break;
+
+                        default:
+                            setDummyData();
+                    }
+                    gridView.setAdapter( new GridViewAdapterDocumentos(getActivity(), operatingSystems) );
+                    gridView.refreshDrawableState();
+                } else {
+                    Log.d("CHANGED", s.toString());
+                    searchKey = s.toString();
+                    ArrayList<RecyclerViewItem> temp = filterDoc(operatingSystems );
+                    gridView.setAdapter( new GridViewAdapterDocumentos(getActivity(), temp) );
+                    gridView.refreshDrawableState();
+
+                }
+            }
+        });
+
         return view;
     }
 
-    
+    private ArrayList<RecyclerViewItem> filterDoc(ArrayList<RecyclerViewItem> operatingSystems ) {
+
+        if(!this.searchKey.isEmpty()) {
+            ArrayList<RecyclerViewItem> filtered = new ArrayList<RecyclerViewItem>();
+            for (int i = 0; i < operatingSystems.size(); i++) {
+                if (operatingSystems.get(i).getName().toUpperCase().contains(this.searchKey.toUpperCase()))
+                    filtered.add(operatingSystems.get(i));
+            }
+            this.operatingSystems = filtered;
+            return filtered;
+        }
+        else{
+            switch (searched){
+                case 0:
+                    setDummyData();
+                    break;
+
+                case 1:
+                    setOrderedDummyDataRuyCosta();
+                    break;
+
+                case 3:
+                    setOrderedLeaseRecenteDummyData();
+                    break;
+
+                case 4:
+                    setOrderedMostRecenteDummyData();
+                    break;
+
+                case 5:
+                    setOrderedDummyData();
+                    break;
+
+                default:
+                    setDummyData();
+            }
+            return this.operatingSystems;
+        }
+    }
+
 
     public void ShowPopupPesquisarProfessor(View v) {
         myDialog.setContentView(R.layout.popup_search_professor);

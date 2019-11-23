@@ -31,14 +31,14 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/grid"
-        android:layout_width="0dp"
+        android:layout_width="385dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cadeira"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings" />
+        app:layout_constraintTop_toBottomOf="@+id/search" />
 
         <ImageView
             android:id="@+id/back"
@@ -72,8 +72,9 @@
     <ImageView
         android:id="@+id/settings"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/search"
         app:layout_constraintEnd_toEndOf="@+id/cadeira"
         app:layout_constraintTop_toBottomOf="@+id/cadeira"
         app:srcCompat="@drawable/settingsicon" />
@@ -81,7 +82,7 @@
     <ImageView
         android:id="@+id/filtrarpor"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/settings"
         app:layout_constraintEnd_toStartOf="@+id/settings"
@@ -101,6 +102,23 @@
         app:layout_constraintBottom_toBottomOf="@+id/filtrarpor"
         app:layout_constraintEnd_toStartOf="@+id/filtrarpor"
         app:layout_constraintTop_toTopOf="@+id/filtrarpor" />
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:drawableLeft="@drawable/loupe"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Pesquisar"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="@+id/grid"
+        app:layout_constraintTop_toBottomOf="@+id/cadeira" />
 
 
 </android.support.constraint.ConstraintLayout>
