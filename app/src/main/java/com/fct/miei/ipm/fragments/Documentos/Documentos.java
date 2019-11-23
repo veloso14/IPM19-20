@@ -41,6 +41,7 @@ public class Documentos extends Fragment {
     private RecyclerView gridView;
     private GridViewAdapterDocumentos gridViewAdapter;
     public ArrayList<RecyclerViewItem> operatingSystems;
+    public static ArrayList<RecyclerViewItem> newDocs = new ArrayList<>();
     private Dialog myDialog;
     private View vista;
     private int searched ;
@@ -61,9 +62,13 @@ public class Documentos extends Fragment {
         // Required empty public constructor
     }
 
+    public static void adicionarDocumento(String nome){
+        RecyclerViewItem doc = new RecyclerViewItem(R.drawable.pdf, nome, 0, 1);
+        newDocs.add(doc);
+    }
+
     //0
     private void setDummyData() {
-
         operatingSystems = new ArrayList<>();
         operatingSystems.add(doc1_ex_csv);
         operatingSystems.add(doc2_ex_pdf);
@@ -72,7 +77,7 @@ public class Documentos extends Fragment {
         operatingSystems.add(doc5_simp_doc);
         operatingSystems.add(doc6_dual_ppt);
         operatingSystems.add(doc7_ex_pdf2);
-
+        operatingSystems.addAll(newDocs);
 
     }
     //1
@@ -81,6 +86,7 @@ public class Documentos extends Fragment {
         operatingSystems = new ArrayList<>();
         operatingSystems.add(doc3_dual_doc);
         operatingSystems.add(doc7_ex_pdf2);
+        operatingSystems.addAll(newDocs);
 
     }
     //2
@@ -137,7 +143,6 @@ public class Documentos extends Fragment {
         apontamentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 myDialog.dismiss();
                 android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content, new CriarApontamento());

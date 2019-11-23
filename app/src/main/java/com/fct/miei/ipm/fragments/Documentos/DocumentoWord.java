@@ -150,7 +150,7 @@ public class DocumentoWord extends Fragment {
 
                 System.out.println("rounded "+ Math.round(avalicao));
 
-                if(docName.contains("Dual")){
+                if(docName.contains("Al")){
                     SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
                     edition.putInt("classification ag dual", Math.round(avalicao));
                     edition.apply();

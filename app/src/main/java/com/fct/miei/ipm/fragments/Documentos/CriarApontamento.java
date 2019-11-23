@@ -262,6 +262,7 @@ public class CriarApontamento extends Fragment implements  AdapterView.OnItemSel
                                     SharedPreferences.Editor prefs = getContext().getSharedPreferences("pref", MODE_PRIVATE).edit();
                                     prefs.remove("pref");
                                     prefs.commit();
+                                    Documentos.adicionarDocumento(assunto.getText().toString());
                                     Toast.makeText(getContext(),"Apontamento criado com sucesso",Toast.LENGTH_LONG).show();
                                     linker();
                                 }})
