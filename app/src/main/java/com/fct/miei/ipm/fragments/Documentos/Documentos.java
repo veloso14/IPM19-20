@@ -391,34 +391,7 @@ public class Documentos extends Fragment {
                 if (search.getText().toString().isEmpty()) {
                     Log.d("CHANGED", "Vazio");
                     searchKey = "";
-                    switch (searched){
-                        case 0:
-                            setDummyData();
-                            break;
-
-                        case 1:
-                            setOrderedDummyDataRuyCosta();
-                            break;
-
-                        case 2:
-                            setOrderedAplhabeticedDummyData();
-                            break;
-
-                        case 3:
-                            setOrderedLeaseRecenteDummyData();
-                            break;
-
-                        case 4:
-                            setOrderedMostRecenteDummyData();
-                            break;
-
-                        case 5:
-                            setOrderedDummyData();
-                            break;
-
-                        default:
-                            setDummyData();
-                    }
+                    setDummyData();
                     gridView.setAdapter( new GridViewAdapterDocumentos(getActivity(), operatingSystems) );
                     gridView.refreshDrawableState();
                 } else {
@@ -446,33 +419,8 @@ public class Documentos extends Fragment {
             this.operatingSystems = filtered;
             return filtered;
         }
-        else{
-            switch (searched){
-                case 0:
-                    setDummyData();
-                    break;
 
-                case 1:
-                    setOrderedDummyDataRuyCosta();
-                    break;
-
-                case 3:
-                    setOrderedLeaseRecenteDummyData();
-                    break;
-
-                case 4:
-                    setOrderedMostRecenteDummyData();
-                    break;
-
-                case 5:
-                    setOrderedDummyData();
-                    break;
-
-                default:
-                    setDummyData();
-            }
-            return this.operatingSystems;
-        }
+        return this.operatingSystems;
     }
 
 
