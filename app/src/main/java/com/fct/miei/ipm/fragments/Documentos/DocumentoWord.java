@@ -56,6 +56,8 @@ public class DocumentoWord extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_documento, container, false);
+        TextView name = view.findViewById(R.id.login_entrar);
+        name.setText(docName);
         myDialog = new Dialog(getContext());
         WebView webView = view.findViewById(R.id.webview);
 
@@ -148,7 +150,7 @@ public class DocumentoWord extends Fragment {
 
                 System.out.println("rounded "+ Math.round(avalicao));
 
-                if(docName.contains("Ag. Dual")){
+                if(docName.contains("Dual")){
                     SharedPreferences.Editor edition = getContext().getSharedPreferences("classification", MODE_PRIVATE).edit();
                     edition.putInt("classification ag dual", Math.round(avalicao));
                     edition.apply();

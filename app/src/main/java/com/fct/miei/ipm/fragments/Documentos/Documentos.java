@@ -49,13 +49,13 @@ public class Documentos extends Fragment {
     private String searchKey = "";
     private int[] stars = {100, 80};
 
-    private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 2.", 40, 1);
-    private RecyclerViewItem doc2_ex_pdf = new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 20, 1);
-    private RecyclerViewItem doc3_dual_doc = new RecyclerViewItem(R.drawable.doc, "Ag. Dual", 100, 2);
+    private RecyclerViewItem doc1_ex_csv = new RecyclerViewItem(R.drawable.csv, "Ex 3", 40, 1);
+    private RecyclerViewItem doc2_ex_pdf = new RecyclerViewItem(R.drawable.pdf, "Ex 5", 20, 1);
+    private RecyclerViewItem doc3_dual_doc = new RecyclerViewItem(R.drawable.doc, "Algoritmo Dual", 100, 2);
     private RecyclerViewItem doc4_simp_zip = new RecyclerViewItem(R.drawable.zip, "Simplex", 70, 3);
-    private RecyclerViewItem doc5_simp_doc = new RecyclerViewItem(R.drawable.doc, "Simplex", 60, 4);
+    private RecyclerViewItem doc5_simp_doc = new RecyclerViewItem(R.drawable.doc, "Primal", 60, 4);
     private RecyclerViewItem doc6_dual_ppt = new RecyclerViewItem(R.drawable.ppt, "Dual", stars[1], 4);
-    private RecyclerViewItem doc7_ex_pdf2 = new RecyclerViewItem(R.drawable.pdf, "Ex 2.", 44, 5);
+    private RecyclerViewItem doc7_ex_pdf2 = new RecyclerViewItem(R.drawable.pdf, "Ex 2", 44, 5);
 
     public Documentos() {
         // Required empty public constructor
@@ -179,7 +179,6 @@ public class Documentos extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_documentos, container, false);
-
 
         SharedPreferences settingsPreferences = getContext().getSharedPreferences("DOCSEARCHSELECTED", 0);
         searched = settingsPreferences.getInt("DOCSEARCHSELECTED", 0);
