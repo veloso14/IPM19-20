@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -59,7 +60,21 @@ public class Duvidas extends Fragment {
     }
 
     public void ShowPopupResultados(View v) {
+        //Vê se já há alguma dúvida parecida
+        EditText assuntoTxt = (EditText)myDialog.findViewById(R.id.cadeira);
+        String[] assunto = assuntoTxt.getText().toString().split(" ");
+
         myDialog.setContentView(R.layout.popup_resultado_duvida);
+        TextView txtresult = myDialog.findViewById(R.id.horario);
+        String result = "Não há resutados";
+
+        for (String[] duvida : duvidas){
+            for(int i=0; i<assunto.length; i++)
+                if ( duvida[0].toLowerCase().indexOf(assunto[i].toLowerCase()) != -1 )
+                    result = String.format("Já existe uma dúvida sobre o mesmo assunto.\nVê a dúvida \"%s\".\nTalvez seja a mesma dúvida que a tua.",duvida[0]);
+        }
+        txtresult.setText(result);
+
         TextView txtclose = myDialog.findViewById(R.id.txtclose);
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
