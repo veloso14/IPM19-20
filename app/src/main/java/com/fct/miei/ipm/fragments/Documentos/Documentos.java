@@ -422,8 +422,8 @@ public class Documentos extends Fragment {
                     gridView.setAdapter( new GridViewAdapterDocumentos(getActivity(), operatingSystems) );
                     gridView.refreshDrawableState();
                 } else {
-                    Log.d("CHANGED", s.toString());
-                    searchKey = s.toString();
+                    Log.d("CHANGED", search.getText().toString());
+                    searchKey = search.getText().toString();
                     ArrayList<RecyclerViewItem> temp = filterDoc(operatingSystems );
                     gridView.setAdapter( new GridViewAdapterDocumentos(getActivity(), temp) );
                     gridView.refreshDrawableState();
